@@ -6,11 +6,13 @@ class NumberPhone(models.Model):
     logo = models.ImageField('Логотип оператора связи')
     numbers = models.CharField('Номер телефона', max_length=50)
 
+    def __str__(self):
+        return f'{numbers}'
 
 class OurWorks(models.Model):
     """Фотографии и видео работ"""
     picture = models.ImageField('Фотографии работ')
-    video_url = models.CharField('Видео работ')
+    video_url = models.CharField('Видео работ', max_length=200)
 
 
 class Warranty_Support(models.Model):

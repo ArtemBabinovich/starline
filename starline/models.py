@@ -6,6 +6,10 @@ class NumberPhone(models.Model):
     logo = models.ImageField('Логотип оператора связи')
     numbers = models.CharField('Номер телефона', max_length=50)
 
+    class Meta:
+        verbose_name = 'Моб.номер'
+        verbose_name_plural = 'Моб.номера'
+
 
 class OurWorks(models.Model):
     """Фотографии и видео работ"""

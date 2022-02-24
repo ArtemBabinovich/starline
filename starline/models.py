@@ -16,3 +16,10 @@ class OurWorks(models.Model):
 class Warranty_Support(models.Model):
     """Гарантия и поддержка"""
     description = models.TextField('Гарантия и поддержка')
+
+    class Meta:
+        verbose_name = 'Гарантия'
+        verbose_name_plural = 'Гарантии'
+
+    def __str__(self):
+        return self.description

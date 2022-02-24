@@ -8,6 +8,11 @@ class NumberPhone(models.Model):
 
     def __str__(self):
         return f'{numbers}'
+      
+    class Meta:
+        verbose_name = 'Моб.номер'
+        verbose_name_plural = 'Моб.номера'
+
 
 class OurWorks(models.Model):
     """Фотографии и видео работ"""
@@ -18,3 +23,10 @@ class OurWorks(models.Model):
 class Warranty_Support(models.Model):
     """Гарантия и поддержка"""
     description = models.TextField('Гарантия и поддержка')
+
+    class Meta:
+        verbose_name = 'Гарантия'
+        verbose_name_plural = 'Гарантии'
+
+    def __str__(self):
+        return self.description

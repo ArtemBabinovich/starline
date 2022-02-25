@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class NumberPhone(models.Model):
@@ -14,7 +15,7 @@ class NumberPhone(models.Model):
 class OurWorks(models.Model):
     """Фотографии и видео работ"""
     picture = models.ImageField('Фотографии работ')
-    video_url = models.CharField('Видео работ')
+    video_url = models.CharField('Видео работ', max_length=250)
 
 
 class Warranty_Support(models.Model):
@@ -27,3 +28,19 @@ class Warranty_Support(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class Comment(models.Model):
+    """Отзыв на работу"""
+    name = models.CharField('Имя отправителя отзыва', max_length=200, db_index=True)
+    numbers_phone = models.CharField('Номер телефона', max_length=50)
+    body = models.TextField('Содержимое комментария')
+    pub_data = models.DateTimeField('Дата комментария', default=timezone.now)
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+        ordering = ('pub_data',)
+
+    def __str__(self):
+        return f'Отзыв от {self.name} с текстом: {self.body}'

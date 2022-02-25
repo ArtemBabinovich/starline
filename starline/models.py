@@ -7,7 +7,7 @@ class NumberPhone(models.Model):
     numbers = models.CharField('Номер телефона', max_length=50)
 
     def __str__(self):
-        return f'{numbers}'
+        return f'{self.numbers}'
       
     class Meta:
         verbose_name = 'Моб.номер'

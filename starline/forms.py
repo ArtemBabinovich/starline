@@ -8,6 +8,7 @@ from .models import Feedback
 #     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'style': 'margin:10px; padding:10px; height:40px', 'class': 'form-control col-sm-8', 'placeholder': 'Введите пароль не мение 5 символов'}))
 
 
+
 class FeedbackForm(forms.Form):
     # name = forms.CharField(label='Имя', max_length=100)
     # email = forms.EmailField(label='Почта')

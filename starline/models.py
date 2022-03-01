@@ -1,3 +1,6 @@
+import re
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils import timezone
 
@@ -30,10 +33,19 @@ class Warranty_Support(models.Model):
         return self.description
 
 
+def validate_phone(value):
+    validation_expression = r'^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$'
+    if not re.match(validation_expression, value):
+        raise ValidationError(
+            _('Номер телефона должен быть в формате +375(XX)XXX-XX-XX'),
+            code='invalid_phone_format'
+        )
+
+
 class Comment(models.Model):
     """Отзыв на работу"""
     name = models.CharField('Имя отправителя отзыва', max_length=200, db_index=True)
-    numbers_phone = models.CharField('Номер телефона', max_length=50)
+    numbers_phone = models.CharField('Номер телефона', max_length=17, validators=[validate_phone])
     body = models.TextField('Содержимое комментария')
     pub_data = models.DateTimeField('Дата комментария', default=timezone.now)
 
@@ -44,3 +56,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Отзыв от {self.name} с текстом: {self.body}'
+
+
+class Answer_Comment(models.Model):
+    """Ответ на отзыв"""
+    name = models.CharField('Имя', max_length=250)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, verbose_name='Содержимое отзыва')
+    body = models.TextField('Ответ на отзыв')
+    pub_data = models.DateTimeField('Дата ответа на комментарий', default=timezone.now)
+
+    class Meta:
+        verbose_name = 'Ответ'
+        verbose_name_plural = 'Ответы на отзывы'
+
+    def __str__(self):
+        return f'Ответ от {self.name} с текстом: {self.body}'

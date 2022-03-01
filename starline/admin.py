@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from starline.models import Comment
+from starline.models import Comment, Answer_Comment
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -10,3 +10,10 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Comment, CommentAdmin)
+
+
+class Answer_Comment_Admin(admin.ModelAdmin):
+    list_display = ('name', 'comment', 'body', 'pub_data')
+
+
+admin.site.register(Answer_Comment, Answer_Comment_Admin)

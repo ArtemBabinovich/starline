@@ -1,11 +1,22 @@
 from django.shortcuts import render
-
-# Create your views here.
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from starline.forms import CommentForm
+from starline.models import Comment
 from django.template import context
 from django.views.generic import ListView
-
-# from starline.forms import UserLoginForm
 from starline.models import Contacts, Feedback
+
+def index(request):
+    return render(request, 'index.html')
+
+
+class CommentView(CreateView):
+    """Создание отзыва"""
+    model = Comment
+    template_name = 'form_comment.html'
+    form_class = CommentForm
+    success_url = reverse_lazy('index')
 
 
 def contact(request):
@@ -22,23 +33,3 @@ def feedb(request):
         'feedback': feedback,
     }
     return render(request, template_name='feedback.html', context=context)
-
-
-
-
-# def get_login(request):
-#     if request.method == 'POST':
-#         user_form = UserLoginForm(data=request.POST)
-#         if user_form.is_valid():
-#             user = user_form.get_user()
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         user_form = UserLoginForm
-#     context = {
-#         'title': 'Войти в систему',
-#         'style': style,
-#         'author': author,
-#         'user_form': user_form
-#         }
-#     return render(request, 'login.html', context=context)

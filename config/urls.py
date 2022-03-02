@@ -18,12 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from starline.views import CommentView, index
+from starline.views import index, CommentView
 
 app_name = 'starline'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', index, name='index'),
+    path('index/', index, name='index'),
     path('register/', CommentView.as_view()),
     path('', include('starline.urls'))
 ]

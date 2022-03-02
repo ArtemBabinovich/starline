@@ -7,6 +7,7 @@ from django.template import context
 from django.views.generic import ListView
 from starline.models import Contacts, Feedback
 
+
 def index(request):
     return render(request, 'index.html')
 

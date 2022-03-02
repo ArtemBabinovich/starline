@@ -1,9 +1,7 @@
 from django import forms
-from pkg_resources import _
 from starline.models import Comment
-from django.contrib.auth.forms import AuthenticationForm
-from django.forms import forms
 from .models import Feedback
+
 
 class CommentForm(forms.ModelForm):
 

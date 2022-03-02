@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils import timezone
+from slugify import slugify
 
 
 class NumberPhone(models.Model):
@@ -36,6 +37,55 @@ class Warranty_Support(models.Model):
     def __str__(self):
         return self.description
 
+
+class Security(models.Model):
+    """Охранные комплексы"""
+    title = models.CharField('Название ', max_length=100)
+
+
+class Category(models.Model):
+    """Категории комплексов"""
+    title = models.CharField('Название категории', max_length=100)
+    slug = models.SlugField('Слаг', unique=True, db_index=True, max_length=20, blank=True, null=True)
+    published = models.BooleanField(default=True, verbose_name='Опубликовано')
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+        ordering = ('-id',)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(str(self.title))
+        return super().save(*args, **kwargs)
+
+
+class Product(models.Model):
+    """Продукт"""
+    title = models.CharField('Название', max_length=200)
+    slug = models.CharField('Слаг', max_length=20, unique=True, db_index=True, blank=True, null=True)
+    description = models.TextField('Описание')
+    price = models.DecimalField('Цена без установки', decimal_places=2, max_digits=7, blank=True, null=True)
+    price_install = models.DecimalField('Цена с установкой', decimal_places=2, max_digits=7, blank=True, null=True)
+    time_first = models.CharField('Время установки 1', max_length=10, blank=True, null=True)
+    time_second = models.CharField('Время установки 2', max_length=10, blank=True, null=True)
+    image = models.ImageField('Картинка', blank=True, null=True, upload_to="image/%Y/%m/%d/")
+    category = models.ManyToManyField(Category, related_name='cat', verbose_name='Категория')
+    published = models.BooleanField(default=True, verbose_name='Опубликовано')
+
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
+        ordering = ('-id',)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(str(self.title))
+        return super().save(*args, **kwargs)
 
 def validate_phone(value):
     validation_expression = r'^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$'

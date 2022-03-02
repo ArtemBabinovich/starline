@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index', index, name='index'),
     path('register/', CommentView.as_view()),
-    path('',include('starline.urls'))
+    path('', include('starline.urls'))
 ]
 
 if settings.DEBUG:

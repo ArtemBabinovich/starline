@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in category %}<a href="{% url 'all_product_view' i.slug  %}">{{i}}<br>{% endfor %}</a>
+{% for i in products %}<a href="{% url 'detail_product_view' cat_slug=i.category.first.slug prod_slug=i.slug %}">{{i}}<br>{% endfor %}</a>
+{{prod.title}}<br>
+{{prod.description}}<br>
+{{prod.price}}<br>
+{% if page_obj.has_other_pages %}
+    {% for p in paginator.page_range %}
+        <a href="?page={{ p }}">{{ p }}</a>
+    {% endfor %}
+{% endif %}
+</body>
+</html>

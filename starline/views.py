@@ -39,11 +39,7 @@ class FeedbackView(CreateView):
 @receiver(post_save, sender=Feedback)
 def my_handler(sender, **kwargs):
     name = kwargs['instance']
-    # mine = Feedback.objects.get(name=name.name)
-    mine = Feedback.objects.get(phone=name)
-    # mine = Feedback.objects.filter(id=name.name)
-    # mine = Feedback.objects.get(name=request.POST['topic'])
-
+    mine = Feedback.objects.filter(name=name.name).last()  # Берет с QuerySet последний объект
     send_mail(
         subject='Новая заявка',
         message=f'Новая заявка {mine.name} Номер телефона: {mine.phone} Сообщение: {mine.message} Email: {mine.email}',

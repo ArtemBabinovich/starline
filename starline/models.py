@@ -161,5 +161,5 @@ class Feedback(models.Model):
         verbose_name_plural = 'Обратная связь'
 
     def __str__(self):
-        return self.name
+        return self.message
         # return f'Письмо от {self.name}. Телефон: {self.phone}. Сообщение: {self.message}. '

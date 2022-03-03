@@ -1,8 +1,12 @@
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
-from .forms import CommentForm
-from .models import Comment, Contacts, Feedback, Category, Product
+from .forms import CommentForm, FeedbackForm
+from .models import Comment, Contacts, Category, Product, Feedback
 
 
 def layout(request):
@@ -17,20 +21,36 @@ class CommentView(CreateView):
     success_url = reverse_lazy('layout')
 
 
-def contact(request):
-    contacts = Contacts.objects.all()
-    context = {
-        'contacts': contacts,
-    }
-    return render(request, template_name='contacts.html', context=context)
+class СontactsView(ListView):
+    """Контакты и информация"""
+    model = Contacts
+    template_name = 'contacts.html'
+    context_object_name = 'contacts'
 
 
-def feedb(request):
-    feedback = Feedback.objects.all()
-    context = {
-        'feedback': feedback,
-    }
-    return render(request, template_name='feedback.html', context=context)
+class FeedbackView(CreateView):
+    """Обратная связь"""
+    model = Feedback
+    template_name = 'feedback.html'
+    form_class = FeedbackForm
+    success_url = reverse_lazy('layout')
+
+
+@receiver(post_save, sender=Feedback)
+def my_handler(sender, **kwargs):
+    name = kwargs['instance']
+    # mine = Feedback.objects.get(name=name.name)
+    mine = Feedback.objects.get(phone=name)
+    # mine = Feedback.objects.filter(id=name.name)
+    # mine = Feedback.objects.get(name=request.POST['topic'])
+
+    send_mail(
+        subject='Новая заявка',
+        message=f'Новая заявка {mine.name} Номер телефона: {mine.phone} Сообщение: {mine.message} Email: {mine.email}',
+        from_email="Starline",
+        recipient_list=['olegpustovalov220@gmail.com'],  # почтовый ящик(и) куда отправляем письма
+        fail_silently=False,
+    )
 
 
 class CatalogView(ListView):

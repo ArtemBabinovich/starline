@@ -44,7 +44,7 @@ def my_handler(sender, **kwargs):
         subject='Новая заявка',
         message=f'Новая заявка {mine.name} Номер телефона: {mine.phone} Сообщение: {mine.message} Email: {mine.email}',
         from_email="Starline",
-        recipient_list=['olegpustovalov220@gmail.com'],  # почтовый ящик(и) куда отправляем письма
+        recipient_list=[''],  # почтовый ящик(и) куда отправляем письма
         fail_silently=False,
     )
 

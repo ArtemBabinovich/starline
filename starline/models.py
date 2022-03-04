@@ -162,4 +162,3 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.message
-        # return f'Письмо от {self.name}. Телефон: {self.phone}. Сообщение: {self.message}. '

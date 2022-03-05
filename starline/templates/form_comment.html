@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load bootstrap4 %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Оставить отзыв</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout='horizontal' %}
+    {% buttons submit='Отправить' %}
+    {% endbuttons %}
+</form>
+</body>
+</html>

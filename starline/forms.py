@@ -1,13 +1,16 @@
-from django.contrib.auth.forms import AuthenticationForm
-from django.forms import forms
-from .models import Feedback
+from django import forms
+from starline.models import Comment, Feedback
 
 
-# class UserLoginForm(AuthenticationForm): #AuthenticationForm #forms.Form
-#     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'style': 'margin:10px; padding:10px; height:40px', 'class': 'form-control col-sm-8', 'placeholder': 'Напишите свой логин'}))
-#     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'style': 'margin:10px; padding:10px; height:40px', 'class': 'form-control col-sm-8', 'placeholder': 'Введите пароль не мение 5 символов'}))
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'numbers_phone', 'body')
+        widgets = {'numbers_phone': forms.TextInput(attrs={'type': 'tel',
+                                                           'placeholder': '+375 (__)___-__-__',
+                                                           'value': '+375'})}
 
-
+<<<<<<< HEAD
 
 
 
@@ -16,7 +19,10 @@ class FeedbackForm(forms.Form):
     # email = forms.EmailField(label='Почта')
     # phone = forms.CharField(label='Телефон', max_length=100)
     # message = forms.TextField(label='Сообщение')
+=======
+>>>>>>> 603e0b1ad91754a28fc0e87dbe72b219d894f7e6
 
+class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ('name', 'email', 'phone', 'message')

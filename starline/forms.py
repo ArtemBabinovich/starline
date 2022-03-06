@@ -10,20 +10,15 @@ class CommentForm(forms.ModelForm):
                                                            'placeholder': '+375 (__)___-__-__',
                                                            'value': '+375'})}
 
-<<<<<<< HEAD
-
-
-
-class FeedbackForm(forms.Form):
-    # name = forms.CharField(label='Имя', max_length=100)
-    # email = forms.EmailField(label='Почта')
-    # phone = forms.CharField(label='Телефон', max_length=100)
-    # message = forms.TextField(label='Сообщение')
-=======
->>>>>>> 603e0b1ad91754a28fc0e87dbe72b219d894f7e6
 
 class FeedbackForm(forms.ModelForm):
+    message = forms.CharField(label='Текст письма', widget=forms.Textarea(
+        attrs={'style': 'margin:10px; padding:10px; height:200px', 'class': 'form-control col-sm-8',
+               'placeholder': 'Напишите марку автомобиля и модель'}))
+
     class Meta:
         model = Feedback
-        fields = ('name', 'email', 'phone', 'message')
-
+        fields = ('name', 'phone', 'message')
+        widgets = {'phone': forms.TextInput(attrs={'type': 'tel',
+                                                   'placeholder': '+375 (__)___-__-__',
+                                                   'value': '+375'})}

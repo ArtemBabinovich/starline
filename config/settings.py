@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'bootstrap4',
     'starline',
+    'ckeditor',
+    'ckeditor_uploader',
 
 ]
 
@@ -136,3 +138,39 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'vp3231963@gmail.com'
 EMAIL_HOST_PASSWORD = 'dinamo258'
 EMAIL_PORT = 587
+
+CKEDITOR_UPLOAD_PATH = ''
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+CKEDITOR_RESTRICT_BY_DATE = True
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic']
+        ],
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
+            {'name': 'insert',
+             'items': ['Image', 'Table', 'Smiley', 'SpecialChar']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',
+        'tabSpaces': 4,
+    },
+    'custom': {
+        'skin': 'moono',
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'insert',
+             'items': ['Image']},
+
+        ],
+        'toolbar': 'YourCustomToolbarConfig',
+    }
+}

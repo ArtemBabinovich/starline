@@ -7,7 +7,8 @@ from django.urls import path, include
 app_name = 'starline'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('starline.urls'))
+    path('', include('starline.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for i in our_work %}
+<h5>Описание видео: {{ i.description_video|safe }}</h5>
+<h5>Ссылка для видео: {{ i.url|safe }}</h5>
+<h5>Описание фото: {{ i.description_image|safe }}</h5>
+<h5>Изображение: {{ i.image }}</h5>
+{% endfor %}
+
+</body>
+</html>

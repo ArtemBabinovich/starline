@@ -185,7 +185,7 @@ class Action(models.Model):
 class Our_work(models.Model):
     """Наши работы"""
     description_video = RichTextField('Описание видео', blank=True)
-    url = models.TextField('Ссылка для видео', help_text='Вставить ссылку с YouTube', blank=True)
+    url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True)
     description_image = RichTextField('Описание фото', blank=True)
     image = RichTextUploadingField('Изображение', blank=True, null=True)
     date = models.DateField('Дата добавления')

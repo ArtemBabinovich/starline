@@ -142,7 +142,7 @@ class Contacts(models.Model):
     social_info = models.CharField('Социальная сеть', max_length=100, blank=True, null=True)
     time_work1 = models.CharField('Время работы (будни)', max_length=100, blank=True, null=True)
     time_work2 = models.CharField('Время работы (выходные)', max_length=100, blank=True, null=True)
-    maps = models.TextField('Расположение на карте', blank=True, null=True)
+    maps = models.TextField('Расположение на карте', help_text='Вставить скрипт или ссылку с конструктора карт', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Контакт'

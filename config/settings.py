@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from ckeditor.configs import DEFAULT_CONFIG
+from ckeditor_demo.settings import CUSTOM_TOOLBAR
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -113,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 
@@ -124,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -141,9 +145,25 @@ EMAIL_HOST_PASSWORD = 'dinamo258'
 EMAIL_PORT = 587
 
 
-CKEDITOR_UPLOAD_PATH = ""
+CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_RESTRICT_BY_USER = True  # каждый пользователь видит и загружает только свои собственные изображения
 CKEDITOR_BROWSE_SHOW_DIRS = True  # позволяет группировать изображения по каталогу, в котором они хранятся
 CKEDITOR_RESTRICT_BY_DATE = True  # группировать загруженные файлы по годам/месяцам/дням
 CKEDITOR_FORCE_JPEG_COMPRESSION = True  # конвертировать и сжимать загруженные изображения в jpeg, чтобы сэкономить место на диске
+
+CKEDITOR_CONFIGS = {
+    "default": DEFAULT_CONFIG,
+    "my-custom-toolbar": {
+        "toolbar": CUSTOM_TOOLBAR,
+        "toolbarGroups": None,
+        "extraPlugins": ",".join(["image2", "codesnippet"]),
+        "removePlugins": ",".join(["image"]),
+        "codeSnippet_theme": "xcode",
+    },
+}
+
+
+
+
+
 

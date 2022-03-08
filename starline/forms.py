@@ -12,7 +12,13 @@ class CommentForm(forms.ModelForm):
 
 
 class FeedbackForm(forms.ModelForm):
+    message = forms.CharField(label='Текст письма', widget=forms.Textarea(
+        attrs={'style': 'margin:10px; padding:10px; height:200px', 'class': 'form-control col-sm-8',
+               'placeholder': 'Напишите марку автомобиля и модель'}))
+
     class Meta:
         model = Feedback
-        fields = ('name', 'email', 'phone', 'message')
-
+        fields = ('name', 'phone', 'message')
+        widgets = {'phone': forms.TextInput(attrs={'type': 'tel',
+                                                   'placeholder': '+375 (__)___-__-__',
+                                                   'value': '+375'})}

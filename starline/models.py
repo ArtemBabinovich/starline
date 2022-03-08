@@ -1,5 +1,9 @@
 import re
+
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils import timezone
@@ -23,7 +27,6 @@ class OurWorks(models.Model):
     """Фотографии и видео работ"""
     picture = models.ImageField('Фотографии работ')
     video_url = models.CharField('Видео работ', max_length=250)
-
 
 
 class Warranty_Support(models.Model):
@@ -87,6 +90,7 @@ class Product(models.Model):
         self.slug = slugify(str(self.title))
         return super().save(*args, **kwargs)
 
+
 def validate_phone(value):
     validation_expression = r'^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$'
     if not re.match(validation_expression, value):
@@ -125,7 +129,8 @@ class Answer_Comment(models.Model):
 
     def __str__(self):
         return f'Ответ от {self.name} с текстом: {self.body}'
-      
+
+
 class Contacts(models.Model):
     """Контакты и информация"""
     name = models.CharField('Название магазина', max_length=100)
@@ -137,7 +142,7 @@ class Contacts(models.Model):
     social_info = models.CharField('Социальная сеть', max_length=100, blank=True, null=True)
     time_work1 = models.CharField('Время работы (будни)', max_length=100, blank=True, null=True)
     time_work2 = models.CharField('Время работы (выходные)', max_length=100, blank=True, null=True)
-    maps = models.TextField('Расположение на карте', blank=True, null=True)
+    maps = models.TextField('Расположение на карте', help_text='Вставить скрипт или ссылку с конструктора карт', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Контакт'
@@ -147,12 +152,10 @@ class Contacts(models.Model):
         return self.address
 
 
-
 class Feedback(models.Model):
     """Обратная связь"""
     name = models.CharField('Имя', max_length=100)
-    email = models.EmailField('E-mail', max_length=100, blank=True)
-    phone = models.CharField('Телефон', max_length=50)
+    phone = models.CharField('Телефон', max_length=50, validators=[validate_phone])
     message = models.TextField('Сообщение')
     published = models.BooleanField('Обработано', default=False)
 
@@ -162,3 +165,56 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.message
+
+
+class Action(models.Model):
+    """Акции"""
+    title = models.CharField('Название акции', max_length=100)
+    description = RichTextUploadingField('Описание акции')
+    date = models.DateField('Дата добавления')
+    published = models.BooleanField('Опубликовано')
+
+    class Meta:
+        verbose_name = 'Акция'
+        verbose_name_plural = 'Акции'
+
+    def __str__(self):
+        return self.title
+
+
+class Our_work(models.Model):
+    """Наши работы"""
+    description_video = RichTextField('Описание видео', blank=True)
+    url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True)
+    description_image = RichTextField('Описание фото', blank=True)
+    image = RichTextUploadingField('Изображение', blank=True, null=True)
+    date = models.DateField('Дата добавления')
+
+    class Meta:
+        verbose_name = 'Наши работы'
+        verbose_name_plural = 'Наша работа'
+
+    def __str__(self):
+        return self.description_video
+
+
+class Service(models.Model):
+    """Сервис"""
+    title = models.CharField('Название услуги', max_length=100)
+    description = models.TextField('Описание услуги')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    published = models.BooleanField('Опубликовано')
+
+    class Meta:
+        verbose_name = 'Сервис'
+        verbose_name_plural = 'Сервисы'
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('service', kwargs={'slug': self.slug})
+
+
+
+

@@ -146,24 +146,21 @@ EMAIL_PORT = 587
 
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_RESTRICT_BY_USER = True  # каждый пользователь видит и загружает только свои собственные изображения
 CKEDITOR_BROWSE_SHOW_DIRS = True  # позволяет группировать изображения по каталогу, в котором они хранятся
 CKEDITOR_RESTRICT_BY_DATE = True  # группировать загруженные файлы по годам/месяцам/дням
-CKEDITOR_FORCE_JPEG_COMPRESSION = True  # конвертировать и сжимать загруженные изображения в jpeg, чтобы сэкономить место на диске
+CKEDITOR_FORCE_JPEG_COMPRESSION = True  # конвертировать и сжимать изображения в jpeg, чтобы сэкономить место на диске
 
 CKEDITOR_CONFIGS = {
-    "default": DEFAULT_CONFIG,
-    "my-custom-toolbar": {
-        "toolbar": CUSTOM_TOOLBAR,
-        "toolbarGroups": None,
-        "extraPlugins": ",".join(["image2", "codesnippet"]),
-        "removePlugins": ",".join(["image"]),
-        "codeSnippet_theme": "xcode",
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Styles', 'Format', 'Font', 'FontSize', 'Undo', 'Redo', 'TextColor', 'BGColor', 'Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Smiley', ]
+        ],
     },
+    'customimage': {
+        'toolbar': 'Customimage',
+        'toolbar_Customimage': [{'items': ['Image']}],
+
+    }
 }
-
-
-
-
-
 

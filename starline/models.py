@@ -1,6 +1,5 @@
 import re
 
-from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.exceptions import ValidationError
 from django.urls import reverse
@@ -184,10 +183,10 @@ class Action(models.Model):
 
 class Our_work(models.Model):
     """Наши работы"""
-    description_video = RichTextField('Описание видео', blank=True)
+    description_video = RichTextUploadingField('Описание видео', blank=True)
     url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True)
-    description_image = RichTextField('Описание фото', blank=True)
-    image = RichTextUploadingField('Изображение', blank=True, null=True)
+    description_image = RichTextUploadingField('Описание фото', blank=True)
+    image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
     date = models.DateField('Дата добавления')
 
     class Meta:

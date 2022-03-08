@@ -1,17 +1,6 @@
 from django.contrib import admin
-from django import forms
 
 from starline.models import Comment, Answer_Comment, Contacts, Category, Product, Feedback, Action, Our_work, Service
-
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
-
-
-class Our_workAdminForm(forms.ModelForm):
-    image = forms.CharField(label='Изображение', widget=CKEditorUploadingWidget())
-
-    class Meta:
-        model = Our_work
-        fields = '__all__'
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -57,11 +46,8 @@ class ActionAdmin(admin.ModelAdmin):
 
 
 class Our_workAdmin(admin.ModelAdmin):
-    form = Our_workAdminForm
     list_display = ('date', 'url', 'image')
     list_filter = ('date',)
-
-
 
 
 class ServiceAdmin(admin.ModelAdmin):

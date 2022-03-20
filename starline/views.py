@@ -1,8 +1,12 @@
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
-from .forms import CommentForm
-from .models import Comment, Contacts, Feedback, Category, Product
+from .forms import CommentForm, FeedbackForm
+from .models import Comment, Contacts, Category, Product, Feedback, Action, Our_work, Service
 
 
 def layout(request):
@@ -17,20 +21,43 @@ class CommentView(CreateView):
     success_url = reverse_lazy('layout')
 
 
-def contact(request):
-    contacts = Contacts.objects.all()
-    context = {
-        'contacts': contacts,
-    }
-    return render(request, template_name='contacts.html', context=context)
+class СontactsView(ListView):
+    """Контакты и информация"""
+    model = Contacts
+    template_name = 'contacts.html'
+    context_object_name = 'contacts'
 
 
-def feedb(request):
-    feedback = Feedback.objects.all()
-    context = {
-        'feedback': feedback,
-    }
-    return render(request, template_name='feedback.html', context=context)
+class FeedbackView(CreateView):
+    """Обратная связь"""
+    model = Feedback
+    template_name = 'feedback.html'
+    form_class = FeedbackForm
+    success_url = reverse_lazy('layout')
+
+
+@receiver(post_save, sender=Feedback)
+def my_handler(sender, **kwargs):
+    """Отправка сообщений на почту через форму обратной связи"""
+    name = kwargs['instance']
+    mine = Feedback.objects.filter(name=name.name).last()  # Берет с QuerySet последний объект
+    send_mail(
+        subject='Новая заявка',
+        message=f'Заявка от: {mine.name} Номер телефона: {mine.phone} Сообщение: {mine.message}',
+        from_email="Starline",
+        recipient_list=['olegpustovalov220@gmail.com'],  # почтовый ящик(и) куда отправляем письма
+        fail_silently=False,
+    )
+
+
+class ActionView(ListView):
+    """Вывод акций на экран"""
+    model = Action
+    template_name = 'action.html'
+    context_object_name = 'action'
+
+    def get_queryset(self):
+        return Action.objects.filter(published=True)
 
 
 class CatalogView(ListView):
@@ -42,6 +69,28 @@ class CatalogView(ListView):
     def get_queryset(self):
         queryset = Category.objects.filter(published=True).order_by('id')
         return queryset
+
+
+class Our_workView(ListView):
+    """Наши работы"""
+    model = Our_work
+    template_name = 'our_work.html'
+    context_object_name = 'our_work'
+
+
+class ServiceListView(ListView):
+    """Сервис"""
+    model = Service
+    template_name = 'service.html'
+    context_object_name = 'services'
+
+    def get_queryset(self):
+        return Service.objects.filter(published=True)
+
+
+class ServiceView(DetailView):
+    """Описание сервиса"""
+    model = Service
 
 
 class AllProductView(ListView):

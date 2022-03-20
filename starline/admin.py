@@ -1,5 +1,6 @@
 from django.contrib import admin
-from starline.models import Comment, Answer_Comment, Contacts, Category, Product
+
+from starline.models import Comment, Answer_Comment, Contacts, Category, Product, Feedback, Action, Our_work, Service
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -10,7 +11,6 @@ class CommentAdmin(admin.ModelAdmin):
 
 class Answer_Comment_Admin(admin.ModelAdmin):
     list_display = ('name', 'comment', 'body', 'pub_data')
-
 
 
 class ContactsAdmin(admin.ModelAdmin):
@@ -33,8 +33,37 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ('price', 'price_install', 'published')
 
 
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'message', 'published')
+    list_filter = ('published',)
+    list_editable = ('published',)
+
+
+class ActionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'published')
+    list_display_links = ('title',)
+    list_editable = ('published',)
+
+
+class Our_workAdmin(admin.ModelAdmin):
+    list_display = ('date', 'url', 'image')
+    list_filter = ('date',)
+
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'published')
+    prepopulated_fields = {'slug': ('title',)}
+    list_display_links = ('title',)
+    list_filter = ('published',)
+    list_editable = ('description', 'published',)
+
+
 admin.site.register(Contacts, ContactsAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Answer_Comment, Answer_Comment_Admin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Feedback, FeedbackAdmin)
+admin.site.register(Action, ActionAdmin)
+admin.site.register(Our_work, Our_workAdmin)
+admin.site.register(Service, ServiceAdmin)

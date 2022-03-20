@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from ckeditor.configs import DEFAULT_CONFIG
+from ckeditor_demo.settings import CUSTOM_TOOLBAR
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
 
     'bootstrap4',
     'starline',
+    'ckeditor',
+    'ckeditor_uploader',
 
 ]
 
@@ -86,6 +91,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -110,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 
@@ -121,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -129,3 +136,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'vp3231963@gmail.com'
+EMAIL_HOST_PASSWORD = 'dinamo258'
+EMAIL_PORT = 587
+
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_BROWSE_SHOW_DIRS = True  # позволяет группировать изображения по каталогу, в котором они хранятся
+CKEDITOR_RESTRICT_BY_DATE = True  # группировать загруженные файлы по годам/месяцам/дням
+CKEDITOR_FORCE_JPEG_COMPRESSION = True  # конвертировать и сжимать изображения в jpeg, чтобы сэкономить место на диске
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Styles', 'Format', 'Font', 'FontSize', 'Undo', 'Redo', 'TextColor', 'BGColor', 'Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Smiley', ]
+        ],
+    },
+    'customimage': {
+        'toolbar': 'Customimage',
+        'toolbar_Customimage': [{'items': ['Image']}],
+
+    }
+}
+

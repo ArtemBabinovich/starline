@@ -1,10 +1,8 @@
 from django import forms
-from starline.models import Comment
-from .models import Feedback
+from starline.models import Comment, Feedback
 
 
 class CommentForm(forms.ModelForm):
-
     class Meta:
         model = Comment
         fields = ('name', 'numbers_phone', 'body')
@@ -13,8 +11,14 @@ class CommentForm(forms.ModelForm):
                                                            'value': '+375'})}
 
 
-class FeedbackForm(forms.Form):
+class FeedbackForm(forms.ModelForm):
+    message = forms.CharField(label='Текст письма', widget=forms.Textarea(
+        attrs={'style': 'margin:10px; padding:10px; height:200px', 'class': 'form-control col-sm-8',
+               'placeholder': 'Напишите марку автомобиля и модель'}))
 
     class Meta:
         model = Feedback
-        fields = ('name', 'email', 'phone', 'message')
+        fields = ('name', 'phone', 'message')
+        widgets = {'phone': forms.TextInput(attrs={'type': 'tel',
+                                                   'placeholder': '+375 (__)___-__-__',
+                                                   'value': '+375'})}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for service in services %}
+<p><a href="{% url 'service' service.slug %}"> {{service.title}}</a></p>
+
+{% endfor %}
+
+
+
+</body>
+</html>
+
+
+

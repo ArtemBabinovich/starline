@@ -4,7 +4,7 @@ from django.urls import path
 
 from .import views
 from .views import layout, CatalogView, AllProductView, DetailProductView, CommentView, FeedbackView, ActionView, \
-    Our_workView, ServiceView, ServiceListView
+    OurWorkView
 
 urlpatterns = [
     path('', layout, name='layout'),
@@ -13,9 +13,7 @@ urlpatterns = [
     path('feedback/', FeedbackView.as_view(), name='feedback'),
     path('catalog/', CatalogView.as_view(), name='catalog_view'),
     path('action/', ActionView.as_view(), name='action'),
-    path('our_work/', Our_workView.as_view(), name='our_work'),
-    path('services/', ServiceListView.as_view(), name='services'),
-    path('service/<slug:slug>/', ServiceView.as_view(), name='service'),
+    path('our_work/', OurWorkView.as_view(), name='our_work'),
     path('catalog/<str:cat_slug>/', AllProductView.as_view(), name='all_product_view'),
     path('catalog/<str:cat_slug>/<str:prod_slug>/', DetailProductView.as_view(), name='detail_product_view')
 ]

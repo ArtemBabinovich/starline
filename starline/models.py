@@ -2,54 +2,31 @@ import re
 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.exceptions import ValidationError
-from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils import timezone
 from slugify import slugify
 
 
-class NumberPhone(models.Model):
-    """Номер и логотип для обратной связи"""
-    logo = models.ImageField('Логотип оператора связи')
-    numbers = models.CharField('Номер телефона', max_length=50)
-
-    def __str__(self):
-        return f'{self.numbers}'
-
-    class Meta:
-        verbose_name = 'Моб.номер'
-        verbose_name_plural = 'Моб.номера'
-
-
-class OurWorks(models.Model):
-    """Фотографии и видео работ"""
-    picture = models.ImageField('Фотографии работ')
-    video_url = models.CharField('Видео работ', max_length=250)
-
-
-class Warranty_Support(models.Model):
-    """Гарантия и поддержка"""
-    description = models.TextField('Гарантия и поддержка')
-
-    class Meta:
-        verbose_name = 'Гарантия'
-        verbose_name_plural = 'Гарантии'
-
-    def __str__(self):
-        return self.description
-
-
 class Security(models.Model):
     """Охранные комплексы"""
-    title = models.CharField('Название ', max_length=100)
+    title = models.CharField('Название комплекса', max_length=250)
+
+    class Meta:
+        verbose_name = 'Комплекс'
+        verbose_name_plural = 'Комплексы'
+        ordering = ('-id',)
+
+    def __str__(self):
+        return self.title
 
 
 class Category(models.Model):
     """Категории комплексов"""
-    title = models.CharField('Название категории', max_length=100)
-    slug = models.SlugField('Слаг', unique=True, db_index=True, max_length=20, blank=True, null=True)
-    published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    title = models.CharField('Название категории комплекса', max_length=250)
+    slug = models.SlugField('Короткое название', unique=True, db_index=True, max_length=20, blank=True, null=True)
+    security = models.ForeignKey(Security, on_delete=models.CASCADE, verbose_name='Название комплекса')
+    published = models.BooleanField('Опубликовано', default=True)
 
     class Meta:
         verbose_name = 'Категория'
@@ -64,22 +41,43 @@ class Category(models.Model):
         return super().save(*args, **kwargs)
 
 
-class Product(models.Model):
-    """Продукт"""
-    title = models.CharField('Название', max_length=200)
-    slug = models.CharField('Слаг', max_length=20, unique=True, db_index=True, blank=True, null=True)
+class Characteristic(models.Model):
+    """Характеристика"""
+    title = models.CharField('Название характеристики', max_length=250)
     description = models.TextField('Описание')
-    price = models.DecimalField('Цена без установки', decimal_places=2, max_digits=7, blank=True, null=True)
-    price_install = models.DecimalField('Цена с установкой', decimal_places=2, max_digits=7, blank=True, null=True)
-    time_first = models.CharField('Время установки 1', max_length=10, blank=True, null=True)
-    time_second = models.CharField('Время установки 2', max_length=10, blank=True, null=True)
-    image = models.ImageField('Картинка', blank=True, null=True, upload_to="image/%Y/%m/%d/")
-    category = models.ManyToManyField(Category, related_name='cat', verbose_name='Категория')
-    published = models.BooleanField(default=True, verbose_name='Опубликовано')
 
     class Meta:
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукты'
+        verbose_name = 'Характеристика'
+        verbose_name_plural = 'Характеристики'
+
+    def __str__(self):
+        return self.title
+
+
+class Product(models.Model):
+    """Товар"""
+    PRESENCE_CHOICES = [
+        ["Есть в наличии", "Есть в наличии"],
+        ["Под заказ", "Под заказ"],
+        ["Нет в наличии", "Нет в наличии"]
+    ]
+    title = models.CharField('Название товара', max_length=250)
+    slug = models.CharField('Короткое название', max_length=20, unique=True, db_index=True, blank=True, null=True)
+    description = RichTextUploadingField('Описание')
+    price = models.DecimalField('Цена оборудования', decimal_places=2, max_digits=7, blank=True, null=True)
+    price_install = models.DecimalField('Цена установки', decimal_places=2, max_digits=7, blank=True, null=True)
+    image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    category = models.ManyToManyField(Category, related_name='cat', verbose_name='Категория')
+    presence = models.CharField('Наличие товара', max_length=200, choices=PRESENCE_CHOICES)
+    characteristics = models.ManyToManyField(Characteristic, related_name='charecter', verbose_name='Характеристика')
+    instruction = models.FileField('Инструкция', upload_to='file_instruction/%Y/%m/%d/', blank=True, null=True)
+    published = models.BooleanField('Опубликовано', default=True)
+    popular = models.BooleanField('Популярный товар', default=False)
+    novelties = models.BooleanField('Новинка', default=False)
+
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
         ordering = ('-id',)
 
     def __str__(self):
@@ -88,6 +86,21 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(str(self.title))
         return super().save(*args, **kwargs)
+
+
+class Action(models.Model):
+    """Акции и скидки"""
+    title = models.CharField('Название акции', max_length=250)
+    description = RichTextUploadingField('Описание акции')
+    image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
+    published = models.BooleanField('Опубликовано', default=False)
+
+    class Meta:
+        verbose_name = 'Акция'
+        verbose_name_plural = 'Акции'
+
+    def __str__(self):
+        return self.title
 
 
 def validate_phone(value):
@@ -101,10 +114,12 @@ def validate_phone(value):
 
 class Comment(models.Model):
     """Отзыв на работу"""
+    title = models.CharField('Заголовок отзыва', max_length=200)
     name = models.CharField('Имя отправителя отзыва', max_length=200, db_index=True)
     numbers_phone = models.CharField('Номер телефона', max_length=17, validators=[validate_phone])
     body = models.TextField('Содержимое комментария')
     pub_data = models.DateTimeField('Дата комментария', default=timezone.now)
+    published = models.BooleanField('Опубликовано', default=False)
 
     class Meta:
         verbose_name = 'Отзыв'
@@ -112,43 +127,31 @@ class Comment(models.Model):
         ordering = ('pub_data',)
 
     def __str__(self):
-        return f'Отзыв от {self.name} с текстом: {self.body}'
+        return f'Отзыв от {self.name} с текстом: {self.body[:30]}'
 
 
-class Answer_Comment(models.Model):
-    """Ответ на отзыв"""
-    name = models.CharField('Имя', max_length=250)
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, verbose_name='Содержимое отзыва')
-    body = models.TextField('Ответ на отзыв')
-    pub_data = models.DateTimeField('Дата ответа на комментарий', default=timezone.now)
-
-    class Meta:
-        verbose_name = 'Ответ'
-        verbose_name_plural = 'Ответы на отзывы'
-
-    def __str__(self):
-        return f'Ответ от {self.name} с текстом: {self.body}'
-
-
-class Contacts(models.Model):
-    """Контакты и информация"""
-    name = models.CharField('Название магазина', max_length=100)
-    address = models.CharField('Адрес магазина', max_length=100)
-    phone1 = models.CharField('Номер телефона 1', max_length=50, blank=True, null=True)
-    phone2 = models.CharField('Номер телефона 2', max_length=50, blank=True, null=True)
-    phone_service = models.CharField('Номер телефона сервиса', max_length=50, blank=True, null=True)
-    email = models.CharField('Электронная почта', max_length=100)
-    social_info = models.CharField('Социальная сеть', max_length=100, blank=True, null=True)
-    time_work1 = models.CharField('Время работы (будни)', max_length=100, blank=True, null=True)
-    time_work2 = models.CharField('Время работы (выходные)', max_length=100, blank=True, null=True)
-    maps = models.TextField('Расположение на карте', help_text='Вставить скрипт или ссылку с конструктора карт', blank=True, null=True)
+class OurWork(models.Model):
+    """Наши работы"""
+    title = models.CharField('Заголовок', max_length=250)
+    category_work = models.ManyToManyField(
+        Category,
+        related_name='category_work',
+        verbose_name='категория установленного оборудования',
+    )
+    installation_time = models.CharField('Время установки', max_length=100)
+    installation_price = models.CharField('Стоимость установки', max_length=100)
+    description_video = RichTextUploadingField('Описание видео', blank=True, null=True)
+    url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True, null=True)
+    description_image = RichTextUploadingField('Описание фото', blank=True, null=True)
+    image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
+    published = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
+        verbose_name = 'Наши работы'
+        verbose_name_plural = 'Наша работа'
 
     def __str__(self):
-        return self.address
+        return self.title
 
 
 class Feedback(models.Model):
@@ -163,57 +166,43 @@ class Feedback(models.Model):
         verbose_name_plural = 'Обратная связь'
 
     def __str__(self):
-        return self.message
+        return f'{self.name} : {self.message}'
 
 
-class Action(models.Model):
-    """Акции"""
-    title = models.CharField('Название акции', max_length=100)
-    description = RichTextUploadingField('Описание акции')
-    date = models.DateField('Дата добавления')
-    published = models.BooleanField('Опубликовано')
-
-    class Meta:
-        verbose_name = 'Акция'
-        verbose_name_plural = 'Акции'
-
-    def __str__(self):
-        return self.title
-
-
-class Our_work(models.Model):
-    """Наши работы"""
-    description_video = RichTextUploadingField('Описание видео', blank=True)
-    url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True)
-    description_image = RichTextUploadingField('Описание фото', blank=True)
-    image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
-    date = models.DateField('Дата добавления')
-
-    class Meta:
-        verbose_name = 'Наши работы'
-        verbose_name_plural = 'Наша работа'
-
-    def __str__(self):
-        return self.description_video
-
-
-class Service(models.Model):
-    """Сервис"""
-    title = models.CharField('Название услуги', max_length=100)
-    description = models.TextField('Описание услуги')
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    published = models.BooleanField('Опубликовано')
+class Contacts(models.Model):
+    """Контакты и информация"""
+    name = models.CharField('Название сервиса', max_length=200, blank=True, null=True)
+    address = models.CharField('Адрес сервиса', max_length=250)
+    logo1 = models.ImageField(
+        'Логотип оператора связи 1',
+        blank=True,
+        null=True,
+        upload_to='image/logo_phone/%Y/%m/%d/',
+    )
+    phone1 = models.CharField('Номер телефона сервиса 1', max_length=50, blank=True, null=True)
+    logo2 = models.ImageField(
+        'Логотип оператора связи 2',
+        blank=True,
+        null=True,
+        upload_to='image/logo_phone/%Y/%m/%d/',
+    )
+    phone2 = models.CharField('Номер телефона сервиса 2', max_length=50, blank=True, null=True)
+    email = models.CharField('Электронная почта', max_length=200, blank=True, null=True)
+    social_info1 = models.CharField('Социальная сеть 1', max_length=200, blank=True, null=True)
+    social_info2 = models.CharField('Социальная сеть 2', max_length=200, blank=True, null=True)
+    social_info3 = models.CharField('Социальная сеть 3', max_length=200, blank=True, null=True)
+    time_work1 = models.CharField('Время работы (будни)', max_length=100, blank=True, null=True)
+    time_work2 = models.CharField('Время работы (выходные)', max_length=100, blank=True, null=True)
+    maps = models.TextField(
+        'Расположение на карте',
+        help_text='Вставить скрипт или ссылку с конструктора карт',
+        blank=True,
+        null=True,
+    )
 
     class Meta:
-        verbose_name = 'Сервис'
-        verbose_name_plural = 'Сервисы'
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
 
     def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('service', kwargs={'slug': self.slug})
-
-
-
-
+        return self.address

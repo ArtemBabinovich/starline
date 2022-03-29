@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
 from .forms import CommentForm, FeedbackForm
-from .models import Comment, Contacts, Category, Product, Feedback, Action, Our_work, Service
+from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork
 
 
 def layout(request):
@@ -71,26 +71,11 @@ class CatalogView(ListView):
         return queryset
 
 
-class Our_workView(ListView):
+class OurWorkView(ListView):
     """Наши работы"""
-    model = Our_work
+    model = OurWork
     template_name = 'our_work.html'
     context_object_name = 'our_work'
-
-
-class ServiceListView(ListView):
-    """Сервис"""
-    model = Service
-    template_name = 'service.html'
-    context_object_name = 'services'
-
-    def get_queryset(self):
-        return Service.objects.filter(published=True)
-
-
-class ServiceView(DetailView):
-    """Описание сервиса"""
-    model = Service
 
 
 class AllProductView(ListView):

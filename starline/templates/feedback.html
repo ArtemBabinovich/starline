@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<form method="POST">
+<form action="{% url 'phone_submit' %}" method="POST">
     <h3>Обратная связь</h3>
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ phone_form.as_p }}
     <button type="submit">Отправить</button>
 </form>
 </body>

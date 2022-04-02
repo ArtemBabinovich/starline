@@ -10,6 +10,7 @@ from .forms import CommentForm, FeedbackForm
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork
 import requests
 
+
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
 # Telegram bot GLOBAL SETTINGS

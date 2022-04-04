@@ -5,8 +5,12 @@ from django.dispatch import receiver
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
+from rest_framework import viewsets, permissions
+from rest_framework.decorators import api_view
+
 from .forms import CommentForm, FeedbackForm
-from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork
+from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security
+from .serialeziers import CategorySerializer, SecuritySerializer
 
 
 def layout(request):
@@ -96,3 +100,13 @@ class DetailProductView(DetailView):
     template_name = 'catalog.html'
     context_object_name = 'prod'
     slug_url_kwarg = 'prod_slug'
+
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+        тренировочный api
+    """
+    queryset = Security.objects.all()
+    serializer_class = SecuritySerializer
+

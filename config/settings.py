@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'bootstrap4',
     'starline',
     'ckeditor',
@@ -81,6 +83,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 
 # Database
@@ -157,7 +165,26 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
         'toolbar_Custom': [
-            ['Styles', 'Format', 'Font', 'FontSize', 'Undo', 'Redo', 'TextColor', 'BGColor', 'Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Smiley', ]
+            [
+                'Styles',
+                'Format',
+                'Font',
+                'FontSize',
+                'Undo',
+                'Redo',
+                'TextColor',
+                'BGColor',
+                'Bold',
+                'Italic',
+                'Underline',
+                'NumberedList',
+                'BulletedList',
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock',
+                'Smiley',
+            ]
         ],
     },
     'customimage': {

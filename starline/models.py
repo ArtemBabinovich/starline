@@ -25,7 +25,7 @@ class Category(models.Model):
     """Категории комплексов"""
     title = models.CharField('Название категории комплекса', max_length=250)
     slug = models.SlugField('Короткое название', unique=True, db_index=True, max_length=20, blank=True, null=True)
-    security = models.ForeignKey(Security, on_delete=models.CASCADE, verbose_name='Название комплекса')
+    security = models.ForeignKey(Security, related_name='categores', on_delete=models.CASCADE, verbose_name='Название комплекса')
     published = models.BooleanField('Опубликовано', default=True)
 
     class Meta:
@@ -158,7 +158,7 @@ class Feedback(models.Model):
     """Обратная связь"""
     name = models.CharField('Имя', max_length=100)
     phone = models.CharField('Телефон', max_length=50, validators=[validate_phone])
-    message = models.TextField('Сообщение')
+    message = models.TextField('Сообщение', blank=True, null=True)
     published = models.BooleanField('Обработано', default=False)
 
     class Meta:

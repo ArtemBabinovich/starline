@@ -1,0 +1,129 @@
+.comment {
+    background: #FFFFFF;
+    padding: 32px 0;
+}
+.comment-wrap {
+    margin: 0 auto;
+    max-width: 762px;
+}
+.comment__title {
+    margin-bottom: 48px;
+}
+.comment__slider {
+    background: #F7F8F9;
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+}
+.slider-arrow {
+}
+.left {
+}
+.slider__content {
+}
+.slider__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 24px;
+}
+.slider__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 24px;
+}
+.slider__contact {
+    display: flex;
+    justify-content: center;
+    & p{
+        font-size: 18px;
+        line-height: 120%;
+        color: #494C62;
+        display: flex;
+        align-items: center;
+    }
+    & p:nth-child(1){
+        font-weight: 700;
+        margin-right: 21px;
+    }
+    & p:nth-child(2){
+        font-weight: 400;
+        line-height: 105%;
+    }
+    & p:nth-child(2)::before{
+        content: url('../img/icons/slider-tel.svg');
+        margin-right: 10px;
+    }
+}
+.right {
+}
+.comment__page {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    color: #959595;
+    text-align: center;
+    margin-bottom: 48px;
+}
+.comment__link-wrap{
+    display: flex;
+    justify-content: center;
+}
+.comment__link {
+    display: inline-block;
+    padding: 13px 24px;
+    background: #526ED3;
+    border-radius: 4px;
+}
+
+
+@media (max-width: 768px) {
+    .comment {
+        background: transparent;
+        padding: 0;
+    }
+    .comment-wrap {
+        max-width: none;
+        width: 100%;
+        background: #FFFFFF;
+        padding: 16px 8px;
+    }
+    .comment__title{
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .comment__slider {
+        margin-bottom: 8px;
+    }
+    .slider__title{
+        font-size: 16px;
+    }
+    .slider__text{
+        font-size: 14px;
+    }
+    .slider__contact{
+        flex-direction: column;
+        align-items: center;
+
+        & p{
+            font-size: 16px;
+        }
+        & p:nth-child(1){
+            margin: 0 0 16px 0;
+        }
+    }
+    .comment__page{
+        margin-bottom: 24px;
+        font-size: 14px;
+    }
+    .comment__link{
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+}

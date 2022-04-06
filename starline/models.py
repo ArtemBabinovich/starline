@@ -69,7 +69,13 @@ class Product(models.Model):
     image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
     category = models.ManyToManyField(Category, related_name='cat', verbose_name='Категория')
     presence = models.CharField('Наличие товара', max_length=200, choices=PRESENCE_CHOICES)
-    characteristics = models.ManyToManyField(Characteristic, related_name='charecter', verbose_name='Характеристика')
+    characteristics = models.ManyToManyField(
+        Characteristic,
+        related_name='charecter',
+        blank=True,
+        null=True,
+        verbose_name='Характеристики'
+    )
     instruction = models.FileField('Инструкция', upload_to='file_instruction/%Y/%m/%d/', blank=True, null=True)
     published = models.BooleanField('Опубликовано', default=True)
     popular = models.BooleanField('Популярный товар', default=False)
@@ -127,7 +133,7 @@ class Comment(models.Model):
         ordering = ('pub_data',)
 
     def __str__(self):
-        return f'Отзыв от {self.name} с текстом: {self.body[:30]}'
+        return f'Отзыв от {self.name} с текстом: {self.body[:20]}'
 
 
 class OurWork(models.Model):
@@ -144,7 +150,7 @@ class OurWork(models.Model):
     url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True, null=True)
     description_image = RichTextUploadingField('Описание фото', blank=True, null=True)
     image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
-    published = models.BooleanField(default=False)
+    published = models.BooleanField('Опубликовано', default=False)
 
     class Meta:
         verbose_name = 'Наши работы'
@@ -206,3 +212,13 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class Company(models.Model):
+    image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    description = RichTextUploadingField('Описание', blank=True, null=True)
+    published = models.BooleanField('Опубликовано', default=False)
+
+    class Meta:
+        verbose_name = 'О компании'
+        verbose_name_plural = 'О компании'

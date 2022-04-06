@@ -1,0 +1,38 @@
+.wrapper{
+    overflow: hidden;
+}
+.btn-text{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FFFFFF;
+    border-radius: 4px;
+}
+.title{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    color: #494C62;
+}
+@import "container";
+@import "header";
+@import "section-main";
+@import "card";
+@import "section-popular";
+@import "section-guarantee";
+@import "section-protection";
+@import "section-new-product";
+@import "review-card";
+@import "section-comment";
+@import "footer";
+
+
+@media (max-width: 768px) {
+    .title{
+        font-size: 24px;
+    }
+    .btn-text{
+        font-size: 16px;
+        line-height: 20px;
+    }
+}

@@ -1,5 +1,5 @@
 from django import forms
-from starline.models import Comment, Feedback
+from starline.models import Comment, Feedback, Category, Security
 
 
 class CommentForm(forms.ModelForm):
@@ -22,3 +22,11 @@ class FeedbackForm(forms.ModelForm):
         widgets = {'phone': forms.TextInput(attrs={'type': 'tel',
                                                    'placeholder': '+375 (__)___-__-__',
                                                    'value': '+375'})}
+
+
+class ProductFilterForm(forms.Form):
+    foo_select = forms.ModelMultipleChoiceField(queryset=Category.objects.filter(published=True), widget=forms.CheckboxSelectMultiple)
+
+
+
+

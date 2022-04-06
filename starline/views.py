@@ -9,7 +9,7 @@ from rest_framework import viewsets
 
 from .forms import CommentForm, FeedbackForm
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork
-from .serialeziers import CommentSerializer
+from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -138,3 +138,19 @@ class CommentViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Comment.objects.filter(published=True)
     serializer_class = CommentSerializer
+
+
+class PopularProductViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+        API для популярного продукта
+    """
+    queryset = Product.objects.filter(popular=True)
+    serializer_class = PopularProductSerializer
+
+
+class NoveltiesProductViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+        API для новинок продукта
+    """
+    queryset = Product.objects.filter(novelties=True)
+    serializer_class = NoveltiesProductSerializer

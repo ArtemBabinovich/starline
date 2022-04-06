@@ -1,0 +1,152 @@
+.card-wrap{
+}
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 24px;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+.card__item {
+    max-width: 270px;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    position: relative;
+    color: initial;
+}
+.card__item:hover{
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 6px 16px rgba(0, 0, 0, 0.1);
+}
+.item__choice {
+    position: absolute;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    padding: 4px;
+    background: #FCC068;
+    border-radius: 2px;
+    color: #333333;
+
+    display: none;
+}
+.item__img-wrap {
+    width: 153px;
+    height: 125px;
+    margin-bottom: 16px;
+}
+.item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.item__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 8px;
+}
+.item__subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #333333;
+    margin-bottom: 8px;
+}
+.item__presence {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 130%;
+    margin-bottom: 12px;
+}
+.presence-green {
+    color: #3AA981;
+}
+.presence-orange{
+    color: #FCBB14;
+}
+.presence-red{
+    color: #B8474E;
+}
+.item__equipment {
+    display: flex;
+    font-size: 16px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 8px;
+}
+.item__equipment-text {
+    font-weight: 600;
+    margin-right: 5px;
+}
+.item__equipment-price {
+    font-weight: 700;
+}
+.item__plant {
+    display: flex;
+    font-size: 16px;
+    line-height: 120%;
+}
+.item__plant-text {
+    font-weight: 600;
+    color: #494C62;
+    margin-right: 5px;
+}
+.item__plant-price {
+    font-weight: 700;
+    color: #34B41F;
+}
+.card__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.card__link {
+    padding: 13px 24px;
+    text-align: center;
+    background: #526ED3;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+.card__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #808080;
+}
+
+
+@media (max-width: 768px) {
+    .card{
+        row-gap: 16px;
+        margin-bottom: 16px;
+    }
+    .card__item{
+        max-width: initial;
+        width: 100%;
+        padding: 12px;
+    }
+    .item__img-wrap{
+        width: 100px;
+        height: 82px;
+        margin-bottom: 16px;
+    }
+    .item__title{
+        font-size: 16px;
+    }
+    .item__equipment{
+        font-size: 14px;
+    }
+    .item__plant{
+        font-size: 14px;
+    }
+    .card__link{
+        padding: 10px 20px;
+    }
+    .card__text{
+        text-align: center;
+        font-size: 14px;
+    }
+}

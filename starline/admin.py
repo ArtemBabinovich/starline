@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from starline.models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Characteristic
+from starline.models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Characteristic, \
+    Company
 
 
 class SecurityAdmin(admin.ModelAdmin):
@@ -89,6 +90,11 @@ class ContactsAdmin(admin.ModelAdmin):
     list_editable = ('time_work1', 'time_work2')
 
 
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('image', 'description')
+
+
+admin.site.register(Company, CompanyAdmin)
 admin.site.register(Contacts, ContactsAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Category, CategoryAdmin)

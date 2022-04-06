@@ -28,5 +28,3 @@ class ProductFilterForm(forms.Form):
     foo_select = forms.ModelMultipleChoiceField(queryset=Category.objects.filter(published=True), widget=forms.CheckboxSelectMultiple)
 
 
-
-

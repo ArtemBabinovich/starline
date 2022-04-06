@@ -7,6 +7,8 @@ from starline import views
 
 router = routers.DefaultRouter()
 router.register(r'comments', views.CommentViewSet)
+router.register(r'popular_product', views.PopularProductViewSet)
+router.register(r'novelties_product', views.NoveltiesProductViewSet)
 
 app_name = 'starline'
 

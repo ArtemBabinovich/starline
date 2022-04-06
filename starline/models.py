@@ -73,7 +73,6 @@ class Product(models.Model):
         Characteristic,
         related_name='charecter',
         blank=True,
-        null=True,
         verbose_name='Характеристики'
     )
     instruction = models.FileField('Инструкция', upload_to='file_instruction/%Y/%m/%d/', blank=True, null=True)
@@ -149,7 +148,10 @@ class OurWork(models.Model):
     description_video = RichTextUploadingField('Описание видео', blank=True, null=True)
     url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True, null=True)
     description_image = RichTextUploadingField('Описание фото', blank=True, null=True)
-    image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
+    image1 = models.ImageField('Основная картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    image2 = models.ImageField('Картинка 2', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    image3 = models.ImageField('Картинка 3', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    image4 = models.ImageField('Картинка 4', blank=True, null=True, upload_to='image/%Y/%m/%d/')
     published = models.BooleanField('Опубликовано', default=False)
 
     class Meta:

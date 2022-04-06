@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from starline.models import Security, Category, Characteristic, Product, Comment
+from starline.models import Security, Category, Characteristic, Product, Comment, OurWork
 
 
 class SecuritySerializer(serializers.ModelSerializer):
@@ -77,3 +77,23 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['title', 'name', 'body']
+
+
+class OurWorkSerializer(serializers.ModelSerializer):
+    """Наши работы"""
+    category_work = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='title'
+    )
+
+    class Meta:
+        model = OurWork
+        fields = [
+            'title',
+            'installation_time',
+            'installation_price',
+            'category_work',
+            'image1',
+        ]
+        depth = 1

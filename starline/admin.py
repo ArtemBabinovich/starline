@@ -58,7 +58,10 @@ class OurWorkAdmin(admin.ModelAdmin):
         'description_video',
         'url',
         'description_image',
-        'image',
+        'image1',
+        'image2',
+        'image3',
+        'image4',
         'published',
     )
     list_filter = ('title',)

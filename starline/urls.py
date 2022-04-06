@@ -4,7 +4,7 @@ from django.urls import path
 
 
 from .import views
-from .views import layout, CatalogView, AllProductView, DetailProductView, CommentView, FeedbackView, ActionView, \
+from .views import layout, CatalogView, AllProductView, DetailProductView, CommentView, ActionView, \
     OurWorkView, index
 
 

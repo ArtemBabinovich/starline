@@ -45,6 +45,7 @@ class ActionAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('title', 'name', 'numbers_phone', 'body', 'published')
+    list_editable = ('published',)
     list_filter = ('title', 'name', 'numbers_phone')
     search_fields = ('title', 'name', 'numbers_phone', 'pub_data', 'body')
 

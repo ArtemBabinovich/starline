@@ -4,7 +4,7 @@ from django.urls import path
 
 from .import views
 from .views import layout, CatalogView, AllProductView, DetailProductView, CommentView, FeedbackView, ActionView, \
-    OurWorkView, filter, index
+    OurWorkView, index
 
 urlpatterns = [
     path('', index),
@@ -17,7 +17,7 @@ urlpatterns = [
     path('our_work/', OurWorkView.as_view(), name='our_work'),
     path('catalog/<str:cat_slug>/', AllProductView.as_view(), name='all_product_view'),
     path('catalog/<str:cat_slug>/<str:prod_slug>/', DetailProductView.as_view(), name='detail_product_view'),
-    path('filter/', filter)
+
 ]
 
 if settings.DEBUG:

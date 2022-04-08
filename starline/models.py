@@ -165,8 +165,8 @@ class OurWork(models.Model):
 class Feedback(models.Model):
     """Обратная связь"""
     name = models.CharField('Имя', max_length=100)
-    phone = models.CharField('Телефон', max_length=50, validators=[validate_phone])
-    message = models.TextField('Сообщение', blank=True, null=True)
+    phone = models.CharField('Номер телефона', max_length=50, validators=[validate_phone])
+    message = models.TextField('Опишите свой вопрос', blank=True, null=True)
     published = models.BooleanField('Обработано', default=False)
 
     class Meta:
@@ -203,7 +203,7 @@ class Contacts(models.Model):
     time_work2 = models.CharField('Время работы (выходные)', max_length=100, blank=True, null=True)
     maps = models.TextField(
         'Расположение на карте',
-        help_text='Вставить скрипт или ссылку с конструктора карт',
+        help_text='Вставить ссылку с: https://yandex.ru/map-constructor (выбирать width="100%" height="500")',
         blank=True,
         null=True,
     )

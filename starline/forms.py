@@ -12,19 +12,27 @@ class CommentForm(forms.ModelForm):
 
 
 class FeedbackForm(forms.ModelForm):
-    message = forms.CharField(label='Текст письма', widget=forms.Textarea(
-        attrs={'style': 'margin:10px; padding:10px; height:200px', 'class': 'form-control col-sm-8',
-               'placeholder': 'Напишите марку автомобиля и модель'}))
+    name = forms.CharField(label='ФИО', widget=forms.TextInput(attrs={'placeholder': 'Иванов Иван Иванович'}))
+    phone = forms.CharField(label='Номер телефона', widget=forms.TextInput(attrs={'type': 'tel',
+                                                                                  'placeholder': '+375 (__)___-__-__',
+                                                                                  'value': '+375'}))
+    message = forms.CharField(label='Опишите свой вопрос', widget=forms.Textarea(
+        attrs={'placeholder': 'Хочу установить иммобилайзер и не потерять гарантию диллера'}))
 
     class Meta:
         model = Feedback
         fields = ('name', 'phone', 'message')
-        widgets = {'phone': forms.TextInput(attrs={'type': 'tel',
-                                                   'placeholder': '+375 (__)___-__-__',
-                                                   'value': '+375'})}
 
 
-class ProductFilterForm(forms.Form):
-    foo_select = forms.ModelMultipleChoiceField(queryset=Category.objects.filter(published=True), widget=forms.CheckboxSelectMultiple)
+class FeedbackFormCon(forms.ModelForm):
+    phone_con = forms.CharField(label='Номер телефона', widget=forms.TextInput(attrs={'type': 'tel',
+                                                                                  'placeholder': '+375 (__)___-__-__',
+                                                                                  'value': '+375'}))
 
+    class Meta:
+        model = Feedback
+        fields = ('phone_con',)
 
+# class ProductFilterForm(forms.Form):
+#     foo_select = forms.ModelMultipleChoiceField(queryset=Category.objects.filter(published=True),
+#                                                 widget=forms.CheckboxSelectMultiple)

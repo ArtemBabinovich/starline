@@ -1,13 +1,11 @@
-
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
 from rest_framework import viewsets
-
 from .forms import CommentForm, FeedbackForm
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer
-
+import requests  # Не удалять нужен для Telegram bot
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -17,7 +15,29 @@ chat_id = 821421337
 
 
 def index(request):
-    return render(request, 'starline/index.html')
+    contacts = Contacts.objects.all()
+    phone_form = FeedbackForm()
+    # phone_con = FeedbackFormCon()
+    if request.method == 'POST':
+
+        phone_form = FeedbackForm(request.POST)
+        if phone_form.is_valid():
+            updated_values = {'published': False}
+            phone_number = phone_form.cleaned_data['phone']
+            name = phone_form.cleaned_data['name']
+            message = phone_form.cleaned_data['message']
+            Feedback.objects.update_or_create(phone=phone_number, name=name, message=message, defaults=updated_values)
+            response = requests.post(
+                url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
+                data={'chat_id': chat_id,
+                      'text': f'*Поступила новая заявка от:* {phone_number}\n*Имя:* {name}\n*Сообщение:* {message}',
+                      'parse_mode': 'markdown'}).json()
+            return render(request, template_name='starline/index.html')
+    context = {
+        'contacts': contacts,
+        'phone_form': phone_form,
+    }
+    return render(request, 'starline/index.html', context=context)
 
 
 def layout(request):
@@ -32,32 +52,32 @@ class CommentView(CreateView):
     success_url = reverse_lazy('layout')
 
 
-class СontactsView(ListView):
-    """Контакты и информация"""
-    model = Contacts
-    template_name = 'contacts.html'
-    context_object_name = 'contacts'
+# class СontactsView(ListView):
+#     """Контакты и информация"""
+#     model = Contacts
+#     template_name = 'contacts.html'
+#     context_object_name = 'contacts'
 
 
-def phone_form_view(request):
-    """Телеграм бот из формы"""
-    phone_form = FeedbackForm()
-    if request.method == 'POST':
-        phone_form = FeedbackForm(request.POST)
-        if phone_form.is_valid():
-            updated_values = {'published': False}
-            phone_number = phone_form.cleaned_data['phone']
-            name = phone_form.cleaned_data['name']
-            message = phone_form.cleaned_data['message']
-            Feedback.objects.update_or_create(phone=phone_number, name=name, message=message, defaults=updated_values)
-            response = request.post(
-                url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
-                data={'chat_id': chat_id,
-                      'text': f'*Поступила новая заявка от:* {phone_number}\n*Имя:* {name}\n*Сообщение:* {message}',
-                      'parse_mode': 'markdown'}).json()
-            return redirect('layout')
-    context = {'phone_form': phone_form}
-    return render(request, 'feedback.html', context)
+# def phone_form_view(request):
+#     """Телеграм бот из формы"""
+#     phone_form = FeedbackForm()
+#     if request.method == 'POST':
+#         phone_form = FeedbackForm(request.POST)
+#         if phone_form.is_valid():
+#             updated_values = {'published': False}
+#             phone_number = phone_form.cleaned_data['phone']
+#             name = phone_form.cleaned_data['name']
+#             message = phone_form.cleaned_data['message']
+#             Feedback.objects.update_or_create(phone=phone_number, name=name, message=message, defaults=updated_values)
+#             response = request.post(
+#                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
+#                 data={'chat_id': chat_id,
+#                       'text': f'*Поступила новая заявка от:* {phone_number}\n*Имя:* {name}\n*Сообщение:* {message}',
+#                       'parse_mode': 'markdown'}).json()
+#             return redirect('layout')
+#     context = {'phone_form': phone_form}
+#     return render(request, 'feedback.html', context)
 
 
 class ActionView(ListView):

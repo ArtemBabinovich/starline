@@ -8,7 +8,7 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
-from .forms import CommentForm, FeedbackForm, ProductFilterForm
+from .forms import CommentForm, FeedbackForm
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
     SecuritySerializer, CategorySerializer

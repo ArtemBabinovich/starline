@@ -1,5 +1,5 @@
 from django import forms
-from starline.models import Comment, Feedback, Category, Security
+from starline.models import Comment, Feedback
 
 
 class CommentForm(forms.ModelForm):
@@ -25,14 +25,10 @@ class FeedbackForm(forms.ModelForm):
 
 
 class FeedbackFormCon(forms.ModelForm):
-    phone_con = forms.CharField(label='Номер телефона', widget=forms.TextInput(attrs={'type': 'tel',
-                                                                                  'placeholder': '+375 (__)___-__-__',
-                                                                                  'value': '+375'}))
+    phone_c = forms.CharField(label='Номер телефона', widget=forms.TextInput(attrs={'type': 'tel',
+                                                            'placeholder': '+375 (__)___-__-__',
+                                                            'value': '+375', 'class': 'main__input'}))
 
     class Meta:
         model = Feedback
-        fields = ('phone_con',)
-
-# class ProductFilterForm(forms.Form):
-#     foo_select = forms.ModelMultipleChoiceField(queryset=Category.objects.filter(published=True),
-#                                                 widget=forms.CheckboxSelectMultiple)
+        fields = ('phone_c',)

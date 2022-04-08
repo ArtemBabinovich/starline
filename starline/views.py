@@ -1,13 +1,17 @@
-
+from django.db.models import Prefetch
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
 from rest_framework import viewsets
 
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
 from .forms import CommentForm, FeedbackForm
-from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork
-from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer
-
+from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security
+from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
+    SecuritySerializer, CategorySerializer
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -138,3 +142,14 @@ class OurWorkViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = OurWork.objects.filter(published=True)
     serializer_class = OurWorkSerializer
+
+
+class CategotyFiltViewSet(viewsets.ReadOnlyModelViewSet):
+    """API для создания каталога"""
+    queryset = Security.objects.prefetch_related(
+        Prefetch(
+            'categores',
+            queryset=Category.objects.filter(published=True)
+        )
+    )
+    serializer_class = SecuritySerializer

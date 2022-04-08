@@ -5,11 +5,13 @@ from django.urls import path, include
 from rest_framework import routers
 from starline import views
 
+
 router = routers.DefaultRouter()
 router.register(r'comments', views.CommentViewSet)
 router.register(r'popular_product', views.PopularProductViewSet)
 router.register(r'novelties_product', views.NoveltiesProductViewSet)
 router.register(r'our_work', views.OurWorkViewSet)
+router.register(r'category_search', views.CategotyFiltViewSet)
 
 app_name = 'starline'
 

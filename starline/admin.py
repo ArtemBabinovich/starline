@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.utils.safestring import mark_safe
 from starline.models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Characteristic, \
     Company
 
@@ -20,21 +20,28 @@ class CharecteristicAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
+    list_per_page = 5
     exclude = ('slug',)
     list_display = (
         'title',
         'price',
         'price_install',
-        'image',
+        'image_img',
         'presence',
-        'description',
-        'instruction',
         'published',
         'popular',
         'novelties'
     )
     list_display_links = ('title',)
-    list_editable = ('price', 'price_install', 'published')
+    list_editable = ('price', 'price_install', 'presence', 'published')
+
+    def image_img(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="80" height="80">')
+        else:
+            return 'Нет изображения'
+
+    image_img.short_description = 'Изображение'
 
 
 class ActionAdmin(admin.ModelAdmin):

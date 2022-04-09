@@ -140,94 +140,16 @@
                             </div>
                         </div>
 
-
-                        <form class="footer__form" method="POST">
+                        <form class="main__form" method="POST" id="phone_c">
                             <div class="main__form-wrap">
                                 {% csrf_token %}
-                                <p class="form__title" id="phone1">
-                                    Номер телефона
-                                    {{ phone_form.phone1 }}
-                                </p>
-                                <input type="submit" value="Отправить" class="form__btn btn-text">
-                                <p class="form__subtitle">
-                                    Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.
-                                </p>
+                                {{ phone_con.phone_c }}
+                                <input type="submit" value="Получить консультацию" class="main__btn">
                             </div>
+                            <p class="main__text">
+                                Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.
+                            </p>
                         </form>
-
-
-
-
-<!--                        <form class="main__form" method="POST">-->
-<!--                            {% csrf_token %}-->
-
-<!--                            <div class="main__form-wrap" id="phone">-->
-<!--                                {{ phone_form.phone }}-->
-<!--&lt;!&ndash;                                <input type="tel" value="Получить консультацию" class="main__btn btn-text">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <p class="form__subtitle">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.&ndash;&gt;-->
-<!--&lt;!&ndash;                                </p>&ndash;&gt;-->
-
-
-<!--                                <input type="tel" class="main__input" placeholder="+375">-->
-<!--                                <a href="#" class="main__btn">Получить консультацию</a>-->
-<!--                            </div>-->
-<!--                            <p class="main__text">-->
-<!--                                Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.-->
-<!--                            </p>-->
-<!--                        </form>-->
-
-
-
-
-<!--                        <form class="footer__form" method="POST">-->
-<!--                            <div class="main__form-wrap">-->
-<!--                                {% csrf_token %}-->
-<!--                                <p class="form__title" id="name">-->
-<!--                                    ФИО-->
-<!--                                    {{ phone_form.name }}-->
-<!--                                </p>-->
-<!--                                <p class="form__title" id="phone">-->
-<!--                                    Номер телефона-->
-<!--                                    {{ phone_form.phone }}-->
-<!--                                </p>-->
-<!--                                <p class="form__title" id="message">-->
-<!--                                    Опишите свой вопрос-->
-<!--                                    {{ phone_form.message }}-->
-<!--                                </p>-->
-<!--                                <input type="submit" value="Отправить" class="form__btn btn-text">-->
-<!--                                <p class="form__subtitle">-->
-<!--                                    Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.-->
-<!--                                </p>-->
-<!--                            </div>-->
-<!--                        </form>-->
-
-<!--                        <form action="#" class="main__form">-->
-<!--                            <div class="main__form-wrap">-->
-<!--                                <input type="tel" class="main__input" placeholder="+375">-->
-<!--                                <a href="#" class="main__btn">Получить консультацию</a>-->
-<!--                            </div>-->
-<!--                            <p class="main__text">-->
-<!--                                Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.-->
-<!--                            </p>-->
-<!--                        </form>-->
-
-
-<!--                        <form action="#" class="main__form">-->
-<!--                            <div class="main__form-wrap">-->
-<!--                                <input type="tel" class="main__input" placeholder="+375">-->
-<!--                                <a href="#" class="main__btn">Получить консультацию</a>-->
-<!--                            </div>-->
-<!--                            <p class="main__text">-->
-<!--                                Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.-->
-<!--                            </p>-->
-<!--                        </form>-->
-
-
-
-
-
-
 
                         <p class="main__text main__text-color">
                             Работаем с НДС, оказываем услуги по коммерческому мониторингу за авто
@@ -1122,8 +1044,7 @@
                                         {% if item.logo1 %}
                                         <img src="{{ item.logo1.url }}" width="24" height="24" alt="">
                                         {% else %}
-                                        <img src="https://www.pngplay.com/wp-content/uploads/13/Phone-Icon-PNG-Images-HD.png"
-                                             width="24" height="24" alt="">
+                                        <img>
                                         {% endif %}
                                     </a>
                                     <a href="tel:{{ item.phone2 }}" class="header__contact-flex telefon">
@@ -1131,8 +1052,7 @@
                                         {% if item.logo2 %}
                                         <img src="{{ item.logo2.url }}" width="24" height="24" alt="">
                                         {% else %}
-                                        <img src="https://www.pngplay.com/wp-content/uploads/13/Phone-Icon-PNG-Images-HD.png"
-                                             width="24" height="24" alt="">
+                                        <img>
                                         {% endif %}
                                     </a>
                                 </div>

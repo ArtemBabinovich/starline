@@ -36,7 +36,7 @@ def index(request):
             name = phone_form.cleaned_data['name']
             message = phone_form.cleaned_data['message']
             Feedback.objects.update_or_create(phone=phone_number, name=name, message=message, defaults=updated_values)
-            response = requests.post(
+            response = request.post(
                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
                 data={'chat_id': chat_id,
                       'text': f'*Новая заявка:* {phone_number}\n*Имя:* {name}\n*Сообщение:* {message}',
@@ -51,7 +51,7 @@ def index(request):
             updated_values = {'published': False}
             phone_number = phone_con.cleaned_data['phone_c']
             Feedback.objects.update_or_create(phone=phone_number, defaults=updated_values)
-            response = requests.post(
+            response = request.post(
                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
                 data={'chat_id': chat_id,
                       'text': f'* Нужна консультация:* {phone_number}',

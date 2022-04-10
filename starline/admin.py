@@ -84,9 +84,9 @@ class ContactsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'address',
-        'logo1',
+        'image_logo1',
         'phone1',
-        'logo2',
+        'image_logo2',
         'phone2',
         'email',
         'social_info1',
@@ -98,6 +98,22 @@ class ContactsAdmin(admin.ModelAdmin):
     )
     list_display_links = ('address',)
     list_editable = ('time_work1', 'time_work2')
+
+    def image_logo1(self, obj):
+        if obj.logo1:
+            return mark_safe(f'<img src="{obj.logo1.url}" width="40" height="40">')
+        else:
+            return 'Нет логотипа'
+
+    image_logo1.short_description = 'Лого оператора 1'
+
+    def image_logo2(self, obj):
+        if obj.logo2:
+            return mark_safe(f'<img src="{obj.logo2.url}" width="40" height="40">')
+        else:
+            return 'Нет логотипа'
+
+    image_logo2.short_description = 'Лого оператора 2'
 
 
 class CompanyAdmin(admin.ModelAdmin):

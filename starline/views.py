@@ -1,17 +1,14 @@
+from django.contrib.sites import requests
 from django.db.models import Prefetch
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
 from rest_framework import viewsets
 
-from rest_framework.renderers import TemplateHTMLRenderer
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.shortcuts import get_object_or_404
 from .forms import CommentForm, FeedbackForm
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
-    SecuritySerializer, CategorySerializer
+    SecuritySerializer, CategoryWorkSerializer
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -36,7 +33,7 @@ class CommentView(CreateView):
     success_url = reverse_lazy('layout')
 
 
-class СontactsView(ListView):
+class ContactsView(ListView):
     """Контакты и информация"""
     model = Contacts
     template_name = 'contacts.html'
@@ -54,7 +51,7 @@ def phone_form_view(request):
             name = phone_form.cleaned_data['name']
             message = phone_form.cleaned_data['message']
             Feedback.objects.update_or_create(phone=phone_number, name=name, message=message, defaults=updated_values)
-            response = request.post(
+            response = requests.post(
                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
                 data={'chat_id': chat_id,
                       'text': f'*Поступила новая заявка от:* {phone_number}\n*Имя:* {name}\n*Сообщение:* {message}',
@@ -153,3 +150,22 @@ class CategotyFiltViewSet(viewsets.ReadOnlyModelViewSet):
         )
     )
     serializer_class = SecuritySerializer
+
+
+class CategoryWorkViewSet(viewsets.ReadOnlyModelViewSet):
+    """Наши работы по категориям"""
+    queryset = Category.objects.filter(published=True).prefetch_related(
+        Prefetch(
+            'category_work',
+            queryset=OurWork.objects.filter(published=True)
+        )
+    )
+    serializer_class = CategoryWorkSerializer
+
+
+def filt(request):
+    secur = Security.objects.all()
+    context = {'secur': secur}
+    if request.method == 'POST':
+        print(request.POST)
+    return render(request, 'starline/fillter_form.html', context)

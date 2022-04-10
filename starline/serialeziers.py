@@ -97,3 +97,20 @@ class OurWorkSerializer(serializers.ModelSerializer):
             'image1',
         ]
         depth = 1
+
+
+class CategoryWorkSerializer(serializers.ModelSerializer):
+    """Наши работы по категориям"""
+    category_work = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='title'
+    )
+
+    class Meta:
+        model = Category
+        fields = [
+            'title',
+            'category_work',
+        ]
+        depth = 1

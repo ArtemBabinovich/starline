@@ -161,11 +161,3 @@ class CategoryWorkViewSet(viewsets.ReadOnlyModelViewSet):
         )
     )
     serializer_class = CategoryWorkSerializer
-
-
-def filt(request):
-    secur = Security.objects.all()
-    context = {'secur': secur}
-    if request.method == 'POST':
-        print(request.POST)
-    return render(request, 'starline/fillter_form.html', context)

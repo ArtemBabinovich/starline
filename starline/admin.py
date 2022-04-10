@@ -20,7 +20,7 @@ class CharecteristicAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_per_page = 5
+    list_per_page = 20
     exclude = ('slug',)
     list_display = (
         'title',

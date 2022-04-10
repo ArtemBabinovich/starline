@@ -95,7 +95,7 @@ def phone_form_view(request):
             name = phone_form.cleaned_data['name']
             message = phone_form.cleaned_data['message']
             Feedback.objects.update_or_create(phone=phone_number, name=name, message=message, defaults=updated_values)
-            response = request.post(
+            response = requests.post(
                 url=f'https://api.telegram.org/bot{tele_bot_token}/sendMessage',
                 data={'chat_id': chat_id,
                       'text': f'*Поступила новая заявка от:* {phone_number}\n*Имя:* {name}\n*Сообщение:* {message}',

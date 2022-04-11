@@ -25,40 +25,45 @@
                         </div>
                     </div>
                 </div>
+
+{% for item in contacts %}
                 <div class="header__context">
                     <div class="container">
                         <div class="header__context-wrap">
                             <a href="#" class="header__logo">
-                                StarLine-alarm
+                                {{ item.name }}
                             </a>
                             <div class="header__hours">
                                 <p class="header__contact-flex weekday">
-                                    Пн-Пт 10:00 - 19:00
+                                    {{ item.time_work1 }}
                                 </p>
                                 <p class="weekend">
-                                    Сб-Вс 10:00 - 14:00
+                                    {{ item.time_work2 }}
                                 </p>
                             </div>
                             <div class="header__contact">
-                                <a href="#" class="header__contact-flex telefon">
-                                    +375 44 975 28 40
+                                <a href="tel:{{ item.phone1 }}" class="header__contact-flex telefon">
+                                    {{ item.phone1 }}
                                 </a>
                                 <p class="header__contact-flex adress">
-                                    г.Минск ул. Брестская, 34 
+                                    {{ item.address }}
                                 </p>
                             </div>
                             <div class="header__social">
-                                <a href="#" class="social telegram"></a>
-                                <a href="#" class="social vk"></a>
+                                <a href="{{ item.social_info2 }}" class="social telegram"></a>
+                                <a href="{{ item.social_info1 }}" class="social vk"></a>
                             </div>
                         </div>
                     </div>
                 </div>
+{% endfor %}
+
+{% for item in contacts %}
                 <div class="header-wrap">
                     <div class="container">
                         <div class="header">
                             <a href="#" class="header__logo logo-desktop">
-                                StarLine-alarm
+                                {{ item.name }}
                             </a>
                             <div class="header__burger">
                                 <span></span>
@@ -82,23 +87,23 @@
                                     </li>
                                 </ul>
                                 <div class="header__contact-mob">
-                                    <a href="#" class="telefon">
-                                        +375 44 975 28 40
+                                    <a href="{{ item.phone1 }}" class="telefon">
+                                        {{ item.phone1 }}
                                     </a>
                                     <div class="header__hours">
                                         <p class="weekday">
-                                            Пн-Пт 10:00 - 19:00
+                                            {{ item.time_work1 }}
                                         </p>
                                         <p class="weekend">
-                                            Сб-Вс 10:00 - 14:00
+                                            {{ item.time_work2 }}
                                         </p>
                                     </div>
                                     <p class="adress">
-                                        г.Минск ул. Брестская, 34 
+                                        {{ item.address }}
                                     </p>
                                     <div class="header__social">
-                                        <a href="#" class="social telegram"></a>
-                                        <a href="#" class="social vk"></a>
+                                        <a href="{{ item.social_info1 }}" class="social telegram"></a>
+                                        <a href="{{ item.social_info2 }}" class="social vk"></a>
                                     </div>
                                 </div>
                                 <a href="#" class="header__advice">
@@ -109,6 +114,7 @@
                     </div>
                 </div>
             </div>
+{% endfor %}
         </header>
         <main>
             <section class="main">
@@ -133,15 +139,18 @@
                                 Авторизованный<br>установочный сервис
                             </div>
                         </div>
-                        <form action="#" class="main__form">
+
+                        <form class="main__form" method="POST" id="phone_c">
                             <div class="main__form-wrap">
-                                <input type="tel" class="main__input" placeholder="+375">
-                                <a href="#" class="main__btn">Получить консультацию</a>
+                                {% csrf_token %}
+                                {{ phone_con.phone_c }}
+                                <input type="submit" value="Получить консультацию" class="main__btn">
                             </div>
                             <p class="main__text">
                                 Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.
                             </p>
                         </form>
+
                         <p class="main__text main__text-color">
                             Работаем с НДС, оказываем услуги по коммерческому мониторингу за авто
                         </p>
@@ -999,12 +1008,14 @@
             <section class="footer">
                 <div class="container">
                     <div class="footer-wrap">
+
+                        {% for item in contacts %}
                         <div class="footer__info">
                             <h2 class="footer__title title">
                                 Бесплатно проконсультируем Вас по любому вопросу связанному с установкой охранных систем
                             </h2>
                             <div class="footer__adress footer-text">
-                                г.Минск, ул. Бресткая 34
+                                {{ item.address }}
                             </div>
                             <div class="footer__contact">
                                 <div class="fotter__work-time">
@@ -1012,13 +1023,14 @@
                                         Время работы
                                     </div>
                                     <div class="work-time__block">
-                                        <img src="{% static 'img/icons/footer-time-img.svg' %}" class="work-item__img" alt="work-time">
+                                        <img src="{% static 'img/icons/footer-time-img.svg' %}" class="work-item__img"
+                                             alt="work-time">
                                         <div class="work-time__text">
                                             <p class="footer-text">
-                                                Пн-Пт 10:00 - 19:00
+                                                {{ item.time_work1 }}
                                             </p>
                                             <p class="footer-text">
-                                                Сб-Вс 10:00 - 14:00
+                                                {{ item.time_work2 }}
                                             </p>
                                         </div>
                                     </div>
@@ -1027,11 +1039,21 @@
                                     <div class="telefon__title footer-title">
                                         Телефоны
                                     </div>
-                                    <a href="#" class="telefon__link link-a1 footer-text">
-                                        +375(29) 975 28 40
+                                    <a href="tel:{{ item.phone1 }}" class="header__contact-flex telefon">
+                                        {{ item.phone1 }}
+                                        {% if item.logo1 %}
+                                        <img src="{{ item.logo1.url }}" width="24" height="24" alt="">
+                                        {% else %}
+                                        <img>
+                                        {% endif %}
                                     </a>
-                                    <a href="#" class="telefon__link link-mtc footer-text">
-                                        +375(29) 504 13 89
+                                    <a href="tel:{{ item.phone2 }}" class="header__contact-flex telefon">
+                                        {{ item.phone2 }}
+                                        {% if item.logo2 %}
+                                        <img src="{{ item.logo2.url }}" width="24" height="24" alt="">
+                                        {% else %}
+                                        <img>
+                                        {% endif %}
                                     </a>
                                 </div>
                             </div>
@@ -1040,8 +1062,8 @@
                                     <div class="mail__title footer-title">
                                         E-mail
                                     </div>
-                                    <a href="#" class="mail__link footer-text">
-                                        starline-belarus@mail.ru
+                                    <a class="mail__link footer-text">
+                                        {{ item.email }}
                                     </a>
                                 </div>
                                 <div class="footer__support">
@@ -1058,35 +1080,43 @@
                                     Пишите нам в социальных сетях
                                 </div>
                                 <div class="social__link-wrap">
-                                    <a href="#" class="social__link telegram"></a>
-                                    <a href="#" class="social__link vk"></a>
+                                    <a href="{{ item.social_info2 }}" class="social telegram"></a>
+                                    <a href="{{ item.social_info1 }}" class="social vk"></a>
                                 </div>
                             </div>
                         </div>
-                        <form action="#" class="footer__form">
-                            <p class="form__title">
-                                Имя
+                        {% endfor %}
+
+                        <form class="footer__form" method="POST">
+                            {% csrf_token %}
+                            <p class="form__title" id="name">
+                                ФИО
+                                {{ phone_form.name }}
                             </p>
-                            <input type="text" placeholder="Иванов Иван Иванович">
-                            <p class="form__title">
+                            <p class="form__title" id="phone">
                                 Номер телефона
+                                {{ phone_form.phone }}
                             </p>
-                            <input type="tel" placeholder="+375">
-                            <p class="form__title">
+                            <p class="form__title" id="message">
                                 Опишите свой вопрос
+                                {{ phone_form.message }}
                             </p>
-                            <textarea name="form_footer" placeholder="Хочу установить иммобилайзер и не потерять гарантию диллера"></textarea>
                             <input type="submit" value="Отправить" class="form__btn btn-text">
                             <p class="form__subtitle">
                                 Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.
                             </p>
                         </form>
+
                     </div>
                 </div>
             </section>
+
+{% for item in contacts %}
             <section class="footer__map">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1150b6f8451adaf5edeb724cd175d116aafae415ca475bbfc7f80ac594bbbdf2&amp;source=constructor" width="100%" height="494px" frameborder="0"></iframe>
+                {{ item.maps|safe }}
             </section>
+{% endfor %}
+
             <section class="footer__about">
                 <div class="container">
                     <h2 class="about__title title">
@@ -1118,9 +1148,13 @@
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
+
+{% for item in contacts %}
                         <a href="#" class="nav__logo">
-                            StarLine-alarm
+                            {{ item.name }}
                         </a>
+{% endfor %}
+
                         <nav class="nav__menu">
                             <ul class="nav__list">
                                 <li>

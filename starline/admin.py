@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.utils.safestring import mark_safe
 from starline.models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Characteristic, \
     Company
 
@@ -20,21 +20,28 @@ class CharecteristicAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
+    list_per_page = 5
     exclude = ('slug',)
     list_display = (
         'title',
         'price',
         'price_install',
-        'image',
+        'image_img',
         'presence',
-        'description',
-        'instruction',
         'published',
         'popular',
         'novelties'
     )
     list_display_links = ('title',)
-    list_editable = ('price', 'price_install', 'published')
+    list_editable = ('price', 'price_install', 'presence', 'published')
+
+    def image_img(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="80" height="80">')
+        else:
+            return 'Нет изображения'
+
+    image_img.short_description = 'Изображение'
 
 
 class ActionAdmin(admin.ModelAdmin):
@@ -77,9 +84,9 @@ class ContactsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'address',
-        'logo1',
+        'image_logo1',
         'phone1',
-        'logo2',
+        'image_logo2',
         'phone2',
         'email',
         'social_info1',
@@ -91,6 +98,22 @@ class ContactsAdmin(admin.ModelAdmin):
     )
     list_display_links = ('address',)
     list_editable = ('time_work1', 'time_work2')
+
+    def image_logo1(self, obj):
+        if obj.logo1:
+            return mark_safe(f'<img src="{obj.logo1.url}" width="40" height="40">')
+        else:
+            return 'Нет логотипа'
+
+    image_logo1.short_description = 'Лого оператора 1'
+
+    def image_logo2(self, obj):
+        if obj.logo2:
+            return mark_safe(f'<img src="{obj.logo2.url}" width="40" height="40">')
+        else:
+            return 'Нет логотипа'
+
+    image_logo2.short_description = 'Лого оператора 2'
 
 
 class CompanyAdmin(admin.ModelAdmin):

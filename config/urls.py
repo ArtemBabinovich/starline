@@ -5,13 +5,14 @@ from django.urls import path, include
 from rest_framework import routers
 from starline import views
 
-router = routers.DefaultRouter()
+
+router = routers.SimpleRouter()
 router.register(r'comments', views.CommentViewSet)
 router.register(r'popular_product', views.PopularProductViewSet)
-router.register(r'novelties_product', views.NoveltiesProductViewSet)
 router.register(r'our_work', views.OurWorkViewSet)
 router.register(r'category_search', views.CategotyFiltViewSet)
 router.register(r'category_work', views.CategoryWorkViewSet)
+router.register(r'novelties', views.NoveltiesProductViewSet)
 
 app_name = 'starline'
 
@@ -20,6 +21,7 @@ urlpatterns = [
     path('', include('starline.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('starline/', include(router.urls)),
+
 ]
 
 if settings.DEBUG:

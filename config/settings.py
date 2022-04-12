@@ -67,7 +67,6 @@ MIDDLEWARE = [
 
 
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_URLS_REGEX = r"^/starline/.*$"
 CORS_ALLOW_METHODS = [
     'GET',
 ]
@@ -77,8 +76,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'starline/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,8 +109,6 @@ DATABASES = {
 }
 
 
-
-# Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -157,13 +153,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'vp3231963@gmail.com'
-EMAIL_HOST_PASSWORD = 'dinamo258'
-EMAIL_PORT = 587
-
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_BROWSE_SHOW_DIRS = True  # позволяет группировать изображения по каталогу, в котором они хранятся
@@ -202,4 +191,3 @@ CKEDITOR_CONFIGS = {
 
     }
 }
-

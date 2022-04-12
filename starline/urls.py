@@ -11,7 +11,7 @@ urlpatterns = [
     path('', index),
     path('1/', layout, name='layout'),
     path('register/', CommentView.as_view(), name='comment'),
-    path('feedback/', index, name='feedback'),
+    path('feedback/', phone_form_view, name='feedback'),
     # path('contacts/', views.СontactsView.as_view(), name='contacts'),
     path('catalog/', CatalogView.as_view(), name='catalog_view'),
     path('action/', ActionView.as_view(), name='action'),

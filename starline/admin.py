@@ -51,10 +51,10 @@ class ActionAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'name', 'numbers_phone', 'body', 'published')
+    list_display = ('title', 'name', 'numbers_phone', 'body_reduction', 'published')
     list_editable = ('published',)
     list_filter = ('title', 'name', 'numbers_phone')
-    search_fields = ('title', 'name', 'numbers_phone', 'pub_data', 'body')
+    search_fields = ('title', 'name', 'numbers_phone', 'pub_data', 'body_reduction')
 
 
 class OurWorkAdmin(admin.ModelAdmin):
@@ -84,36 +84,14 @@ class ContactsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'address',
-        'image_logo1',
         'phone1',
-        'image_logo2',
         'phone2',
         'email',
-        'social_info1',
-        'social_info2',
-        'social_info3',
         'time_work1',
         'time_work2',
-        'maps',
     )
     list_display_links = ('address',)
     list_editable = ('time_work1', 'time_work2')
-
-    def image_logo1(self, obj):
-        if obj.logo1:
-            return mark_safe(f'<img src="{obj.logo1.url}" width="40" height="40">')
-        else:
-            return 'Нет логотипа'
-
-    image_logo1.short_description = 'Лого оператора 1'
-
-    def image_logo2(self, obj):
-        if obj.logo2:
-            return mark_safe(f'<img src="{obj.logo2.url}" width="40" height="40">')
-        else:
-            return 'Нет логотипа'
-
-    image_logo2.short_description = 'Лого оператора 2'
 
 
 class CompanyAdmin(admin.ModelAdmin):

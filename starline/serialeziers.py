@@ -101,10 +101,9 @@ class OurWorkSerializer(serializers.ModelSerializer):
 
 class CategoryWorkSerializer(serializers.ModelSerializer):
     """Наши работы по категориям"""
-    category_work = serializers.SlugRelatedField(
+    category_work = OurWorkSerializer(
         many=True,
         read_only=True,
-        slug_field='title'
     )
 
     class Meta:
@@ -114,3 +113,4 @@ class CategoryWorkSerializer(serializers.ModelSerializer):
             'category_work',
         ]
         depth = 1
+

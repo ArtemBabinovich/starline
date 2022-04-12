@@ -67,7 +67,6 @@ MIDDLEWARE = [
 
 
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_URLS_REGEX = r"^/starline/.*$"
 CORS_ALLOW_METHODS = [
     'GET',
 ]

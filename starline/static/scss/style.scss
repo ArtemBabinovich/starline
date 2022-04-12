@@ -1,30 +1,86 @@
-.wrapper{
+.wrapper {
     overflow: hidden;
-}
-.btn-text{
+  }
+
+  .body-h {
+    overflow-y: hidden;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .hide {
+    display: none;
+  }
+
+  .fade {
+    -webkit-animation-name: fade;
+            animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {
+      opacity: 0.1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0.1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .btn-text {
     font-weight: 400;
     font-size: 18px;
     line-height: 120%;
     color: #FFFFFF;
     border-radius: 4px;
-}
-.title{
+  }
+  
+  .title {
     font-weight: 700;
     font-size: 32px;
     line-height: 120%;
     color: #494C62;
-}
-@import "container";
-@import "header";
-@import "section-main";
+  }
+  input, textarea {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    color: #2B2D33;
+  }
+  input:focus {
+    -webkit-box-shadow: 0px 0px 0px 2px #6C86E2;
+            box-shadow: 0px 0px 0px 2px #6C86E2;
+  }
+  textarea:focus {
+    -webkit-box-shadow: 0px 0px 0px 2px #6C86E2;
+            box-shadow: 0px 0px 0px 2px #6C86E2;
+  }
+
+@import "_container";
+@import "_header";
+@import "_section-main";
 @import "card";
-@import "section-popular";
-@import "section-guarantee";
-@import "section-protection";
-@import "section-new-product";
-@import "review-card";
-@import "section-comment";
-@import "footer";
+@import "_section-popular";
+@import "_section-guarantee";
+@import "_section-protection";
+@import "_section-new-product";
+@import "_review-card";
+@import "_section-comment";
+@import "_footer";
+@import "_modal";
+@import "_modal-confirm";
 
 
 @media (max-width: 768px) {
@@ -34,5 +90,11 @@
     .btn-text{
         font-size: 16px;
         line-height: 20px;
+    }
+    input, textarea {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 120%;
+      color: #2B2D33;
     }
 }

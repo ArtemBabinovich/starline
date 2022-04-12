@@ -114,3 +114,6 @@ class CategoryWorkSerializer(serializers.ModelSerializer):
         ]
         depth = 1
 
+
+class CharacteristicSerializer(serializers.ModelSerializer):
+    pass

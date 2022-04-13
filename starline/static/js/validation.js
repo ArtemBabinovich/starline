@@ -1,5 +1,6 @@
 const inputTel = document.querySelectorAll('[type="tel"]');
-    inputTel.forEach(elem => elem.addEventListener('input', inputTelValue))
+    inputTel.forEach(elem => elem.addEventListener('input', inputTelValue));
+    inputTel.forEach(elem => elem.addEventListener('focus', inputTelValue));
 
 function inputTelValue(){
     this.value = '+375' + this.value.slice(4);

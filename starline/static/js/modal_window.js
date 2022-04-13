@@ -4,6 +4,15 @@ const btnModal = document.querySelectorAll('[data-modal]');
 const modal = document.querySelector('.modal');
     modal.addEventListener('click', closeModalWindow);
 
+let userPhone = document.querySelector('.modal [type="tel"]');
+    userPhone.addEventListener('input', () => {
+        if(!Number(userPhone.value.slice(-1))){
+            userPhone.value = userPhone.value.slice(0, -1);
+        }
+    });
+let modalTextArea = document.querySelector('.modal__textarea');
+let userName =  document.querySelector('.modal [type="text"');
+
 function showModalWindow(e){
     const modalTitle = document.querySelector('.modal__title'),
         modalSubTitle = document.querySelector('.modal__subtitle'),
@@ -11,6 +20,9 @@ function showModalWindow(e){
         modalBtn.addEventListener('click', validationModalWindow);
     let modalShowEl = document.querySelectorAll('.m-display');
 
+        userName.value = '';
+        userPhone.value = '';
+        modalTextArea.value = '';
 
     if(e.target.getAttribute('data-modal') === 'advice'){
         modalTitle.innerHTML = 'Заявка на бесплатную консультацию';
@@ -35,15 +47,13 @@ function closeModalWindow(e){
     }
 }
 
-const confirmModal = document.querySelector('.m-confirm__wrapper');
+confirmModal = document.querySelector('.m-confirm__wrapper');
     confirmModal.addEventListener('click', (event) => {
         if(event.target === document.querySelector('.m-confirm__cross') 
             || event.target === document.querySelector('.m-confirm__wrapper')
             || event.target === document.querySelector('.m-confirm__btn')){
                 confirmModal.classList.remove('m-confirm-show');
-            let userPhone = document.querySelector('.modal [type="tel"]');
                 userPhone.value = '';
-            let userName =  document.querySelector('.modal [type="text"');
                 userName.value = '';
         }
     });

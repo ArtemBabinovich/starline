@@ -34,10 +34,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     const menuBurger = document.querySelector('.header__burger');
         menuBurger.addEventListener('click', menuActive);
+    
+    const menuNav = document.querySelector('.header__menu');
 
     function menuActive(){
-        const menuNav = document.querySelector('.header__menu');
-
         let vh = window.innerHeight * 0.01;
 
         document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -45,4 +45,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
         menuBurger.classList.toggle('active');
         document.body.classList.toggle('body-h');
     }
+
+    const headerBtnAdvice = document.querySelector('.header__advice');
+        headerBtnAdvice.addEventListener('click', () => {
+            if(window.innerWidth < 768){
+                menuNav.classList.toggle('active');
+                menuBurger.classList.toggle('active');
+                document.body.classList.toggle('body-h');
+            }
+        })
 })

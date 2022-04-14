@@ -97,3 +97,23 @@ class OurWorkSerializer(serializers.ModelSerializer):
             'image1',
         ]
         depth = 1
+
+
+class CategoryWorkSerializer(serializers.ModelSerializer):
+    """Наши работы по категориям"""
+    category_work = OurWorkSerializer(
+        many=True,
+        read_only=True,
+    )
+
+    class Meta:
+        model = Category
+        fields = [
+            'title',
+            'category_work',
+        ]
+        depth = 1
+
+
+class CharacteristicSerializer(serializers.ModelSerializer):
+    pass

@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/null_for_templates.css'%}">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>StarLine</title>
 </head>
 <body>
@@ -27,7 +27,6 @@
                         </div>
                     </div>
                 </div>
-
 {% for item in contacts %}
                 <div class="header__context">
                     <div class="container">
@@ -108,9 +107,9 @@
                                         <a href="{{ item.social_info2 }}" class="social vk"></a>
                                     </div>
                                 </div>
-                                <a href="#" class="header__advice">
+                                <button class="header__advice" data-modal="advice">
                                     Бесплатная консультация
-                                </a>
+                                </button>
                             </nav>
                         </div>
                     </div>
@@ -135,7 +134,10 @@
                                 <span>Сохраняем гарантию</span><br> на автомобиль
                             </div>
                             <div class="main__advantages-item">
-                                Стоимость установки<br><span>от 30 BYN</span>
+                                Стоимость установки GPS <br>мониторинга <span>от 70 BYN</span>
+                            </div>
+                            <div class="main__advantages-item">
+                                Стоимость установки<br> автосигнализации <span>от 200 BYN</span>
                             </div>
                             <div class="main__advantages-item">
                                 Авторизованный<br>установочный сервис
@@ -242,277 +244,14 @@
                         </h2>
                         <div class="card-wrap">
                             <div class="card">
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-1.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-2.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-orange">
-                                        Под заказ
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-3.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-red">
-                                        Нет в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            227 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-4.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-1.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-2.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-3.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-4.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
+
                             </div>
                             <div class="card__info">
                                 <a href="#" class="card__link btn-text">
                                     Смотреть больше товаров
                                 </a>
                                 <p class="card__text">
-                                    В каталоге <span>356 позиций</span>, для <span>214</span> марок автомобилей
+                                    В каталоге <span> 356 позиций </span>, для <span> 214 </span> марок автомобилей
                                 </p>
                             </div>
                         </div>
@@ -552,9 +291,9 @@
                             </p>
                         </div>
                         <div class="guarantee__link-wrap">
-                            <a href="#" class="guarantee__link btn-text">
+                            <button class="guarantee__link btn-text" data-modal="advice">
                                 Оставить заявку
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -567,277 +306,15 @@
                         </h2>
                         <div class="card-wrap">
                             <div class="card">
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-1.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-2.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-orange">
-                                        Под заказ
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-3.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-red">
-                                        Нет в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            227 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-4.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-1.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-2.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-3.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#" class="card__item">
-                                    <div class="item__choice">
-                                        Выбор большинства
-                                    </div>
-                                    <div class="item__img-wrap">
-                                        <img src="{% static 'img/card-img-4.png' %}" alt="StarLine" class="item__img">
-                                    </div>
-                                    <p class="item__title">
-                                        StarLine Победит B97
-                                    </p>
-                                    <p class="item__subtitle">
-                                        Умный многоуровневый охранно-телематический комплекс
-                                    </p>
-                                    <p class="item__presence presence-green">
-                                        Есть в наличии
-                                    </p>
-                                    <div class="item__equipment">
-                                        <p class="item__equipment-text">
-                                            Оборудование:
-                                        </p>
-                                        <p class="item__equipment-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                    <div class="item__plant">
-                                        <p class="item__plant-text">
-                                            Установка:
-                                        </p>
-                                        <p class="item__plant-price">
-                                            435 BYN
-                                        </p>
-                                    </div>
-                                </a>
+
+
                             </div>
                             <div class="card__info">
                                 <a href="#" class="card__link btn-text">
                                     Смотреть больше товаров
                                 </a>
                                 <p class="card__text">
-                                    В каталоге <span>356 позиций</span>, для <span>214</span> марок автомобилей
+                                    В каталоге <span> 356 позиций</span>, для <span> 214</span> марок автомобилей
                                 </p>
                             </div>
                         </div>
@@ -862,112 +339,13 @@
             <section class="review">
                 <div class="container">
                     <div class="review-card__column">
-                        <div class="review-card">
-                            <div class="review-card__info">
-                                <div class="review-card__meta">
-                                    <p>Иммобилайзеры</p>
-                                    <p>Доп. услуги</p>
-                                </div>
-                                <h3 class="review-card__title">
-                                    Установка иммобилайзера IGLA 200 на Toyota Camry
-                                </h3>
-                                <div class="review-card__text">
-                                    <p>
-                                        Срок установки:
-                                    </p>
-                                    <p>
-                                        3 дня
-                                    </p>
-                                </div>
-                                <div class="review-card__text text-margin">
-                                    <p>
-                                        Стоимость установки:
-                                    </p>
-                                    <p>
-                                        345 BYN
-                                    </p>
-                                </div>
-                                <a href="#" class="review-card__link">
-                                    Подробнее
-                                </a>
-                            </div>
-                            <div class="review-card__img">
-                                <img src="{% static 'img/review-img-1.jpg' %}" alt="toyota">
-                            </div>
-                        </div>
-                        <div class="review-card">
-                            <div class="review-card__info">
-                                <div class="review-card__meta">
-                                    <p>Иммобилайзеры</p>
-                                    <p>Доп. услуги</p>
-                                </div>
-                                <h3 class="review-card__title">
-                                    Установка иммобилайзера IGLA 200 на Toyota Camry
-                                </h3>
-                                <div class="review-card__text">
-                                    <p>
-                                        Срок установки:
-                                    </p>
-                                    <p>
-                                        3 дня
-                                    </p>
-                                </div>
-                                <div class="review-card__text text-margin">
-                                    <p>
-                                        Стоимость установки:
-                                    </p>
-                                    <p>
-                                        345 BYN
-                                    </p>
-                                </div>
-                                <a href="#" class="review-card__link">
-                                    Подробнее
-                                </a>
-                            </div>
-                            <div class="review-card__img">
-                                <img src="{% static 'img/review-img-2.jpg' %}" alt="toyota">
-                            </div>
-                        </div>
-                        <div class="review-card">
-                            <div class="review-card__info">
-                                <div class="review-card__meta">
-                                    <p>Иммобилайзеры</p>
-                                    <p>Доп. услуги</p>
-                                    <p>Доп. услуги</p>
-                                    <p>Доп. услуги</p>
-                                </div>
-                                <h3 class="review-card__title">
-                                    Установка иммобилайзера IGLA 200 на Toyota Camry
-                                </h3>
-                                <div class="review-card__text">
-                                    <p>
-                                        Срок установки:
-                                    </p>
-                                    <p>
-                                        3 дня
-                                    </p>
-                                </div>
-                                <div class="review-card__text text-margin">
-                                    <p>
-                                        Стоимость установки:
-                                    </p>
-                                    <p>
-                                        345 BYN
-                                    </p>
-                                </div>
-                                <a href="#" class="review-card__link">
-                                    Подробнее
-                                </a>
-                            </div>
-                            <div class="review-card__img">
-                                <img src="{% static 'img/review-img-3.jpg' %}" alt="toyota">
-                            </div>
-                        </div>
+
+
                     </div>
                     <div class="review__link-wrap">
                         <a href="#" class="review__link btn-text">Смотреть больше работ</a>
                         <p class="review__link-text">
-                            В портфолио <span>25</span> подробно описанных кейсов
+                            В портфолио <span class="review__lengh">25</span> подробно описанных кейсов
                         </p>
                     </div>
                 </div>
@@ -978,34 +356,83 @@
                         <div class="comment__title title">
                             Только живые отзывы от реальных людей
                         </div>
-                        <div class="comment__slider">
-                            <div class="slider-arrow left"></div>
-                            <div class="slider__content">
-                                <h3 class="slider__title">
-                                    Toyota Camry – установка иммобилайзера IGLA 200
-                                </h3>
-                                <p class="slider__text">
-                                    В сервисе была первый раз. Чувствуется организация. Сказали, во сколько пригнать Мазду, Ремзона чистая, мастера вежливые. Сказали, когда забрать, но сделали раньше и позвонили мне. Четко рассказали, что сделали, хоть я в этом и не очень разбираюсь. Все понравилось.
-                                </p>
-                                <div class="slider__contact">
-                                    <p>Света Максимова</p>
-                                    <p>+375 44 672 23 43</p>
+                         <div class="slider__content">
+                            <div class="slider-arrow left">
+                            </div>
+                            <div class="comment__slider-wrap">
+                                <div class="comment__slider">
+                                    <div class="comment__item">
+                                        <h3 class="slider__title">
+
+                                        </h3>
+                                        <p class="slider__text">
+
+                                        </p>
+                                        <p class="slider__contact">
+
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="slider-arrow right"></div>
+                            <div class="slider-arrow right">
+                            </div>
                         </div>
                         <div class="comment__page">
-                            <span>1</span> из <span>23</span>
+                             <span class="comment__page-first">1</span> из <span class="comment__page-last">23</span>
                         </div>
                         <div class="comment__link-wrap">
-                            <a href="#" class="comment__link btn-text">
+                            <button class="comment__link btn-text" data-modal="review">
                                 Написать отзыв
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
             </section>
+            <div class="modal">
+                <div class="modal__form-wrap">
+                    <div class="modal__cross"></div>
+                    <h3 class="modal__title">
+                        Заявка на бесплатную консультацию
+                    </h3>
+                    <p class="modal__subtitle">
+                        Технический специалист перезвонит Вам в течение 10 минут и ответит на все вопросы
+                    </p>
+                    <form action="" class="modal__form">
+                        <p class="modal__input-title">
+                            Ваше имя
+                        </p>
+                        <input type="text" name="user__name" class="modal__input" placeholder="Иванов Иван Иванович">
+                        <p class="modal__input-title">
+                            Номер телефона
+                        </p>
+                        <input type="tel" name="user__tel" class="modal__input" placeholder="+375" pattern="[0-9]">
+                        <p class="modal__input-title m-display">
+                            Текст отзыва
+                        </p>
+                        <textarea class="modal__textarea m-display" name="comment__text" placeholder="Хочу установить иммобилайзер и не потерять гарантию диллера"></textarea>
+                        <input type="button" value="Оставить отзыв" class="modal__btn btn-text">
+                    </form>
+                </div>
+            </div>
+            <div class="m-confirm__wrapper">
+                <div class="m-confirm">
+                    <div class="m-confirm__cross"></div>
+                    <div class="m-confirm__img">
+                        <img src="{% static 'img/icons/m-confirm_img.svg' %}" alt="confirm">
+                    </div>
+                    <h3 class="m-confirm__title">
+                        Отзыв успешно отправлен
+                    </h3>
+                    <p class="m-confirm__subtitle">
+                        Спасибо, отзыв появится на сайте в течение нескольких дней.
+                    </p>
+                    <button class="m-confirm__btn btn-text">
+                        Понятно, спасибо
+                    </button>
+                </div>
+            </div>
         </main>
+
         <footer>
             <section class="footer">
                 <div class="container">
@@ -1092,7 +519,7 @@
                         <form class="footer__form" method="POST">
                             {% csrf_token %}
                             <p class="form__title" id="name">
-                                ФИО
+                                Имя
                                 {{ phone_form.name }}
                             </p>
                             <p class="form__title" id="phone">
@@ -1194,5 +621,12 @@
             </section>
         </footer>
     </div>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/popular_card.js' %}"></script>
+    <script src="{% static 'js/validation.js' %}"></script>
+    <script src="{% static 'js/new_product_card.js' %}"></script>
+    <script src="{% static 'js/reviews.js' %}"></script>
+    <script src="{% static 'js/comment.js' %}"></script>
+    <script src="{% static 'js/modal_window.js' %}"></script>
 </body>
 </html>

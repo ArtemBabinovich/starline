@@ -24,8 +24,12 @@ class Category(models.Model):
     """Категории комплексов"""
     title = models.CharField('Название категории комплекса', max_length=250)
     slug = models.SlugField('Короткое название', unique=True, db_index=True, max_length=20, blank=True, null=True)
-    security = models.ForeignKey(Security, related_name='categores', on_delete=models.CASCADE,
-                                 verbose_name='Название комплекса')
+    security = models.ForeignKey(
+        Security,
+        related_name='categores',
+        on_delete=models.CASCADE,
+        verbose_name='Название комплекса'
+    )
     published = models.BooleanField('Опубликовано', default=True)
 
     class Meta:
@@ -134,6 +138,11 @@ class Comment(models.Model):
     def __str__(self):
         return f'Отзыв от {self.name} с текстом: {self.body[:20]}'
 
+    def body_reduction(self):
+        return u"%s..." % (self.body[:250],)
+
+    body_reduction.short_description = 'Содержимое комментария'
+
 
 class OurWork(models.Model):
     """Наши работы"""
@@ -217,6 +226,7 @@ class Contacts(models.Model):
 
 
 class Company(models.Model):
+    """О компании"""
     image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
     description = RichTextUploadingField('Описание', blank=True, null=True)
     published = models.BooleanField('Опубликовано', default=False)

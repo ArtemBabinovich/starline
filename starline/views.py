@@ -10,7 +10,6 @@ from .models import Comment, Contacts, Category, Product, Feedback, Action, OurW
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
     SecuritySerializer, CategoryWorkSerializer
 
-
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
 # Telegram bot GLOBAL SETTINGS
@@ -20,7 +19,8 @@ chat_id = 821421337
 
 def index(request):
     contacts = Contacts.objects.all()
-
+    product_count = Product.objects.filter(published=True).count()
+    comment = Comment.objects.filter(published=True)
     """Телеграм бот из формы для заявки"""
     phone_form = FeedbackForm()
     if request.method == 'POST':
@@ -56,6 +56,8 @@ def index(request):
         'contacts': contacts,
         'phone_form': phone_form,
         'phone_con': phone_con,
+        'product_count': product_count,
+        'comment': comment,
     }
     return render(request, 'starline/index.html', context=context)
 

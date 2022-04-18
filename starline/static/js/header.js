@@ -1,5 +1,13 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
+    const inputTel = document.querySelectorAll('[type="tel"]');
+    inputTel.forEach(elem => elem.addEventListener('input', inputTelValue));
+    inputTel.forEach(elem => elem.addEventListener('focus', inputTelValue));
+
+    function inputTelValue(){
+        this.value = '+375' + this.value.slice(4);
+    }
+
     //! функция headerSticky для fixed header и появления новых блоков!
 
     window.addEventListener('scroll', headerSticky);
@@ -39,7 +47,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function menuActive(){
         let vh = window.innerHeight * 0.01;
-
+        
         document.documentElement.style.setProperty('--vh', `${vh}px`);
         menuNav.classList.toggle('active');
         menuBurger.classList.toggle('active');

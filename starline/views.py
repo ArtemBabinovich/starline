@@ -60,6 +60,14 @@ def index(request):
     return render(request, 'starline/index.html', context=context)
 
 
+def contact(request):
+    contacts = Contacts.objects.all()
+    context = {
+        'contacts': contacts,
+    }
+    return render(request, 'starline/contact.html', context)
+
+
 def layout(request):
     return render(request, 'layout.html')
 

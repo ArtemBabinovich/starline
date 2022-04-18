@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-{% for item in contacts %}
+                {% for item in contacts %}
                 <div class="header__context">
                     <div class="container">
                         <div class="header__context-wrap">
@@ -55,7 +55,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="header-wrap">
                     <div class="container">
                         <div class="header">
@@ -84,7 +83,7 @@
                                     </li>
                                 </ul>
                                 <div class="header__contact-mob">
-                                    <a href="{{ item.phone1 }}" class="telefon">
+                                    <a href="tel:{{ item.phone1 }}" class="telefon">
                                         {{ item.phone1 }}
                                     </a>
                                     <div class="header__hours">
@@ -114,271 +113,11 @@
         </header>
         <main>
             <section class="main">
-                <div class="main__circle circle-white"></div>
-                <div class="main__circle circle-back"></div>
-                <div class="main__cars">
-                    <img src="{% static 'img/main-cars.png'%}" alt="cars">
-                </div>
-                <div class="container main__container-position">
+                <div class="container">
                     <div class="main-wrap">
-                        <h1 class="main__title">
-                            Установка охранных систем<br>StarLine в Беларуси
-                        </h1>
-                        <div class="main__advantages">
-                            <div class="main__advantages-item">
-                                <span>Сохраняем гарантию</span><br> на автомобиль
-                            </div>
-                            <div class="main__advantages-item">
-                                Стоимость установки GPS <br>мониторинга <span>от 70 BYN</span>
-                            </div>
-                            <div class="main__advantages-item">
-                                Стоимость установки<br> автосигнализации <span>от 200 BYN</span>
-                            </div>
-                            <div class="main__advantages-item">
-                                Авторизованный<br>установочный сервис
-                            </div>
-                        </div>
-
-                        <form class="main__form" method="POST" id="phone_c">
-                            <div class="main__form-wrap">
-                                {% csrf_token %}
-                                {{ phone_con.phone_c }}
-                                <input type="submit" value="Получить консультацию" class="main__btn">
-                            </div>
-                            <p class="main__text">
-                                Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.
-                            </p>
-                        </form>
-
-                        <p class="main__text main__text-color">
-                            Работаем с НДС, оказываем услуги по коммерческому мониторингу за авто
-                        </p>
-                    </div>
-                    <div class="main__wrap-auto">
-                        <div class="wrap-auto">
-                            <div class="main__auto-img">
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/lexus-img.png' %}" alt="lexus">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/geely-img.png' %}" alt="geely">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/toyota-img.png' %}" alt="toyota">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/audi-img.png' %}" alt="audi">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/mb-img.png' %}" alt="mb">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/kia-img.png' %}" alt="kia">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/mazda-img.png' %}" alt="mazda">
-                                </a>
-                            </div>
-                            <div class="main__auto-img">
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/vw-img.png' %}" alt="vw">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/hyndai-img.png' %}" alt="hyndai">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/bmw-img.png' %}" alt="bmw">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/ford-img.png' %}" alt="ford">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/shkoda-img.png' %}" alt="shkoda">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/renault-img.png' %}" alt="renault">
-                                </a>
-                                <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/nissan-img.png' %}" alt="nissan">
-                                </a>
-                            </div>
-                        </div>
-                        <p class="auto__text">
-                            и др..
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section class="popular">
-                <div class="container">
-                    <div class="popular-wrap">
-                        <div class="popular__links">
-                            <a href="#" class="links__item">
-                                <img src="{% static 'img/security-img.png' %}" alt="security">
-                                <p>Охранные комплексы</p>
-                                <div class="links__line links-red"></div>
-                            </a>
-                            <a href="#" class="links__item">
-                                <img src="{% static 'img/trackers-img.png' %}" alt="trackers">
-                                <p>Трекеры и мониторинг</p>
-                                <div class="links__line links-green"></div>
-                            </a>
-                            <a href="#" class="links__item">
-                                <img src="{% static 'img/equipment-img.png' %}" alt="equipment">
-                                <p>Дополнительное <span>оборудование</span></p>
-                                <div class="links__line links-orange"></div>
-                            </a>
-                            <a href="#" class="links__item">
-                                <img src="{% static 'img/control-img.png' %}" alt="control">
-                                <p>Дистанционное <span>управление ЦЗ</span></p>
-                                <div class="links__line links-black"></div>
-                            </a>
-                        </div>
-                        <h2 class="popular__title title">
-                            Популярные товары
-                        </h2>
-                        <div class="card-wrap">
-                            <div class="card">
-
-                            </div>
-                            <div class="card__info">
-                                <a href="#" class="card__link btn-text">
-                                    Смотреть больше товаров
-                                </a>
-                                <p class="card__text">
-                                    В каталоге <span> 356 позиций </span>, для <span> 214 </span> марок автомобилей
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="guarantee">
-                <div class="container">
-                    <div class="guarantee-wrap">
-                        <h2 class="guarantee__title title">
-                            Официальная <span>гарантия</span> качества работ – <span>5 лет</span> с момента установки
-                        </h2>
-                        <div class="guarantee__row">
-                            <div class="guarantee__row-text">
-                                <p>
-                                    Мы являемся авторизованным сервисным центром Starline в Беларуси. Имеем сертификат на установку современных систем на современные автомобили. Наши мастера-установщики специально обучены непосредственно техниками компании Ультрастар для установки современного дополнительного оборудования на автомобили.
-                                </p>
-                                <p>
-                                    Охранные комплексы (сигнализации) Starline с февраля 2020 года базовая гарантия составляет 3 года. При условии регистрации оборудования на сайте my.starline.ru – гарантия 5 лет
-                                </p>
-                            </div>
-                            <div class="guarantee__row-img">
-                                <img src="{% static 'img/guarantee-img.png' %}" alt="guarantee">
-                            </div>
-                            <div class="guarantee__row-text">
-                                <p>
-                                    Мы являемся авторизованным сервисным центром Starline в Беларуси. Имеем сертификат на установку современных систем на современные автомобили. Наши мастера-установщики специально обучены непосредственно техниками компании Ультрастар для установки современного дополнительного оборудования на автомобили.
-                                </p>
-                                <p>
-                                    Охранные комплексы (сигнализации) Starline с февраля 2020 года базовая гарантия составляет 3 года. При условии регистрации оборудования на сайте my.starline.ru – гарантия 5 лет
-                                </p>
-                            </div>
-                        </div>
-                        <div class="guarantee__desc">
-                            <p class="guarantee__desc-text">
-                                И, самое главное, Ваш автомобиль <span>не лишается диллерской гарантии</span> после монтажа оборудования StarLine нашими специалистами.
-                            </p>
-                        </div>
-                        <div class="guarantee__link-wrap">
-                            <button class="guarantee__link btn-text" data-modal="advice">
-                                Оставить заявку
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="new-product">
-                <div class="container">
-                    <div class="new-product-wrap">
-                        <h2 class="new-product__title title">
-                            Новинки
-                        </h2>
-                        <div class="card-wrap">
-                            <div class="card">
-
-
-                            </div>
-                            <div class="card__info">
-                                <a href="#" class="card__link btn-text">
-                                    Смотреть больше товаров
-                                </a>
-                                <p class="card__text">
-                                    В каталоге <span> 356 позиций</span>, для <span> 214</span> марок автомобилей
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="protection">
-                <div class="container">
-                    <div class="protection-wrap">
-                        <p class="protection__text-back">
-                            Более 1000
-                        </p>
-                        <h3 class="protection__text">
-                            За годы успешной работы в Минске мы <span>защитили более 1000 автомобилей</span>, но всё также продолжаем постоянно совершенствоваться в сфере car-security. Прямо сейчас мы предлагаем самые выгодные условия по установке охранных систем Starline в Беларуси
-                        </h3>
-                        <p class="protection__text-back">
-                            Автомобилей
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section class="review">
-                <div class="container">
-                    <div class="review-card__column">
-
-
-                    </div>
-                    <div class="review__link-wrap">
-                        <a href="#" class="review__link btn-text">Смотреть больше работ</a>
-                        <p class="review__link-text">
-                            В портфолио <span class="review__lengh">25</span> подробно описанных кейсов
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section class="comment">
-                <div class="container">
-                    <div class="comment-wrap">
-                        <div class="comment__title title">
-                            Только живые отзывы от реальных людей
-                        </div>
-                         <div class="slider__content">
-                            <div class="slider-arrow left">
-                            </div>
-                            <div class="comment__slider-wrap">
-                                <div class="comment__slider">
-                                    <div class="comment__item">
-                                        <h3 class="slider__title">
-
-                                        </h3>
-                                        <p class="slider__text">
-
-                                        </p>
-                                        <p class="slider__contact">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-arrow right">
-                            </div>
-                        </div>
-                        <div class="comment__page">
-                             <span class="comment__page-first">1</span> из <span class="comment__page-last">23</span>
-                        </div>
-                        <div class="comment__link-wrap">
-                            <button class="comment__link btn-text" data-modal="review">
-                                Написать отзыв
-                            </button>
+                        <div class="product__pagination">
+                            <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
+                            <a href="#" class="pagintaion__link pagintaion__page">Контакты</a>
                         </div>
                     </div>
                 </div>
@@ -419,7 +158,7 @@
                         Отзыв успешно отправлен
                     </h3>
                     <p class="m-confirm__subtitle">
-                        Спасибо, отзыв появится на сайте в течение нескольких дней.
+                        Спасибо, отзыв появится на сайте в течение нескольких дней. 
                     </p>
                     <button class="m-confirm__btn btn-text">
                         Понятно, спасибо
@@ -444,8 +183,7 @@
                                         Время работы
                                     </div>
                                     <div class="work-time__block">
-                                        <img src="{% static 'img/icons/footer-time-img.svg' %}" class="work-item__img"
-                                             alt="work-time">
+                                        <img src="{% static 'img/icons/footer-time-img.svg' %}" class="work-item__img" alt="work-time">
                                         <div class="work-time__text">
                                             <p class="footer-text">
                                                 {{ item.time_work1 }}
@@ -460,21 +198,11 @@
                                     <div class="telefon__title footer-title">
                                         Телефоны
                                     </div>
-                                    <a href="tel:{{ item.phone1 }}" class="header__contact-flex telefon">
+                                    <a href="tel:{{ item.phone1 }}" class="telefon__link link-a1 footer-text">
                                         {{ item.phone1 }}
-                                        {% if item.logo1 %}
-                                        <img src="{{ item.logo1.url }}" width="24" height="24" alt="">
-                                        {% else %}
-                                        <img>
-                                        {% endif %}
                                     </a>
-                                    <a href="tel:{{ item.phone2 }}" class="header__contact-flex telefon">
+                                    <a href="tel:{{ item.phone2 }}" class="telefon__link link-mtc footer-text">
                                         {{ item.phone2 }}
-                                        {% if item.logo2 %}
-                                        <img src="{{ item.logo2.url }}" width="24" height="24" alt="">
-                                        {% else %}
-                                        <img>
-                                        {% endif %}
                                     </a>
                                 </div>
                             </div>
@@ -483,7 +211,7 @@
                                     <div class="mail__title footer-title">
                                         E-mail
                                     </div>
-                                    <a class="mail__link footer-text">
+                                    <a href="#" class="mail__link footer-text">
                                         {{ item.email }}
                                     </a>
                                 </div>
@@ -501,25 +229,24 @@
                                     Пишите нам в социальных сетях
                                 </div>
                                 <div class="social__link-wrap">
-                                    <a href="{{ item.social_info2 }}" class="social telegram"></a>
-                                    <a href="{{ item.social_info1 }}" class="social vk"></a>
+                                    <a href="{{ item.social_info2 }}" class="social__link telegram"></a>
+                                    <a href="{{ item.social_info1 }}" class="social__link vk"></a>
                                 </div>
                             </div>
                         </div>
-                        <form class="footer__form" method="POST">
-                            {% csrf_token %}
-                            <p class="form__title" id="name">
+                        <form action="#" class="footer__form">
+                            <p class="form__title">
                                 Имя
-                                {{ phone_form.name }}
                             </p>
-                            <p class="form__title" id="phone">
+                            <input type="text" placeholder="Иванов Иван Иванович" class="footer-text">
+                            <p class="form__title">
                                 Номер телефона
-                                {{ phone_form.phone }}
                             </p>
-                            <p class="form__title" id="message">
+                            <input type="tel" placeholder="+375" class="footer-tel">
+                            <p class="form__title">
                                 Опишите свой вопрос
-                                {{ phone_form.message }}
                             </p>
+                            <textarea name="form_footer" placeholder="Хочу установить иммобилайзер и не потерять гарантию диллера" required></textarea>
                             <input type="submit" value="Отправить" class="form__btn btn-text">
                             <p class="form__subtitle">
                                 Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.
@@ -565,7 +292,6 @@
                         <a href="{% url 'index' %}" class="nav__logo">
                             {{ item.name }}
                         </a>
-{% endfor %}
                         <nav class="nav__menu">
                             <ul class="nav__list">
                                 <li>
@@ -602,14 +328,10 @@
                 </div>
             </section>
         </footer>
+        {% endfor %}
     </div>
     <script src="{% static 'js/header.js' %}"></script>
-    <script src="{% static 'js/popular_card.js' %}"></script>
-    <script src="{% static 'js/new_product_card.js' %}"></script>
-    <script src="{% static 'js/reviews.js' %}"></script>
-    <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/modal_window.js' %}"></script>
-    <script src="{% static 'js/validation_main.js' %}" ></script>
     <script src="{% static 'js/validation_footer.js' %}"></script>
 </body>
 </html>

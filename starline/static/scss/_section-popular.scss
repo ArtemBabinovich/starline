@@ -1,6 +1,5 @@
-
 .popular {
-    padding: 56px 0;
+    padding: 32px 0;
   }
   
   .popular__links {
@@ -12,7 +11,13 @@
             justify-content: space-between;
     gap: 16px;
   }
-  
+  .popular__title{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 24px;
+  }
   .links__item {
     padding: 10px 12px;
     display: -webkit-box;
@@ -84,9 +89,14 @@
     transition: filter 0.3s linear 0s;
     transition: filter 0.3s linear 0s, -webkit-filter 0.3s linear 0s;
   }
-  
-  .popular__title {
-    margin-bottom: 24px;
+  .card__link{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
   }
   
   @media (max-width: 992px) {

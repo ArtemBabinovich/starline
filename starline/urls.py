@@ -3,10 +3,11 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from .views import layout, CatalogView, AllProductView, DetailProductView, CommentView, ActionView, \
-    OurWorkView, index, ContactsView
+    OurWorkView, index, ContactsView, contact
 
 urlpatterns = [
-    path('', index),
+    path('', index, name='index'),
+    path('contact/', contact, name='contact'),
     path('1/', layout, name='layout'),
     path('register/', CommentView.as_view(), name='comment'),
     path('contacts/', ContactsView.as_view(), name='contacts'),

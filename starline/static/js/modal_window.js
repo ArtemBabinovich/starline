@@ -6,7 +6,9 @@ const modal = document.querySelector('.modal');
 
 let userPhone = document.querySelector('.modal [type="tel"]');
     userPhone.addEventListener('input', () => {
-        if(!Number(userPhone.value.slice(-1))){
+        if(userPhone.value.slice(-1) === '0'){
+            userPhone.value = userPhone.value;
+        } else if(!Number(userPhone.value.slice(-1))){
             userPhone.value = userPhone.value.slice(0, -1);
         }
     });
@@ -23,6 +25,11 @@ function showModalWindow(e){
         userName.value = '';
         userPhone.value = '';
         modalTextArea.value = '';
+        userName.classList.remove('m-input-valid');
+        userName.classList.remove('m-input-error');
+        userPhone.classList.remove('m-input-valid');
+        userPhone.classList.remove('m-input-error');
+        document.body.classList.toggle('body-h');
 
     if(e.target.getAttribute('data-modal') === 'advice'){
         modalTitle.innerHTML = 'Заявка на бесплатную консультацию';
@@ -44,6 +51,7 @@ function showModalWindow(e){
 function closeModalWindow(e){
     if(e.target === modal || e.target === document.querySelector('.modal__cross') && modal.classList.contains('m-show')){
         modal.classList.remove('m-show');
+        document.body.classList.remove('body-h');
     }
 }
 
@@ -53,6 +61,7 @@ confirmModal = document.querySelector('.m-confirm__wrapper');
             || event.target === document.querySelector('.m-confirm__wrapper')
             || event.target === document.querySelector('.m-confirm__btn')){
                 confirmModal.classList.remove('m-confirm-show');
+                document.body.classList.remove('body-h');
                 userPhone.value = '';
                 userName.value = '';
         }
@@ -83,21 +92,15 @@ function validationModalWindow(event){
             confirmModal.classList.add('m-confirm-show');
         }
     } else{
-        if(userName.value == '' && userPhone.value == '' || userPhone.value == '+375'){
-            userName.style.border = '1px solid #EE505A';
-            userName.style.boxShadow = 'none';
-            userPhone.style.border = '1px solid #EE505A';
-            userPhone.style.boxShadow = 'none';
-        }
         if(userName.value != ''){
-            userName.style.border = '1px solid #6C86E2';
-            userPhone.style.border = '1px solid #EE505A';
-            userPhone.style.boxShadow = 'none';
-        } 
-        if (userName.value == '' && userPhone.value != ''){
-            userName.style.border = '1px solid #EE505A';
-            userName.style.boxShadow = 'none';
-            userPhone.style.border = '1px solid #6C86E2';
+            userName.classList.add('m-input-valid');
+        } else{
+            userName.classList.add('m-input-error');
+        }
+        if(userPhone.value != ''){
+            userPhone.classList.add('m-input-valid');
+        } else{
+            userPhone.classList.add('m-input-error');
         }
     }
 }

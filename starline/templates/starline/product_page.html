@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>StarLine</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header__block">
+                <div class="header__old">
+                    <div class="container">
+                        <div class="header__old-wrap">
+                            <p>
+                                Версию сайта со старым дизайном оставили доступной по ссылке правее
+                            </p>
+                            <a href="#" class="old-link">
+                                Перейти на старый сайт
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__context">
+                    <div class="container">
+                        <div class="header__context-wrap">
+                            <a href="#" class="header__logo">
+                                StarLine-alarm
+                            </a>
+                            <div class="header__hours">
+                                <p class="header__contact-flex weekday">
+                                    Пн-Пт 10:00 - 19:00
+                                </p>
+                                <p class="weekend">
+                                    Сб-Вс 10:00 - 14:00
+                                </p>
+                            </div>
+                            <div class="header__contact">
+                                <a href="#" class="header__contact-flex telefon">
+                                    +375 44 975 28 40
+                                </a>
+                                <p class="header__contact-flex adress">
+                                    г.Минск ул. Брестская, 34 
+                                </p>
+                            </div>
+                            <div class="header__social">
+                                <a href="#" class="social telegram"></a>
+                                <a href="#" class="social vk"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-wrap">
+                    <div class="container">
+                        <div class="header">
+                            <a href="#" class="header__logo logo-desktop">
+                                StarLine-alarm
+                            </a>
+                            <div class="header__burger">
+                                <span></span>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="menu__list">
+                                    <li>
+                                        <a href="#" class="list__link">Каталог</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="list__link">Наши работы</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="list__link">Акции и скидки</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="list__link">О сервисе</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact' %}" class="list__link">Контакты</a>
+                                    </li>
+                                </ul>
+                                <div class="header__contact-mob">
+                                    <a href="#" class="telefon">
+                                        +375 44 975 28 40
+                                    </a>
+                                    <div class="header__hours">
+                                        <p class="weekday">
+                                            Пн-Пт 10:00 - 19:00
+                                        </p>
+                                        <p class="weekend">
+                                            Сб-Вс 10:00 - 14:00
+                                        </p>
+                                    </div>
+                                    <p class="adress">
+                                        г.Минск ул. Брестская, 34 
+                                    </p>
+                                    <div class="header__social">
+                                        <a href="#" class="social telegram"></a>
+                                        <a href="#" class="social vk"></a>
+                                    </div>
+                                </div>
+                                <button class="header__advice" data-modal="advice">
+                                    Бесплатная консультация
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="main">
+                <div class="container">
+                    <div class="main-wrap">
+                        <div class="product__pagination">
+                            <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
+                            <a href="#" class="pagintaion__link">Каталог</a>
+                            <a href="#" class="pagintaion__link pagintaion__page">StarLine S96 V2 BT GSM</a>
+                        </div>
+                        <div class="product">
+                            <div class="product__block">
+                                <div class="product__features">
+                                    <div class="features__img">
+                                        <img src="{% static 'img/features_product-img.png' %}" alt="StarLine">
+                                    </div>
+                                    <div class="features__about">
+                                        <h3 class="features__subtitle">
+                                            Умный многоуровневый охранно-телематический комплекс.
+                                        </h3>
+                                        <h2 class="features__title">
+                                            Включает в себя 7 рубежей защиты:
+                                        </h2>
+                                        <ul class="features__list">
+                                            <li>
+                                                Надежная охрана периметра с информированием на смартфон
+                                            <li>
+                                                Умная авторизация владельца по персональной метке на основе технологии Bluetooth Smart
+                                            </li>
+                                            <li>
+                                                Электромеханическая защита капота
+                                            </li>
+                                            <li>
+                                                Умная беспроводная блокировка двигателя
+                                            </li>
+                                            <li>
+                                                Бесплатный online мониторинг
+                                            </li>
+                                            <li>
+                                                Автономный поисковый маяк
+                                            </li>
+                                            <li>
+                                                Гарантия финансовой безопасности:
+                                            </li>
+                                            </li>
+                                        </ul>
+                                        <p class="features__text">
+                                            НПО СтарЛайн дополнительно к страховым выплатам прибавит еще 75 000 рублей в случае угона/хищения транспортного средства, оборудованного многоуровневым охранно-телематическим комплексом StarLine Победит S96 v2.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="product__tabs">
+                                    <p class="tabs__text tab-choice">
+                                        Характеристики
+                                    </p>
+                                    <p class="tabs__text">
+                                        Инструкции
+                                    </p>
+                                </div>
+                                <div class="product__perfomance">
+                                    <h3 class="perfomance__title">
+                                        Характеристики StarLine S96 V2 BT GSM
+                                    </h3>
+                                    <ul class="perfomance__list">
+                                        <li class="perfomance__item">
+                                            <div class="perfomance__circle">1</div>
+                                            <p class="perfomance-item__title">
+                                                Умная авторизация
+                                            </p>
+                                            <p class="perfomance-item__text">
+                                                Только владелец получает разрешение на поездку после авторизации по персональной метке*
+                                            </p>
+                                            <span>
+                                                *Метку можно приобрести отдельно
+                                            </span>
+                                        </li>
+                                        <li class="perfomance__item">
+                                            <div class="perfomance__circle">2</div>
+                                            <p class="perfomance-item__title">
+                                                Умный бесплатный мониторинг
+                                            </p>
+                                            <p class="perfomance-item__text">
+                                                С помощью простого и удобного мониторинга starline.online вы сможете с точностью до нескольких метров узнать местонахождение своего автомобиля, посмотреть маршрут передвижения
+                                            </p>
+                                        </li>
+                                        <li class="perfomance__item">
+                                            <div class="perfomance__circle">3</div>
+                                            <p class="perfomance-item__title">
+                                                Универсальность
+                                            </p>
+                                            <p class="perfomance-item__text">
+                                                Удобство интеграции в бортовую сеть легкового автомобиля (+12V) и грузового транспорта (+24V).
+                                            </p>
+                                        </li>
+                                        <li class="perfomance__item">
+                                            <div class="perfomance__circle">4</div>
+                                            <p class="perfomance-item__title">
+                                                Гиперчувствительность
+                                            </p>
+                                            <p class="perfomance-item__text">
+                                                Уникальная GPS-ГЛОНАСС антенна обеспечивает сверхчувствительность и почти моментальное определение точных координат даже в самых сложных условиях
+                                            </p>
+                                        </li>
+                                        <li class="perfomance__item">
+                                            <div class="perfomance__circle">5</div>
+                                            <p class="perfomance-item__title">
+                                                Умная автодиагностика
+                                            </p>
+                                            <p class="perfomance-item__text">
+                                                Экономьте на диагностике транспортного средства — получайте информацию о состоянии автомобиля на мобильный телефон в приложении StarLine или на мониторинговом сайте starline.online
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <aside class="product__info">
+                                <h3 class="info__title">
+                                    StarLine S96 V2 BT GSM
+                                </h3>
+                                <p class="info__text">
+                                    Охранно-телематический комплекс
+                                </p>
+                                <div class="info__equipment">
+                                    <p class="info__equipment-text">
+                                        Оборудование:
+                                    </p>
+                                    <p class="info__equipment-price">
+                                        435 BYN
+                                    </p>
+                                </div>
+                                <div class="info__plant">
+                                    <p class="info__plant-text">
+                                        Установка:
+                                    </p>
+                                    <p class="info__plant-price">
+                                        435 BYN
+                                    </p>
+                                </div>
+                                <button class="info__btn" data-modal="advice">
+                                    Оставить заявку
+                                </button>
+                                <p class="info__tel">Или звоните</p>
+                                <a href="#" class="info__tel-link a1">
+                                    +375(29) 975 28 40
+                                </a>
+                                <a href="#" class="info__tel-link mts">
+                                    +375(29) 504 13 89
+                                </a>
+                            </aside>
+                        </div>
+                        <section class="popular">
+                            <div class="container">
+                                <h2 class="popular__title title">
+                                    Популярные товары
+                                </h2>
+                                <div class="card-wrap">
+                                    <div class="card">
+                                        <a href="#" class="card__item">
+                                            <div class="item__choice">
+                                                Выбор большинства
+                                            </div>
+                                            <div class="item__img-wrap">
+                                                <img src="{% static 'img/card-img-1.png' %}" alt="StarLine" class="item__img">
+                                            </div>
+                                            <p class="item__title">
+                                                StarLine Победит B97
+                                            </p>
+                                            <p class="item__subtitle">
+                                                Умный многоуровневый охранно-телематический комплекс
+                                            </p>
+                                            <p class="item__presence presence-green">
+                                                Есть в наличии
+                                            </p>
+                                            <div class="item__equipment">
+                                                <p class="item__equipment-text">
+                                                    Оборудование:
+                                                </p>
+                                                <p class="item__equipment-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                            <div class="item__plant">
+                                                <p class="item__plant-text">
+                                                    Установка:
+                                                </p>
+                                                <p class="item__plant-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="card__item">
+                                            <div class="item__choice">
+                                                Выбор большинства
+                                            </div>
+                                            <div class="item__img-wrap">
+                                                <img src="{% static 'img/card-img-2.png' %}" alt="StarLine" class="item__img">
+                                            </div>
+                                            <p class="item__title">
+                                                StarLine Победит B97
+                                            </p>
+                                            <p class="item__subtitle">
+                                                Умный многоуровневый охранно-телематический комплекс
+                                            </p>
+                                            <p class="item__presence presence-orange">
+                                                Под заказ
+                                            </p>
+                                            <div class="item__equipment">
+                                                <p class="item__equipment-text">
+                                                    Оборудование:
+                                                </p>
+                                                <p class="item__equipment-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                            <div class="item__plant">
+                                                <p class="item__plant-text">
+                                                    Установка:
+                                                </p>
+                                                <p class="item__plant-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="card__item">
+                                            <div class="item__choice">
+                                                Выбор большинства
+                                            </div>
+                                            <div class="item__img-wrap">
+                                                <img src="{% static 'img/card-img-3.png' %}" alt="StarLine" class="item__img">
+                                            </div>
+                                            <p class="item__title">
+                                                StarLine Победит B97
+                                            </p>
+                                            <p class="item__subtitle">
+                                                Умный многоуровневый охранно-телематический комплекс
+                                            </p>
+                                            <p class="item__presence presence-red">
+                                                Нет в наличии
+                                            </p>
+                                            <div class="item__equipment">
+                                                <p class="item__equipment-text">
+                                                    Оборудование:
+                                                </p>
+                                                <p class="item__equipment-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                            <div class="item__plant">
+                                                <p class="item__plant-text">
+                                                    Установка:
+                                                </p>
+                                                <p class="item__plant-price">
+                                                    227 BYN
+                                                </p>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="card__item">
+                                            <div class="item__choice">
+                                                Выбор большинства
+                                            </div>
+                                            <div class="item__img-wrap">
+                                                <img src="{% static 'img/card-img-4.png' %}" alt="StarLine" class="item__img">
+                                            </div>
+                                            <p class="item__title">
+                                                StarLine Победит B97
+                                            </p>
+                                            <p class="item__subtitle">
+                                                Умный многоуровневый охранно-телематический комплекс
+                                            </p>
+                                            <p class="item__presence presence-green">
+                                                Есть в наличии
+                                            </p>
+                                            <div class="item__equipment">
+                                                <p class="item__equipment-text">
+                                                    Оборудование:
+                                                </p>
+                                                <p class="item__equipment-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                            <div class="item__plant">
+                                                <p class="item__plant-text">
+                                                    Установка:
+                                                </p>
+                                                <p class="item__plant-price">
+                                                    435 BYN
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card__info">
+                                        <a href="#" class="card__link btn-text">
+                                            Смотреть больше товаров
+                                        </a>
+                                        <p class="card__text">
+                                            В каталоге <span>356 позиций</span>, для <span>214</span> марок автомобилей
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <div class="modal">
+                <div class="modal__form-wrap">
+                    <div class="modal__cross"></div>
+                    <h3 class="modal__title">
+                        Заявка на бесплатную консультацию
+                    </h3>
+                    <p class="modal__subtitle">
+                        Технический специалист перезвонит Вам в течение 10 минут и ответит на все вопросы
+                    </p>
+                    <form action="" class="modal__form">
+                        <p class="modal__input-title">
+                            Ваше имя
+                        </p>
+                        <input type="text" name="user__name" class="modal__input" placeholder="Иванов Иван Иванович">
+                        <p class="modal__input-title">
+                            Номер телефона
+                        </p>
+                        <input type="tel" name="user__tel" class="modal__input" placeholder="+375" pattern="[0-9]">
+                        <p class="modal__input-title m-display">
+                            Текст отзыва
+                        </p>
+                        <textarea class="modal__textarea m-display" name="comment__text" placeholder="Хочу установить иммобилайзер и не потерять гарантию диллера"></textarea>
+                        <input type="button" value="Оставить отзыв" class="modal__btn btn-text">
+                    </form>
+                </div>
+            </div>
+            <div class="m-confirm__wrapper">
+                <div class="m-confirm">
+                    <div class="m-confirm__cross"></div>
+                    <div class="m-confirm__img">
+                        <img src="{% static 'img/icons/m-confirm_img.svg' %}" alt="confirm">
+                    </div>
+                    <h3 class="m-confirm__title">
+                        Отзыв успешно отправлен
+                    </h3>
+                    <p class="m-confirm__subtitle">
+                        Спасибо, отзыв появится на сайте в течение нескольких дней. 
+                    </p>
+                    <button class="m-confirm__btn btn-text">
+                        Понятно, спасибо
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <section class="footer__navigation">
+                <div class="container">
+                    <div class="footer__nav">
+                        <a href="#" class="nav__logo">
+                            StarLine-alarm
+                        </a>
+                        <nav class="nav__menu">
+                            <ul class="nav__list">
+                                <li>
+                                    <a href="#" class="nav__link">Каталог</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav__link">Наши работы</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav__link">Акции и скидки</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav__link">О сервисе</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" class="nav__link">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="footer__author">
+                        <p>
+                            © Все права защищены 2022
+                        </p>
+                        <div class="author__wrap">
+                            <p>
+                                Цены на сайте указаны без НДС
+                            </p>
+                            <p>
+                                Дизайн: <a href="https://shkuratovdesigner.com/">shkuratovdesigner.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/modal_window.js' %}"></script>
+</body>
+</html>

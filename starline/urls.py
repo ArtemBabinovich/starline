@@ -3,14 +3,14 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from .views import layout, CatalogView, AllProductView, DetailProductView, CommentView, ActionView, \
-    OurWorkView, index, ContactsView, contact
+    OurWorkView, index, ContactsView, AboutCompanyView
 
 urlpatterns = [
     path('', index, name='index'),
-    path('contact/', contact, name='contact'),
+    path('contact/', ContactsView.as_view(), name='contact'),
+    path('about_company/', AboutCompanyView.as_view(), name='about_company'),
     path('1/', layout, name='layout'),
     path('register/', CommentView.as_view(), name='comment'),
-    path('contacts/', ContactsView.as_view(), name='contacts'),
     path('catalog/', CatalogView.as_view(), name='catalog_view'),
     path('action/', ActionView.as_view(), name='action'),
     path('our_work/', OurWorkView.as_view(), name='our_work'),

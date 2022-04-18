@@ -1,0 +1,131 @@
+.modal {
+    position: fixed;
+    top: -10000px;
+    padding: 10px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 110;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal__form-wrap {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 6px;
+    padding: 24px 32px;
+    max-width: 470px;
+}
+.modal__cross {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    &::before,
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #333333;
+    }
+    &::before{
+        transform: rotate(45deg);
+    }
+    &::after{
+        transform: rotate(-45deg);
+    }
+}
+.modal__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.modal__subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+}
+.modal__form{
+}
+.modal__input-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+    margin-bottom: 8px;
+}
+.modal__input {
+    width: 100%;
+    padding: 11px 10px;
+    background: #FFFFFF;
+    border: 1px solid #AAABAD;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+.modal__textarea{
+    resize: none;
+    display: block;
+    height: 93px;
+    overflow: scroll;
+    padding: 8px 11px;
+    width: 100%;
+    border: 1px solid #AAABAD;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.modal__textarea::placeholder{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #808185;
+}
+.modal__btn{
+    padding: 10px 20px;
+    background: #526ED3;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+.m-display{
+    display: none;
+}
+.m-show{
+    top: 0;
+}
+
+
+
+@media (max-width: 768px) {
+    .modal__form-wrap{
+        padding: 24px 16px;
+    }
+    .modal__title{
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    .modal__subtitle{
+        font-size: 14px;
+    }
+    .modal__input-title{
+        font-size: 14px;
+    }
+    .modal__textarea::placeholder{
+        font-size: 14px;
+    }
+    .modal__btn{
+        width: 100%;
+    }
+}

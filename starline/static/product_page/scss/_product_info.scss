@@ -1,0 +1,103 @@
+.product__info {
+    padding: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    align-self: flex-start;
+    min-width: 270px;
+}
+.info__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 8px;
+}
+.info__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+    margin-bottom: 16px;
+}
+.info__equipment {
+    display: flex;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 8px;
+}
+.info__equipment-text {
+    margin-right: 5px;
+}
+.info__equipment-price {
+    font-weight: 700;
+}
+.info__plant {
+    display: flex;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 16px;
+}
+.info__plant-text {
+    margin-right: 5px;
+}
+.info__plant-price {
+    font-weight: 700;
+    color: #34B41F;
+}
+.info__btn {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    background: #526ED3;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 16px;
+}
+.info__tel {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    color: #333333;
+    margin-bottom: 9px;
+}
+.info__tel-link {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    color: #333333;
+    display: flex;
+    align-items: center;
+}
+.a1 {
+    margin-bottom: 9px;
+
+    &::after{
+        content: url('../img/icons/footer-tel-a1-img.png');
+        margin-left: 6px;
+    }
+}
+.mts {
+    &::after{
+        content: url('../img/icons/footer-tel-mtc-img.png');
+        margin-left: 6px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .product__info{
+        padding: 16px;
+        width: 100%;
+    }
+}

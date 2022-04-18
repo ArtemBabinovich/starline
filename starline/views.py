@@ -65,7 +65,7 @@ def contact(request):
     context = {
         'contacts': contacts,
     }
-    return render(request, 'starline/contact.html', context)
+    return render(request, 'starline/about_company.html', context)
 
 
 def layout(request):

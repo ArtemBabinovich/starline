@@ -6,7 +6,7 @@ from rest_framework import viewsets
 import requests  # Не удалять нужен для Telegram bot
 
 from .forms import CommentForm, FeedbackForm, FeedbackFormCon
-from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security
+from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Company
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
     SecuritySerializer, CategoryWorkSerializer
 
@@ -60,14 +60,6 @@ def index(request):
     return render(request, 'starline/index.html', context=context)
 
 
-def contact(request):
-    contacts = Contacts.objects.all()
-    context = {
-        'contacts': contacts,
-    }
-    return render(request, 'starline/about_company.html', context)
-
-
 def layout(request):
     return render(request, 'layout.html')
 
@@ -83,8 +75,15 @@ class CommentView(CreateView):
 class ContactsView(ListView):
     """Контакты и информация"""
     model = Contacts
-    template_name = 'contacts.html'
+    template_name = 'starline/contact.html'
     context_object_name = 'contacts'
+
+
+class AboutCompanyView(ListView):
+    """О компании"""
+    model = Company
+    template_name = 'starline/about_company.html'
+    context_object_name = 'company'
 
 
 class ActionView(ListView):

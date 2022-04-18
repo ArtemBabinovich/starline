@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/null_for_templates.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'contacts/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'contacts/css/style.css' %}">
     <title>StarLine</title>
 </head>
 <body>
@@ -76,7 +76,7 @@
                                         <a href="#" class="list__link">Акции и скидки</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="list__link">О сервисе</a>
+                                        <a href="{% url 'about_company' %}" class="list__link">О сервисе</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'contact' %}" class="list__link">Контакты</a>
@@ -117,7 +117,7 @@
                     <div class="main-wrap">
                         <div class="product__pagination">
                             <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
-                            <a href="#" class="pagintaion__link pagintaion__page">Контакты</a>
+                            <a href="{% url 'contact' %}" class="pagintaion__link pagintaion__page">Контакты</a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                                     <a href="#" class="nav__link">Акции и скидки</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav__link">О сервисе</a>
+                                    <a href="{% url 'about_company' %}" class="nav__link">О сервисе</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'contact' %}" class="nav__link">Контакты</a>

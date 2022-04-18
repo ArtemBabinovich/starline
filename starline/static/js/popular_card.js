@@ -7,7 +7,7 @@
         .then(response => response.json())
         .then(popularCards => {
             popularCards.forEach((card, index) => {
-                if(index < 8){
+                if((index < 8 && window.innerWidth > 768) || (index < 4 && window.innerWidth < 768)){
 
                 //! создаем карточку товара
                 const cardItem = document.createElement('a');

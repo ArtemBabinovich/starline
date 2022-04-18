@@ -1,12 +1,12 @@
-const inputTel = document.querySelectorAll('[type="tel"]');
-    inputTel.forEach(elem => elem.addEventListener('input', inputTelValue));
-    inputTel.forEach(elem => elem.addEventListener('focus', inputTelValue));
-
-function inputTelValue(){
-    this.value = '+375' + this.value.slice(4);
-}
 //! input main!!!
 const mainInput = document.querySelector('.main__input');
+    mainInput.addEventListener('input', () => {
+        if(mainInput.value.slice(-1) === '0'){
+            mainInput.value = mainInput.value;
+        } else if(!Number(mainInput.value.slice(-1))){
+            mainInput.value = mainInput.value.slice(0, -1);
+        }
+    });
 //! модальное окно подтверждения
 const confirmModal = document.querySelector('.m-confirm__wrapper');
 //! текст модального окна подтверждения
@@ -18,7 +18,8 @@ confirmModal.addEventListener('click', (event) => {
         || event.target === document.querySelector('.m-confirm__wrapper')
         || event.target === document.querySelector('.m-confirm__btn')){
             confirmModal.classList.remove('m-confirm-show');
-            mainInput.classList.remove('m-input-error')
+            mainInput.classList.remove('m-input-error');
+            document.body.classList.remove('body-h');
     }
 });
 
@@ -29,32 +30,27 @@ const mainBtn = document.querySelector('.main__btn');
         let re = /^((80|\+375)?)(25|33|44|29)(\d{7})$/;
         let valid = re.test(mainInput.value);
 
+        const mainText = document.querySelector('.main__text');
+
         if(valid){
             confirmModalTitle.innerHTML = 'Мы получили вашу заявку';
             confirmModalText.innerHTML = 'Наш технический специалист перезвонит вам в течение 8 минут';
             confirmModal.classList.add('m-confirm-show');
+            mainText.classList.remove('not-valid-text');
+            mainText.innerHTML = 'Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.';
             mainInput.value = '';
+            document.body.classList.add('body-h');
         } else if(mainInput.value != ''){
+            mainText.innerHTML = 'Введите номер в формате +375__';
+            mainText.classList.add('not-valid-text');
             mainInput.classList.add('m-input-error');
         } 
         else{
+            mainText.innerHTML = 'Перезвоним в течении 8 минут и наш технический эксперт ответит на все ваши вопросы.';
             mainInput.classList.remove('m-input-error');
+            mainText.classList.remove('not-valid-text');
         }
     })
 
-
-// const wrapper = document.querySelector('.wrapper');
-//     wrapper.addEventListener('click', validPhone);
-
-// function validPhone(event) {
-//     if(event.target.tagName === 'BUTTON')
-//     event.preventDefault();
-//     let re = /^((80|\+375)?)(25|33|44|29)(\d{7})$/;
-//     let myPhone = event.target.previousElementSibling.value; 
-//     let valid = re.test(myPhone); 
-//     if (valid){
-//         console.log(111)
-//     }
-// }
 
 

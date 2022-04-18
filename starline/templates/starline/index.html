@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-{% for item in contacts %}
+                {% for item in contacts %}
                 <div class="header__context">
                     <div class="container">
                         <div class="header__context-wrap">
@@ -55,7 +55,8 @@
                         </div>
                     </div>
                 </div>
-
+                {% endfor %}
+                {% for item in contacts %}
                 <div class="header-wrap">
                     <div class="container">
                         <div class="header">
@@ -110,6 +111,7 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </header>
         <main>
@@ -428,6 +430,7 @@
             </div>
         </main>
         <footer>
+            {% for item in contacts %}
             <section class="footer">
                 <div class="container">
                     <div class="footer-wrap">
@@ -528,9 +531,12 @@
                     </div>
                 </div>
             </section>
+            {% endfor %}
+            {% for item in contacts %}
             <section class="footer__map">
                 {{ item.maps|safe }}
             </section>
+            {% endfor %}
             <section class="footer__about">
                 <div class="container">
                     <h2 class="about__title title">
@@ -562,10 +568,11 @@
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
+                        {% for item in contacts %}
                         <a href="{% url 'index' %}" class="nav__logo">
                             {{ item.name }}
                         </a>
-{% endfor %}
+                        {% endfor %}
                         <nav class="nav__menu">
                             <ul class="nav__list">
                                 <li>
@@ -581,7 +588,7 @@
                                     <a href="#" class="nav__link">О сервисе</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'contacts' %}" class="nav__link">Контакты</a>
+                                    <a href="{% url 'contact' %}" class="nav__link">Контакты</a>
                                 </li>
                             </ul>
                         </nav>

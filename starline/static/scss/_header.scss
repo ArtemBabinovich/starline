@@ -1,3 +1,7 @@
+// ! ---------------- ! //
+
+// ! ------------ ! //
+
 .header__block {
     position: relative;
     z-index: 5;
@@ -286,19 +290,6 @@
     -webkit-transition: background 0.3s linear 0s;
     transition: background 0.3s linear 0s;
   }
-
-
-//! для header stiky //
-  .main-wrap{
-    padding: 16px 0 0 0;
-  }
-
-  .content{
-    padding-top: 60px;
-  }
-//? ------------------------- //
-
-
   
   @media (max-width: 1200px) {
     .sticky .header__advice {
@@ -332,16 +323,6 @@
   }
   
   @media (max-width: 768px) {
-    //! для header stiky !//
-    .content{
-      padding-top: 0;
-    }
-    .main-wrap {
-      padding: 49px 0 0 0;
-    }
-    // ????? --------- ?????? //
-
-
     .circle-back {
       display: none;
     }

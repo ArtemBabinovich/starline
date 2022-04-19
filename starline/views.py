@@ -20,7 +20,7 @@ chat_id = 821421337
 
 def index(request):
     contacts = Contacts.objects.all()
-
+    products = Product.objects.count()
     """Телеграм бот из формы для заявки"""
     phone_form = FeedbackForm()
     if request.method == 'POST':
@@ -53,23 +53,12 @@ def index(request):
                       'parse_mode': 'markdown'}).json()
             return render(request, template_name='starline/index.html')
     context = {
+        'products': products,
         'contacts': contacts,
         'phone_form': phone_form,
         'phone_con': phone_con,
     }
     return render(request, 'starline/index.html', context=context)
-
-
-def layout(request):
-    return render(request, 'layout.html')
-
-
-class CommentView(CreateView):
-    """Создание отзыва"""
-    model = Comment
-    template_name = 'form_comment.html'
-    form_class = CommentForm
-    success_url = reverse_lazy('layout')
 
 
 class ContactsView(ListView):
@@ -84,6 +73,11 @@ class AboutCompanyView(ListView):
     model = Company
     template_name = 'starline/about_company.html'
     context_object_name = 'company'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contacts'] = Contacts.objects.all()
+        return context
 
 
 class ActionView(ListView):

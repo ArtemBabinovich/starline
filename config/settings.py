@@ -154,40 +154,37 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_BROWSE_SHOW_DIRS = True  # позволяет группировать изображения по каталогу, в котором они хранятся
-CKEDITOR_RESTRICT_BY_DATE = True  # группировать загруженные файлы по годам/месяцам/дням
-CKEDITOR_FORCE_JPEG_COMPRESSION = True  # конвертировать и сжимать изображения в jpeg, чтобы сэкономить место на диске
-
+CKEDITOR_UPLOAD_PATH = ''
+CKEDITOR_RESTRICT_BY_DATE = True
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            [
-                'Styles',
-                'Format',
-                'Font',
-                'FontSize',
-                'Undo',
-                'Redo',
-                'TextColor',
-                'BGColor',
-                'Bold',
-                'Italic',
-                'Underline',
-                'NumberedList',
-                'BulletedList',
-                'JustifyLeft',
-                'JustifyCenter',
-                'JustifyRight',
-                'JustifyBlock',
-                'Smiley',
-            ]
+        'skin': 'moono',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic']
         ],
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-']},
+            {'name': 'insert',
+             'items': ['Image', 'Table', 'Smiley', 'SpecialChar']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',
+        'tabSpaces': 4,
     },
-    'customimage': {
-        'toolbar': 'Customimage',
-        'toolbar_Customimage': [{'items': ['Image']}],
+    'custom': {
+        'skin': 'moono',
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'insert',
+             'items': ['Image']},
 
+        ],
+        'toolbar': 'YourCustomToolbarConfig',
     }
 }

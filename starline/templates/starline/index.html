@@ -2,12 +2,14 @@
 {% load static %}
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/null_for_templates.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>StarLine</title>
+    {% endblock %}
 </head>
 <body>
     <div class="wrapper">
@@ -115,6 +117,7 @@
             </div>
         </header>
         <main>
+            {% block main %}
             <section class="main">
                 <div class="main__circle circle-white"></div>
                 <div class="main__circle circle-back"></div>
@@ -247,9 +250,11 @@
                                 <a href="#" class="card__link btn-text">
                                     Смотреть больше товаров
                                 </a>
+
                                 <p class="card__text">
-                                    В каталоге <span> 356 позиций </span>, для <span> 214 </span> марок автомобилей
+                                    В каталоге {{ products }} позиций, для 214 марок автомобилей
                                 </p>
+
                             </div>
                         </div>
                     </div>
@@ -310,9 +315,11 @@
                                 <a href="#" class="card__link btn-text">
                                     Смотреть больше товаров
                                 </a>
+
                                 <p class="card__text">
-                                    В каталоге <span> 356 позиций</span>, для <span> 214</span> марок автомобилей
+                                    В каталоге {{ products }} позиций, для 214 марок автомобилей
                                 </p>
+
                             </div>
                         </div>
                     </div>
@@ -428,8 +435,11 @@
                     </button>
                 </div>
             </div>
+            {% endblock %}
         </main>
+
         <footer>
+         {% block footer %}
             {% for item in contacts %}
             <section class="footer">
                 <div class="container">
@@ -463,21 +473,12 @@
                                     <div class="telefon__title footer-title">
                                         Телефоны
                                     </div>
-                                    <a href="tel:{{ item.phone1 }}" class="header__contact-flex telefon">
+                                    <a href="tel:{{ item.phone1 }}" class="telefon__link link-a1 footer-text">
                                         {{ item.phone1 }}
-                                        {% if item.logo1 %}
-                                        <img src="{{ item.logo1.url }}" width="24" height="24" alt="">
-                                        {% else %}
-                                        <img>
-                                        {% endif %}
                                     </a>
-                                    <a href="tel:{{ item.phone2 }}" class="header__contact-flex telefon">
+                                    <a href="tel:{{ item.phone2 }}" class="telefon__link link-mtc footer-text">
                                         {{ item.phone2 }}
-                                        {% if item.logo2 %}
-                                        <img src="{{ item.logo2.url }}" width="24" height="24" alt="">
-                                        {% else %}
-                                        <img>
-                                        {% endif %}
+
                                     </a>
                                 </div>
                             </div>
@@ -531,7 +532,9 @@
                     </div>
                 </div>
             </section>
+
             {% endfor %}
+        {% endblock %}
             {% for item in contacts %}
             <section class="footer__map">
                 {{ item.maps|safe }}
@@ -608,8 +611,11 @@
                     </div>
                 </div>
             </section>
+
         </footer>
+
     </div>
+    {% block script %}
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/popular_card.js' %}"></script>
     <script src="{% static 'js/new_product_card.js' %}"></script>
@@ -618,5 +624,6 @@
     <script src="{% static 'js/modal_window.js' %}"></script>
     <script src="{% static 'js/validation_main.js' %}" ></script>
     <script src="{% static 'js/validation_footer.js' %}"></script>
+{% endblock %}
 </body>
 </html>

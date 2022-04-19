@@ -8,8 +8,7 @@ import requests  # Не удалять нужен для Telegram bot
 from .forms import CommentForm, FeedbackForm, FeedbackFormCon
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Company
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
-    SecuritySerializer, CategoryWorkSerializer
-
+    SecuritySerializer, CategoryWorkSerializer, ProductSerializer
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -125,7 +124,6 @@ class DetailProductView(DetailView):
     model = Product
     template_name = 'starline/product_page.html'
     context_object_name = 'prod'
-    slug_url_kwarg = 'prod_slug'
 
 
 class CommentViewSet(viewsets.ReadOnlyModelViewSet):
@@ -180,3 +178,8 @@ class CategoryWorkViewSet(viewsets.ReadOnlyModelViewSet):
         )
     )
     serializer_class = CategoryWorkSerializer
+
+
+class ProductViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Product.objects.filter(published=True)
+    serializer_class = ProductSerializer

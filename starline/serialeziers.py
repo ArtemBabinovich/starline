@@ -20,7 +20,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['title', ]
 
 
-
 class CharacteristicSerializer(serializers.ModelSerializer):
     """Характеристика"""
 
@@ -28,6 +27,20 @@ class CharacteristicSerializer(serializers.ModelSerializer):
         model = Characteristic
         fields = ['title', 'description']
         depth = 1
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = [
+            'title',
+            'slug',
+            'price',
+            'price_install',
+            'image',
+            'presence',
+            'instruction',
+        ]
 
 
 class PopularProductSerializer(serializers.ModelSerializer):
@@ -44,8 +57,9 @@ class PopularProductSerializer(serializers.ModelSerializer):
             'image',
             'category',
             'presence',
+            'instruction',
         ]
-
+        depth = 1
 
 
 class NoveltiesProductSerializer(serializers.ModelSerializer):
@@ -62,6 +76,7 @@ class NoveltiesProductSerializer(serializers.ModelSerializer):
             'image',
             'category',
             'presence',
+            'instruction',
         ]
         depth = 1
 

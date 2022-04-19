@@ -111,6 +111,11 @@
                 </div>
             </section>
     {% endfor %}
+     {% for item in contacts %}
+            <section class="footer__map">
+                {{ item.maps|safe }}
+            </section>
+            {% endfor %}
 {% endblock %}
        {% block script %}
     <script src="{% static 'contacts/js/header.js' %}"></script>

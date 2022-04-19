@@ -125,6 +125,11 @@ class DetailProductView(DetailView):
     template_name = 'starline/product_page.html'
     context_object_name = 'prod'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contacts'] = Contacts.objects.all()
+        return context
+
 
 class CommentViewSet(viewsets.ReadOnlyModelViewSet):
     """

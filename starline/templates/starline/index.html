@@ -534,7 +534,7 @@
             </section>
 
             {% endfor %}
-        {% endblock %}
+
             {% for item in contacts %}
             <section class="footer__map">
                 {{ item.maps|safe }}
@@ -568,14 +568,15 @@
                     </div>
                 </div>
             </section>
+        {% endblock %}
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
-                        {% for item in contacts %}
+
                         <a href="{% url 'index' %}" class="nav__logo">
-                            {{ item.name }}
+                            StarLine-alarm
                         </a>
-                        {% endfor %}
+
                         <nav class="nav__menu">
                             <ul class="nav__list">
                                 <li>

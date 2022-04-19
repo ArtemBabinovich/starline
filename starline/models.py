@@ -1,10 +1,7 @@
-import re
-from ckeditor_uploader.fields import RichTextUploadingField
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils import timezone
 from slugify import slugify
+from ckeditor.fields import RichTextField
 
 
 class Security(models.Model):
@@ -23,7 +20,7 @@ class Security(models.Model):
 class Category(models.Model):
     """Категории комплексов"""
     title = models.CharField('Название категории комплекса', max_length=250)
-    slug = models.SlugField('Короткое название', unique=True, db_index=True, max_length=20, blank=True, null=True)
+    slug = models.SlugField('Короткое название', unique=True, db_index=True, max_length=20)
     security = models.ForeignKey(
         Security,
         related_name='categores',
@@ -66,8 +63,8 @@ class Product(models.Model):
         ["Нет в наличии", "Нет в наличии"]
     ]
     title = models.CharField('Название товара', max_length=250)
-    slug = models.CharField('Короткое название', max_length=20, unique=True, db_index=True, blank=True, null=True)
-    description = RichTextUploadingField('Описание')
+    slug = models.CharField('Короткое название', max_length=20, unique=True, db_index=True)
+    description = RichTextField('Описание')
     price = models.DecimalField('Цена оборудования', decimal_places=2, max_digits=7, blank=True, null=True)
     price_install = models.DecimalField('Цена установки', decimal_places=2, max_digits=7, blank=True, null=True)
     image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
@@ -100,8 +97,8 @@ class Product(models.Model):
 class Action(models.Model):
     """Акции и скидки"""
     title = models.CharField('Название акции', max_length=250)
-    description = RichTextUploadingField('Описание акции')
-    image = RichTextUploadingField('Изображение', blank=True, null=True, config_name='customimage')
+    description = RichTextField('Описание акции')
+    image = models.ImageField('Изображение', blank=True, null=True)
     published = models.BooleanField('Опубликовано', default=False)
 
     class Meta:
@@ -112,20 +109,11 @@ class Action(models.Model):
         return self.title
 
 
-def validate_phone(value):
-    validation_expression = r'^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$'
-    if not re.match(validation_expression, value):
-        raise ValidationError(
-            _('Номер телефона должен быть в формате +375(XX)XXX-XX-XX'),
-            code='invalid_phone_format'
-        )
-
-
 class Comment(models.Model):
     """Отзыв на работу"""
-    title = models.CharField('Заголовок отзыва', max_length=200)
+    title = models.CharField('Заголовок отзыва', max_length=200, blank=True, null=True)
     name = models.CharField('Имя отправителя отзыва', max_length=200, db_index=True)
-    numbers_phone = models.CharField('Номер телефона', max_length=17, validators=[validate_phone])
+    numbers_phone = models.CharField('Номер телефона', max_length=17)
     body = models.TextField('Содержимое комментария')
     pub_data = models.DateTimeField('Дата комментария', default=timezone.now)
     published = models.BooleanField('Опубликовано', default=False)
@@ -154,14 +142,14 @@ class OurWork(models.Model):
     )
     installation_time = models.CharField('Время установки', max_length=100)
     installation_price = models.CharField('Стоимость установки', max_length=100)
-    description_video = RichTextUploadingField('Описание видео', blank=True, null=True)
+    description_video = models.TextField('Описание видео', blank=True, null=True)
     url = models.TextField('Видео', help_text='Вставить ссылку с YouTube', blank=True, null=True)
-    description_image = RichTextUploadingField('Описание фото', blank=True, null=True)
-    image1 = models.ImageField('Основная картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    description_image = models.TextField('Описание фото', blank=True, null=True)
+    image1 = models.ImageField('Основная картинка', upload_to='image/%Y/%m/%d/')
     image2 = models.ImageField('Картинка 2', blank=True, null=True, upload_to='image/%Y/%m/%d/')
     image3 = models.ImageField('Картинка 3', blank=True, null=True, upload_to='image/%Y/%m/%d/')
     image4 = models.ImageField('Картинка 4', blank=True, null=True, upload_to='image/%Y/%m/%d/')
-    published = models.BooleanField('Опубликовано', default=False)
+    published = models.BooleanField('Опубликовано', default=True)
 
     class Meta:
         verbose_name = 'Наши работы'
@@ -173,8 +161,8 @@ class OurWork(models.Model):
 
 class Feedback(models.Model):
     """Обратная связь"""
-    name = models.CharField('Имя', max_length=100)
-    phone = models.CharField('Номер телефона', max_length=50, validators=[validate_phone])
+    name = models.CharField('Имя', max_length=100, blank=True, null=True)
+    phone = models.CharField('Номер телефона', max_length=50)
     message = models.TextField('Опишите свой вопрос', blank=True, null=True)
     published = models.BooleanField('Обработано', default=False)
 
@@ -188,26 +176,13 @@ class Feedback(models.Model):
 
 class Contacts(models.Model):
     """Контакты и информация"""
-    name = models.CharField('Название сервиса', max_length=200, blank=True, null=True)
+    name = models.CharField('Название сервиса', max_length=200)
     address = models.CharField('Адрес сервиса', max_length=250)
-    logo1 = models.ImageField(
-        'Логотип оператора связи 1',
-        blank=True,
-        null=True,
-        upload_to='image/logo_phone/%Y/%m/%d/',
-    )
-    phone1 = models.CharField('Номер телефона сервиса 1', max_length=50, blank=True, null=True)
-    logo2 = models.ImageField(
-        'Логотип оператора связи 2',
-        blank=True,
-        null=True,
-        upload_to='image/logo_phone/%Y/%m/%d/',
-    )
-    phone2 = models.CharField('Номер телефона сервиса 2', max_length=50, blank=True, null=True)
+    phone1 = models.CharField('Номер телефона А1', max_length=50, blank=True, null=True)
+    phone2 = models.CharField('Номер телефона МТС', max_length=50, blank=True, null=True)
     email = models.CharField('Электронная почта', max_length=200, blank=True, null=True)
-    social_info1 = models.CharField('Социальная сеть 1', max_length=200, blank=True, null=True)
-    social_info2 = models.CharField('Социальная сеть 2', max_length=200, blank=True, null=True)
-    social_info3 = models.CharField('Социальная сеть 3', max_length=200, blank=True, null=True)
+    social_info1 = models.CharField('Социальная сеть VK', max_length=200, blank=True, null=True)
+    social_info2 = models.CharField('Социальная сеть Telegram', max_length=200, blank=True, null=True)
     time_work1 = models.CharField('Время работы (будни)', max_length=100, blank=True, null=True)
     time_work2 = models.CharField('Время работы (выходные)', max_length=100, blank=True, null=True)
     maps = models.TextField(
@@ -222,15 +197,19 @@ class Contacts(models.Model):
         verbose_name_plural = 'Контакты'
 
     def __str__(self):
-        return self.address
+        return self.name
 
 
 class Company(models.Model):
     """О компании"""
-    image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
-    description = RichTextUploadingField('Описание', blank=True, null=True)
-    published = models.BooleanField('Опубликовано', default=False)
+    image1 = models.ImageField('Картинка1', upload_to='image/%Y/%m/%d/')
+    image2 = models.ImageField('Картинка2', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    image3 = models.ImageField('Картинка3', blank=True, null=True, upload_to='image/%Y/%m/%d/')
+    description = RichTextField('Описание')
 
     class Meta:
         verbose_name = 'О компании'
         verbose_name_plural = 'О компании'
+
+    def __str__(self):
+        return self.description

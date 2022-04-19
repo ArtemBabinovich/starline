@@ -33,7 +33,7 @@ class ProductAdmin(admin.ModelAdmin):
         'novelties'
     )
     list_display_links = ('title',)
-    list_editable = ('price', 'price_install', 'presence', 'published')
+    list_editable = ('price', 'price_install', 'presence', 'popular', 'novelties', 'published')
 
     def image_img(self, obj):
         if obj.image:
@@ -62,16 +62,19 @@ class OurWorkAdmin(admin.ModelAdmin):
         'title',
         'installation_time',
         'installation_price',
-        'description_video',
-        'url',
-        'description_image',
-        'image1',
-        'image2',
-        'image3',
-        'image4',
+        'image_img',
         'published',
     )
     list_filter = ('title',)
+    list_display_links = ('title',)
+
+    def image_img(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image1.url}" width="80" height="80">')
+        else:
+            return 'Нет изображения'
+
+    image_img.short_description = 'Изображение'
 
 
 class FeedbackAdmin(admin.ModelAdmin):
@@ -90,12 +93,13 @@ class ContactsAdmin(admin.ModelAdmin):
         'time_work1',
         'time_work2',
     )
-    list_display_links = ('address',)
+    list_display_links = ('name',)
     list_editable = ('time_work1', 'time_work2')
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('image', 'description')
+    list_display = ('description', 'image1', 'image2', 'image3')
+    list_display_links = ('description',)
 
 
 admin.site.register(Company, CompanyAdmin)

@@ -123,7 +123,7 @@ class AllProductView(ListView):
 class DetailProductView(DetailView):
     """Детализация продукта"""
     model = Product
-    template_name = 'catalog.html'
+    template_name = 'starline/product_page.html'
     context_object_name = 'prod'
     slug_url_kwarg = 'prod_slug'
 

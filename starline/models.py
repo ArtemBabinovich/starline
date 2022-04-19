@@ -68,7 +68,7 @@ class Product(models.Model):
     price = models.DecimalField('Цена оборудования', decimal_places=2, max_digits=7, blank=True, null=True)
     price_install = models.DecimalField('Цена установки', decimal_places=2, max_digits=7, blank=True, null=True)
     image = models.ImageField('Картинка', blank=True, null=True, upload_to='image/%Y/%m/%d/')
-    category = models.ManyToManyField(Category, related_name='cat', verbose_name='Категория')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='cat', verbose_name='Категория')
     presence = models.CharField('Наличие товара', max_length=200, choices=PRESENCE_CHOICES)
     characteristics = models.ManyToManyField(
         Characteristic,

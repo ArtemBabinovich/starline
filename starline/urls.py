@@ -13,7 +13,7 @@ urlpatterns = [
     path('action/', ActionView.as_view(), name='action'),
     path('our_work/', OurWorkView.as_view(), name='our_work'),
     path('catalog/<str:cat_slug>/', AllProductView.as_view(), name='all_product_view'),
-    path('catalog/<str:cat_slug>/<str:prod_slug>/', DetailProductView.as_view(), name='detail_product_view'),
+    path('catalog/<str:prod_slug>/', DetailProductView.as_view(), name='detail_product_view'),
 ]
 
 if settings.DEBUG:

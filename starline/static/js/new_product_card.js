@@ -11,6 +11,8 @@
 
                 //! создаем карточку товара
                 const cardItem = document.createElement('a');
+                    cardItem.setAttribute(
+                        'href', `https://starline.pythonanywhere.com/catalog/product/${card.slug}`);
                     cardItem.className = 'card__item';
 
                     //! функция создания текста о выборе
@@ -55,7 +57,7 @@
                     function createCardCategory(){
                         const cardCategory = document.createElement('p');
                             cardCategory.className = 'item__subtitle';
-                            cardCategory.innerHTML = card.category[0];
+                            cardCategory.innerHTML = card.category.title;
 
                         return cardCategory;
                     };

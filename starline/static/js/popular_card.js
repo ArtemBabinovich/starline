@@ -44,7 +44,7 @@
                     function createCardCategory(){
                         const cardCategory = document.createElement('p');
                             cardCategory.className = 'item__subtitle';
-                            cardCategory.innerHTML = card.category[0];
+                            cardCategory.innerHTML = card.category.title;
 
                         return cardCategory;
                     };

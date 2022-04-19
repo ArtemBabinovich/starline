@@ -21,10 +21,14 @@
                             <div class="product__block">
                                 <div class="product__features">
                                     <div class="features__img">
+                                        {% if prod.image %}
                                         <img src="{{ prod.image.url }}" alt="StarLine">
+                                        {% else %}
+                                        <img src="{% static 'product_page/img/features_product-img.png' %}" alt="StarLine">
+                                        {% endif %}
                                     </div>
                                     <div class="features__about">
-                                        {{ prod.description }}
+                                        {{ prod.description|safe }}
                                     </div>
                                 </div>
                                 <div class="product__tabs">

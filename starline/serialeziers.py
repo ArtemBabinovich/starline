@@ -18,7 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['title', ]
-        depth = 1
+
 
 
 class CharacteristicSerializer(serializers.ModelSerializer):
@@ -32,37 +32,31 @@ class CharacteristicSerializer(serializers.ModelSerializer):
 
 class PopularProductSerializer(serializers.ModelSerializer):
     """Популярный Товар"""
-    category = serializers.SlugRelatedField(
-        many=True,
-        read_only=True,
-        slug_field='title'
-    )
+    category = CategorySerializer(read_only=True)
 
     class Meta:
         model = Product
         fields = [
             'title',
+            'slug',
             'price',
             'price_install',
             'image',
             'category',
             'presence',
         ]
-        depth = 1
+
 
 
 class NoveltiesProductSerializer(serializers.ModelSerializer):
     """Новинка Товара"""
-    category = serializers.SlugRelatedField(
-        many=True,
-        read_only=True,
-        slug_field='title'
-    )
+    category = CategorySerializer(read_only=True)
 
     class Meta:
         model = Product
         fields = [
             'title',
+            'slug',
             'price',
             'price_install',
             'image',

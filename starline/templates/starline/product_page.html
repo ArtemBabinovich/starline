@@ -1,163 +1,30 @@
-<!DOCTYPE html>
+{% extends 'starline/index.html' %}
 {% load static %}
-<html lang="en">
-<head>
+{% block head %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'product_page/css/null_for_templates.css' %}">
     <link rel="stylesheet" href="{% static 'product_page/css/style.css' %}">
     <title>StarLine</title>
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-            <div class="header__block">
-                <div class="header__old">
-                    <div class="container">
-                        <div class="header__old-wrap">
-                            <p>
-                                Версию сайта со старым дизайном оставили доступной по ссылке правее
-                            </p>
-                            <a href="#" class="old-link">
-                                Перейти на старый сайт
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="header__context">
-                    <div class="container">
-                        <div class="header__context-wrap">
-                            <a href="#" class="header__logo">
-                                StarLine-alarm
-                            </a>
-                            <div class="header__hours">
-                                <p class="header__contact-flex weekday">
-                                    Пн-Пт 10:00 - 19:00
-                                </p>
-                                <p class="weekend">
-                                    Сб-Вс 10:00 - 14:00
-                                </p>
-                            </div>
-                            <div class="header__contact">
-                                <a href="#" class="header__contact-flex telefon">
-                                    +375 44 975 28 40
-                                </a>
-                                <p class="header__contact-flex adress">
-                                    г.Минск ул. Брестская, 34 
-                                </p>
-                            </div>
-                            <div class="header__social">
-                                <a href="#" class="social telegram"></a>
-                                <a href="#" class="social vk"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-wrap">
-                    <div class="container">
-                        <div class="header">
-                            <a href="#" class="header__logo logo-desktop">
-                                StarLine-alarm
-                            </a>
-                            <div class="header__burger">
-                                <span></span>
-                            </div>
-                            <nav class="header__menu">
-                                <ul class="menu__list">
-                                    <li>
-                                        <a href="#" class="list__link">Каталог</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="list__link">Наши работы</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="list__link">Акции и скидки</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="list__link">О сервисе</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'contact' %}" class="list__link">Контакты</a>
-                                    </li>
-                                </ul>
-                                <div class="header__contact-mob">
-                                    <a href="#" class="telefon">
-                                        +375 44 975 28 40
-                                    </a>
-                                    <div class="header__hours">
-                                        <p class="weekday">
-                                            Пн-Пт 10:00 - 19:00
-                                        </p>
-                                        <p class="weekend">
-                                            Сб-Вс 10:00 - 14:00
-                                        </p>
-                                    </div>
-                                    <p class="adress">
-                                        г.Минск ул. Брестская, 34 
-                                    </p>
-                                    <div class="header__social">
-                                        <a href="#" class="social telegram"></a>
-                                        <a href="#" class="social vk"></a>
-                                    </div>
-                                </div>
-                                <button class="header__advice" data-modal="advice">
-                                    Бесплатная консультация
-                                </button>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <main>
+{% endblock %}
+{% block main %}
             <section class="main">
                 <div class="container">
                     <div class="main-wrap">
                         <div class="product__pagination">
                             <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
                             <a href="#" class="pagintaion__link">Каталог</a>
-                            <a href="#" class="pagintaion__link pagintaion__page">StarLine S96 V2 BT GSM</a>
+                            <a href="#" class="pagintaion__link pagintaion__page">{{ prod.title }}</a>
                         </div>
                         <div class="product">
                             <div class="product__block">
                                 <div class="product__features">
                                     <div class="features__img">
-                                        <img src="{% static 'product_page/img/features_product-img.png' %}" alt="StarLine">
+                                        <img src="{{ prod.image.url }}" alt="StarLine">
                                     </div>
                                     <div class="features__about">
-                                        <h3 class="features__subtitle">
-                                            Умный многоуровневый охранно-телематический комплекс.
-                                        </h3>
-                                        <h2 class="features__title">
-                                            Включает в себя 7 рубежей защиты:
-                                        </h2>
-                                        <ul class="features__list">
-                                            <li>
-                                                Надежная охрана периметра с информированием на смартфон
-                                            <li>
-                                                Умная авторизация владельца по персональной метке на основе технологии Bluetooth Smart
-                                            </li>
-                                            <li>
-                                                Электромеханическая защита капота
-                                            </li>
-                                            <li>
-                                                Умная беспроводная блокировка двигателя
-                                            </li>
-                                            <li>
-                                                Бесплатный online мониторинг
-                                            </li>
-                                            <li>
-                                                Автономный поисковый маяк
-                                            </li>
-                                            <li>
-                                                Гарантия финансовой безопасности:
-                                            </li>
-                                            </li>
-                                        </ul>
-                                        <p class="features__text">
-                                            НПО СтарЛайн дополнительно к страховым выплатам прибавит еще 75 000 рублей в случае угона/хищения транспортного средства, оборудованного многоуровневым охранно-телематическим комплексом StarLine Победит S96 v2.
-                                        </p>
+                                        {{ prod.description }}
                                     </div>
                                 </div>
                                 <div class="product__tabs">
@@ -170,7 +37,7 @@
                                 </div>
                                 <div class="product__perfomance">
                                     <h3 class="perfomance__title">
-                                        Характеристики StarLine S96 V2 BT GSM
+                                        Характеристики {{ prod.title }}
                                     </h3>
                                     <ul class="perfomance__list">
                                         <li class="perfomance__item">
@@ -226,7 +93,7 @@
                             </div>
                             <aside class="product__info">
                                 <h3 class="info__title">
-                                    StarLine S96 V2 BT GSM
+                                    {{ prod.title }}
                                 </h3>
                                 <p class="info__text">
                                     Охранно-телематический комплекс
@@ -236,7 +103,7 @@
                                         Оборудование:
                                     </p>
                                     <p class="info__equipment-price">
-                                        435 BYN
+                                        {{ prod.price }} BYN
                                     </p>
                                 </div>
                                 <div class="info__plant">
@@ -244,7 +111,7 @@
                                         Установка:
                                     </p>
                                     <p class="info__plant-price">
-                                        435 BYN
+                                        {{ prod.price_install }} BYN
                                     </p>
                                 </div>
                                 <button class="info__btn" data-modal="advice">
@@ -456,12 +323,12 @@
                     </button>
                 </div>
             </div>
-        </main>
-        <footer>
+{% endblock %}
+{% block footer %}
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
-                        <a href="#" class="nav__logo">
+                        <a href="{% url 'index' %}" class="nav__logo">
                             StarLine-alarm
                         </a>
                         <nav class="nav__menu">
@@ -476,7 +343,7 @@
                                     <a href="#" class="nav__link">Акции и скидки</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav__link">О сервисе</a>
+                                    <a href="{% url 'about_company' %}" class="nav__link">О сервисе</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'contact' %}" class="nav__link">Контакты</a>
@@ -499,9 +366,8 @@
                     </div>
                 </div>
             </section>
-        </footer>
-    </div>
+{% endblock %}
+    {% block script %}
     <script src="{% static 'product_page/js/header.js' %}"></script>
     <script src="{% static 'product_page/js/modal_window.js' %}"></script>
-</body>
-</html>
+{% endblock %}

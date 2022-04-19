@@ -62,19 +62,11 @@ class OurWorkAdmin(admin.ModelAdmin):
         'title',
         'installation_time',
         'installation_price',
-        'image_img',
+        'image1',
         'published',
     )
     list_filter = ('title',)
     list_display_links = ('title',)
-
-    def image_img(self, obj):
-        if obj.image:
-            return mark_safe(f'<img src="{obj.image1.url}" width="80" height="80">')
-        else:
-            return 'Нет изображения'
-
-    image_img.short_description = 'Изображение'
 
 
 class FeedbackAdmin(admin.ModelAdmin):

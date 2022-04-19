@@ -13,6 +13,7 @@ router.register(r'our_work', views.OurWorkViewSet)
 router.register(r'category_search', views.CategotyFiltViewSet)
 router.register(r'category_work', views.CategoryWorkViewSet)
 router.register(r'novelties', views.NoveltiesProductViewSet)
+router.register(r'product', views.ProductViewSet)
 
 app_name = 'starline'
 

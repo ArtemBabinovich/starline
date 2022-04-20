@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'action/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'action/css/style.css' %}">
+    <title>StarLine</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header__block">
+                <div class="header__old">
+                    <div class="container">
+                        <div class="header__old-wrap">
+                            <p>
+                                Версию сайта со старым дизайном оставили доступной по ссылке правее
+                            </p>
+                            <a href="#" class="old-link">
+                                Перейти на старый сайт
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__context">
+                    <div class="container">
+                        <div class="header__context-wrap">
+                            <a href="{% url 'index' %}" class="header__logo">
+                                StarLine-alarm
+                            </a>
+                            <div class="header__hours">
+                                <p class="header__contact-flex weekday">
+                                    Пн-Пт 10:00 - 19:00
+                                </p>
+                                <p class="weekend">
+                                    Сб-Вс 10:00 - 14:00
+                                </p>
+                            </div>
+                            <div class="header__contact">
+                                <a href="#" class="header__contact-flex telefon">
+                                    +375 44 975 28 40
+                                </a>
+                                <p class="header__contact-flex adress">
+                                    г.Минск ул. Брестская, 34 
+                                </p>
+                            </div>
+                            <div class="header__social">
+                                <a href="#" class="social telegram"></a>
+                                <a href="#" class="social vk"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-wrap">
+                    <div class="container">
+                        <div class="header">
+                            <a href="{% url 'index' %}" class="header__logo logo-desktop">
+                                StarLine-alarm
+                            </a>
+                            <div class="header__burger">
+                                <span></span>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="menu__list">
+                                    <li>
+                                        <a href="#" class="list__link">Каталог</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="list__link">Наши работы</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="list__link">Акции и скидки</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'about_company' %}" class="list__link">О сервисе</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact' %}" class="list__link">Контакты</a>
+                                    </li>
+                                </ul>
+                                <div class="header__contact-mob">
+                                    <a href="#" class="telefon">
+                                        +375 44 975 28 40
+                                    </a>
+                                    <div class="header__hours">
+                                        <p class="weekday">
+                                            Пн-Пт 10:00 - 19:00
+                                        </p>
+                                        <p class="weekend">
+                                            Сб-Вс 10:00 - 14:00
+                                        </p>
+                                    </div>
+                                    <p class="adress">
+                                        г.Минск ул. Брестская, 34 
+                                    </p>
+                                    <div class="header__social">
+                                        <a href="#" class="social telegram"></a>
+                                        <a href="#" class="social vk"></a>
+                                    </div>
+                                </div>
+                                <button class="header__advice" data-modal="advice">
+                                    Бесплатная консультация
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="main">
+                <div class="container">
+                    <div class="main-wrap">
+                        <div class="product__pagination">
+                            <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
+                            <a href="#" class="pagintaion__link pagintaion__page">Акции и скидки</a>
+                        </div>
+                        <section class="discount">
+                            <h2 class="discount__title title">
+                                Акции и скидки
+                            </h2>
+                                <div class="discount__card">
+                                    <div class="discount__card-info">
+                                        <p class="card-info__subsubtitle">
+                                            Специальная цена!!!
+                                        </p>
+                                        <h3 class="card-info__title">
+                                            StarLine S96 V2 BT GSM GPS
+                                        </h3>
+                                        <div class="card-info__price">
+                                            <p>
+                                                1235 BYN
+                                            </p>
+                                            <p>
+                                                780 руб.
+                                            </p>
+                                        </div>
+                                        <div class="card-info__btn">
+                                            <button class="btn__application btn-text" data-modal="advice">
+                                                Оставить заявку
+                                            </button>
+                                            <a href="#" class="card-info__link">
+                                                Смотреть товар
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="discount__card-img">
+                                        <div class="card__image">
+                                            <img src="{% static 'action/img/discount-car.png' %}" alt="img">
+                                        </div>
+                                        <div class="card__image-border">
+                                            <img src="{% static 'action/img/card-img-1.png' %}" alt="StarLine">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="discount__card">
+                                    <div class="discount__card-info">
+                                        <p class="card-info__subsubtitle">
+                                            Специальная цена!!!
+                                        </p>
+                                        <h3 class="card-info__title">
+                                            StarLine S96 V2 BT GSM GPS
+                                        </h3>
+                                        <div class="card-info__price">
+                                            <p>
+                                                1235 BYN
+                                            </p>
+                                            <p>
+                                                780 руб.
+                                            </p>
+                                        </div>
+                                        <div class="card-info__btn">
+                                            <button class="btn__application btn-text" data-modal="advice">
+                                                Оставить заявку
+                                            </button>
+                                            <a href="#" class="card-info__link">
+                                                Смотреть товар
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="discount__card-img">
+                                        <div class="card__image">
+                                            <img src="{% static 'action/img/discount-car.png' %}" alt="img">
+                                        </div>
+                                        <div class="card__image-border">
+                                            <img src="{% static 'action/img/card-img-1.png' %}" alt="StarLine">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="discount__card stock-card">
+                                    <div class="discount__card-info">
+                                        <!-- <p class="card-info__subsubtitle">
+                                            Специальная цена!!!
+                                        </p> -->
+                                        <h3 class="card-info__title">
+                                            Скидка на монтаж на автомобили брендов Hyundai, KIA, Geely, Lada, Nissan, Renault, Toyota, VW, Skoda
+                                        </h3>
+                                        <p class="card-info__subtitle">
+                                            Скидка на монтаж на автомобили брендов Hyundai, KIA, Geely, Lada, Nissan, Renault, Toyota, VW, Skoda
+                                        </p>
+                                        <!-- <div class="card-info__price">
+                                            <p>
+                                                1235 BYN
+                                            </p>
+                                            <p>
+                                                780 руб.
+                                            </p>
+                                        </div> -->
+                                        <div class="card-info__btn">
+                                            <button class="btn__application btn-text" data-modal="advice">
+                                                Оставить заявку
+                                            </button>
+                                            <a href="#" class="card-info__link">
+                                                Смотреть товар
+                                            </a>
+                                        </div>
+                                        <div class="card__image-stock">
+                                            <img src="{% static 'action/img/stock_star-img.png' %}" alt="stock">
+                                            <p class="image-stock__text">
+                                                <span>до</span>
+                                                <span>-30%</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="discount__card-img">
+                                        <div class="card__image">
+                                            <img src="{% static 'action/img/stock-img.png' %}" alt="img">
+                                        </div>
+                                        <div class="card__image-border">
+                                            <img src="{% static 'action/img/card-img-1.png' %}" alt="StarLine">
+                                        </div>
+                                    </div>
+                                </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <section class="comment">
+                <div class="container">
+                    <div class="comment-wrap">
+                        <div class="comment__title title">
+                            Только живые отзывы от реальных людей
+                        </div>
+                        <div class="slider__content">
+                            <div class="slider-arrow left">
+                            </div>
+                            <div class="comment__slider-wrap">
+                                <div class="comment__slider">
+                                    <div class="comment__item">
+                                        <h3 class="slider__title">
+                                            
+                                        </h3>
+                                        <p class="slider__text">
+                                            
+                                        </p>
+                                        <p class="slider__contact">
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-arrow right">
+                            </div>
+                        </div>
+                        <div class="comment__page">
+                            <span class="comment__page-first">1</span> из <span class="comment__page-last">23</span>
+                        </div>
+                        <div class="comment__link-wrap">
+                            <button class="comment__link btn-text" data-modal="review">
+                                Написать отзыв
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="modal">
+                <div class="modal__form-wrap">
+                    <div class="modal__cross"></div>
+                    <h3 class="modal__title">
+                        Заявка на бесплатную консультацию
+                    </h3>
+                    <p class="modal__subtitle">
+                        Технический специалист перезвонит Вам в течение 10 минут и ответит на все вопросы
+                    </p>
+                    <form action="" class="modal__form">
+                        <p class="modal__input-title">
+                            Ваше имя
+                        </p>
+                        <input type="text" name="user__name" class="modal__input" placeholder="Иванов Иван Иванович">
+                        <p class="modal__input-title">
+                            Номер телефона
+                        </p>
+                        <input type="tel" name="user__tel" class="modal__input" placeholder="+375" pattern="[0-9]">
+                        <p class="modal__input-title m-display">
+                            Текст отзыва
+                        </p>
+                        <textarea class="modal__textarea m-display" name="comment__text" placeholder="Хочу установить иммобилайзер и не потерять гарантию диллера"></textarea>
+                        <input type="button" value="Оставить отзыв" class="modal__btn btn-text">
+                    </form>
+                </div>
+            </div>
+            <div class="m-confirm__wrapper">
+                <div class="m-confirm">
+                    <div class="m-confirm__cross"></div>
+                    <div class="m-confirm__img">
+                        <img src="{% static 'action/img/icons/m-confirm_img.svg' %}" alt="confirm">
+                    </div>
+                    <h3 class="m-confirm__title">
+                        Отзыв успешно отправлен
+                    </h3>
+                    <p class="m-confirm__subtitle">
+                        Спасибо, отзыв появится на сайте в течение нескольких дней. 
+                    </p>
+                    <button class="m-confirm__btn btn-text">
+                        Понятно, спасибо
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <section class="footer__navigation">
+                <div class="container">
+                    <div class="footer__nav">
+                        <a href="#" class="nav__logo">
+                            StarLine-alarm
+                        </a>
+                        <nav class="nav__menu">
+                            <ul class="nav__list">
+                                <li>
+                                    <a href="#" class="nav__link">Каталог</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav__link">Наши работы</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav__link">Акции и скидки</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'about_company' %}" class="nav__link">О сервисе</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" class="nav__link">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="footer__author">
+                        <p>
+                            © Все права защищены 2022
+                        </p>
+                        <div class="author__wrap">
+                            <p>
+                                Цены на сайте указаны без НДС
+                            </p>
+                            <p>
+                                Дизайн: <a href="#">shkuratovdesigner.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+    <script src="{% static 'action/js/header.js' %}"></script>
+    <script src="{% static 'action/js/comment.js' %}"></script>
+    <script src="{% static 'action/js/modal_window.js' %}"></script>
+</body>
+</html>

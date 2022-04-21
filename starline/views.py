@@ -105,11 +105,11 @@ class CatalogView(ListView):
         return queryset
 
 
-class OurWorkView(ListView):
-    """Наши работы"""
-    model = OurWork
-    template_name = 'our_work.html'
-    context_object_name = 'our_work'
+def listourwork(request):
+    """наши работы"""
+    contacts = Contacts.objects.all()
+    context = {'contacts': contacts}
+    return render(request, 'starline/portfolio_all.html', context)
 
 
 class AllProductView(ListView):

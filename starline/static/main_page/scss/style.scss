@@ -68,19 +68,19 @@
             box-shadow: 0px 0px 0px 2px #6C86E2;
   }
 
-@import "_container";
-@import "_header";
-@import "_section-main";
+@import "container";
+@import "header";
+@import "section-main";
 @import "card";
-@import "_section-popular";
-@import "_section-guarantee";
-@import "_section-protection";
-@import "_section-new-product";
-@import "_review-card";
-@import "_section-comment";
-@import "_footer";
-@import "_modal";
-@import "_modal-confirm";
+@import "section-popular";
+@import "section-guarantee";
+@import "section-protection";
+@import "section-new-product";
+@import "review-card";
+@import "section-comment";
+@import "footer";
+@import "modal";
+@import "modal-confirm";
 
 .not-valid-text{
   color: #EE505A;

@@ -19,37 +19,38 @@
                             <p>
                                 Версию сайта со старым дизайном оставили доступной по ссылке правее
                             </p>
-                            <a href="#" class="old-link">
+                            <a href="http://starline-alarm.by/" class="old-link">
                                 Перейти на старый сайт
                             </a>
                         </div>
                     </div>
                 </div>
+                {% for item in contacts %}
                 <div class="header__context">
                     <div class="container">
                         <div class="header__context-wrap">
                             <a href="{% url 'index' %}" class="header__logo">
-                                StarLine-alarm
+                                {{ item.name }}
                             </a>
                             <div class="header__hours">
                                 <p class="header__contact-flex weekday">
-                                    Пн-Пт 10:00 - 19:00
+                                    {{ item.time_work1 }}
                                 </p>
                                 <p class="weekend">
-                                    Сб-Вс 10:00 - 14:00
+                                    {{ item.time_work2 }}
                                 </p>
                             </div>
                             <div class="header__contact">
-                                <a href="#" class="header__contact-flex telefon">
-                                    +375 44 975 28 40
+                                <a href="tel:{{ item.phone1 }}" class="header__contact-flex telefon">
+                                    {{ item.phone1 }}
                                 </a>
                                 <p class="header__contact-flex adress">
-                                    г.Минск ул. Брестская, 34 
+                                    {{ item.address }}
                                 </p>
                             </div>
                             <div class="header__social">
-                                <a href="#" class="social telegram"></a>
-                                <a href="#" class="social vk"></a>
+                                <a href="{{ item.social_info2 }}" class="social telegram"></a>
+                                <a href="{{ item.social_info1 }}" class="social vk"></a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +59,7 @@
                     <div class="container">
                         <div class="header">
                             <a href="{% url 'index' %}" class="header__logo logo-desktop">
-                                StarLine-alarm
+                                {{ item.name }}
                             </a>
                             <div class="header__burger">
                                 <span></span>
@@ -72,7 +73,7 @@
                                         <a href="#" class="list__link">Наши работы</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="list__link">Акции и скидки</a>
+                                        <a href="{% url 'action' %}" class="list__link">Акции и скидки</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'about_company' %}" class="list__link">О сервисе</a>
@@ -82,24 +83,25 @@
                                     </li>
                                 </ul>
                                 <div class="header__contact-mob">
-                                    <a href="#" class="telefon">
-                                        +375 44 975 28 40
+                                    <a href="{{ item.phone1 }}" class="telefon">
+                                        {{ item.phone1 }}
                                     </a>
                                     <div class="header__hours">
                                         <p class="weekday">
-                                            Пн-Пт 10:00 - 19:00
+                                            {{ item.time_work1 }}
                                         </p>
                                         <p class="weekend">
-                                            Сб-Вс 10:00 - 14:00
+                                            {{ item.time_work2 }}
                                         </p>
                                     </div>
                                     <p class="adress">
-                                        г.Минск ул. Брестская, 34 
+                                        {{ item.address }}
                                     </p>
                                     <div class="header__social">
-                                        <a href="#" class="social telegram"></a>
-                                        <a href="#" class="social vk"></a>
+                                        <a href="{{ item.social_info1 }}" class="social telegram"></a>
+                                        <a href="{{ item.social_info2 }}" class="social vk"></a>
                                     </div>
+                                    {% endfor %}
                                 </div>
                                 <button class="header__advice" data-modal="advice">
                                     Бесплатная консультация
@@ -116,7 +118,7 @@
                     <div class="main-wrap">
                         <div class="product__pagination">
                             <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
-                            <a href="#" class="pagintaion__link pagintaion__page">Акции и скидки</a>
+                            <a href="{% url 'action' %}" class="pagintaion__link pagintaion__page">Акции и скидки</a>
                         </div>
                         <section class="discount">
                             <h2 class="discount__title title">
@@ -192,23 +194,12 @@
                                 </div>
                                 <div class="discount__card stock-card">
                                     <div class="discount__card-info">
-                                        <!-- <p class="card-info__subsubtitle">
-                                            Специальная цена!!!
-                                        </p> -->
                                         <h3 class="card-info__title">
                                             Скидка на монтаж на автомобили брендов Hyundai, KIA, Geely, Lada, Nissan, Renault, Toyota, VW, Skoda
                                         </h3>
                                         <p class="card-info__subtitle">
                                             Скидка на монтаж на автомобили брендов Hyundai, KIA, Geely, Lada, Nissan, Renault, Toyota, VW, Skoda
                                         </p>
-                                        <!-- <div class="card-info__price">
-                                            <p>
-                                                1235 BYN
-                                            </p>
-                                            <p>
-                                                780 руб.
-                                            </p>
-                                        </div> -->
                                         <div class="card-info__btn">
                                             <button class="btn__application btn-text" data-modal="advice">
                                                 Оставить заявку
@@ -321,12 +312,14 @@
             </div>
         </main>
         <footer>
+            {% for item in contacts %}
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
-                        <a href="#" class="nav__logo">
-                            StarLine-alarm
+                        <a href="{% url 'index' %}" class="nav__logo">
+                            {{ item.name }}
                         </a>
+                        {% endfor %}
                         <nav class="nav__menu">
                             <ul class="nav__list">
                                 <li>
@@ -336,7 +329,7 @@
                                     <a href="#" class="nav__link">Наши работы</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav__link">Акции и скидки</a>
+                                    <a href="{% url 'action' %}" class="nav__link">Акции и скидки</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'about_company' %}" class="nav__link">О сервисе</a>
@@ -356,7 +349,7 @@
                                 Цены на сайте указаны без НДС
                             </p>
                             <p>
-                                Дизайн: <a href="#">shkuratovdesigner.com</a>
+                                Дизайн: <a href="https://shkuratovdesigner.com/">shkuratovdesigner.com</a>
                             </p>
                         </div>
                     </div>

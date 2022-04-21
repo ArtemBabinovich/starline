@@ -1,15 +1,118 @@
-{% extends 'starline/index.html' %}
+<!DOCTYPE html>
 {% load static %}
-{% block head %}
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'about_company/css/null_for_templates.css' %}">
     <link rel="stylesheet" href="{% static 'about_company/css/style.css' %}">
     <title>StarLine</title>
-{% endblock %}
-
-{% block main %}
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header__block">
+                <div class="header__old">
+                    <div class="container">
+                        <div class="header__old-wrap">
+                            <p>
+                                Версию сайта со старым дизайном оставили доступной по ссылке правее
+                            </p>
+                            <a href="http://starline-alarm.by/" class="old-link">
+                                Перейти на старый сайт
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% for item in contacts %}
+                <div class="header__context">
+                    <div class="container">
+                        <div class="header__context-wrap">
+                            <a href="{% url 'index' %}" class="header__logo">
+                                {{ item.name }}
+                            </a>
+                            <div class="header__hours">
+                                 <p class="header__contact-flex weekday">
+                                    {{ item.time_work1 }}
+                                </p>
+                                <p class="weekend">
+                                    {{ item.time_work2 }}
+                                </p>
+                            </div>
+                            <div class="header__contact">
+                                <a href="tel:{{ item.phone1 }}" class="header__contact-flex telefon">
+                                    {{ item.phone1 }}
+                                </a>
+                                <p class="header__contact-flex adress">
+                                    {{ item.address }}
+                                </p>
+                            </div>
+                            <div class="header__social">
+                                <a href="{{ item.social_info2 }}" class="social telegram"></a>
+                                <a href="{{ item.social_info1 }}" class="social vk"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-wrap">
+                    <div class="container">
+                        <div class="header">
+                            <a href="{% url 'index' %}" class="header__logo logo-desktop">
+                                {{ item.name }}
+                            </a>
+                            <div class="header__burger">
+                                <span></span>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="menu__list">
+                                    <li>
+                                        <a href="#" class="list__link">Каталог</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="list__link">Наши работы</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'action' %}" class="list__link">Акции и скидки</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'about_company' %}" class="list__link">О сервисе</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact' %}" class="list__link">Контакты</a>
+                                    </li>
+                                </ul>
+                                <div class="header__contact-mob">
+                                    <a href="{{ item.phone1 }}" class="telefon">
+                                        {{ item.phone1 }}
+                                    </a>
+                                    <div class="header__hours">
+                                        <p class="weekday">
+                                            {{ item.time_work1 }}
+                                        </p>
+                                        <p class="weekend">
+                                            {{ item.time_work2 }}
+                                        </p>
+                                    </div>
+                                    <p class="adress">
+                                        {{ item.address }}
+                                    </p>
+                                    <div class="header__social">
+                                        <a href="{{ item.social_info1 }}" class="social telegram"></a>
+                                        <a href="{{ item.social_info2 }}" class="social vk"></a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <button class="header__advice" data-modal="advice">
+                                    Бесплатная консультация
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
             <section class="main">
                 <div class="container">
                     <section class="main-wrap">
@@ -19,11 +122,13 @@
                         </div>
                         <div class="company">
                             <div class="company__about">
+                                {% for i in company %}
                                 <h2 class="company__title title">
                                     О компании
                                 </h2>
-                                {% for i in company %}
-                                {{ i.description|safe }}
+                                <p class="company__text">
+                                    {{ i.description|safe }}
+                                </p>
 
                             </div>
                             <div class="company__img">
@@ -46,14 +151,57 @@
                                 <img src="{{ i.image3.url }}" alt="frame">
                             </div>
                         </div>
+                        {% endfor %}
                     </section>
-                    {% endfor %}
                 </div>
             </section>
-{% endblock %}
-{% block footer %}
-{% for item in contacts %}
-       <section class="footer">
+            <div class="modal">
+                <div class="modal__form-wrap">
+                    <div class="modal__cross"></div>
+                    <h3 class="modal__title">
+                        Заявка на бесплатную консультацию
+                    </h3>
+                    <p class="modal__subtitle">
+                        Технический специалист перезвонит Вам в течение 10 минут и ответит на все вопросы
+                    </p>
+                    <form action="" class="modal__form">
+                        <p class="modal__input-title">
+                            Ваше имя
+                        </p>
+                        <input type="text" name="user__name" class="modal__input" placeholder="Иванов Иван Иванович">
+                        <p class="modal__input-title">
+                            Номер телефона
+                        </p>
+                        <input type="tel" name="user__tel" class="modal__input" placeholder="+375" pattern="[0-9]">
+                        <p class="modal__input-title m-display">
+                            Текст отзыва
+                        </p>
+                        <textarea class="modal__textarea m-display" name="comment__text" placeholder="Хочу установить иммобилайзер и не потерять гарантию диллера"></textarea>
+                        <input type="button" value="Оставить отзыв" class="modal__btn btn-text">
+                    </form>
+                </div>
+            </div>
+            <div class="m-confirm__wrapper">
+                <div class="m-confirm">
+                    <div class="m-confirm__cross"></div>
+                    <div class="m-confirm__img">
+                        <img src="{% static 'about_company/img/icons/m-confirm_img.svg' %}" alt="confirm">
+                    </div>
+                    <h3 class="m-confirm__title">
+                        Отзыв успешно отправлен
+                    </h3>
+                    <p class="m-confirm__subtitle">
+                        Спасибо, отзыв появится на сайте в течение нескольких дней. 
+                    </p>
+                    <button class="m-confirm__btn btn-text">
+                        Понятно, спасибо
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            {% for item in contacts %}
+            <section class="footer">
                 <div class="container">
                     <div class="footer-wrap">
                         <div class="footer__info">
@@ -69,7 +217,7 @@
                                         Время работы
                                     </div>
                                     <div class="work-time__block">
-                                        <img src="{% static 'contacts/img/icons/footer-time-img.svg' %}" class="work-item__img" alt="work-time">
+                                       <img src="{% static 'about_company/img/icons/footer-time-img.svg' %}" class="work-item__img" alt="work-time">
                                         <div class="work-time__text">
                                             <p class="footer-text">
                                                 {{ item.time_work1 }}
@@ -141,10 +289,83 @@
                     </div>
                 </div>
             </section>
-    {% endfor %}
-{% endblock %}
-   {% block script %}
+            <section class="footer__map">
+                {{ item.maps|safe }}
+            </section>
+            <section class="footer__about">
+                <div class="container">
+                    <h2 class="about__title title">
+                        Охранные системы Starline в Беларуси
+                    </h2>
+                    <div class="about__wrap">
+                        <div class="about__text">
+                            <p>
+                                Безопасность автомобиля сегодня является актуальным вопросом для автовладельцев не только в Беларуси, но и по всему миру. Наша компания, имея многолетний опыт работы, представляет сегодня белорусскому потребителю ряд высокотехнологичных решений в области автомобильных охранных систем. Современные технологии, воплощённые в противоугонных системах Starline помогут автовладельцам навсегда обеспечить надёжную защиту транспортного средства от проникновения или хищения, будь то легковой автомобиль, мототранспорт или грузовой автомобиль с напряжением бортовой сети 24 вольта.
+                            </p>
+                            <p>
+                                Приобретая охранно-телематические комплексы, автовладельцы всегда могут отследить состояние автомобиля, оперативно получая информацию по современным каналам связи на брелок, защищённый диалоговым кодом. Также, посредством GSM GPS связи для владельцев смартфонов на базе iOS, Android существует ряд современных решений, позволяющих управлять функциями сигнализаций и отслеживать передвижение автомобиля с помощью разработанного приложения Starline телематика.
+                            </p>
+                        </div>
+                        <div class="about__text">
+                            <p>
+                                Автосигнализации Starline с автозапуском двигателя обеспечат владельцев автотранспорта дополнительным удобством, создавая комфортные условия в салоне автомобиля в любое время года, будь то знойная жара или лютый мороз.
+                            </p>
+                            <p>
+                                Cигнализации Старлайн пользуются популярностью в виду своей богатой функциональности и доступной стоимостью. Приобрести охранные системы, маяки можно у нас с бесплатной доставкой по Минску и платной доставкой по Республике Беларусь. Вы также можете получить консультацию по дополнительному оборудованию, и наши специалисты помогут Вам в выборе системы, исходя из ваших пожеланий и требований.
+                            </p>
+                            <p>
+                                При приобретении современных автомобильных систем безопасности необходимо учитывать техническую специфику при установке, понятную далеко не каждому. Поэтому наша компания предлагает вам не только купить, но и установить автосигнализацию Starline на ваш автомобиль. Наши специалисты имеющие большой опыт в установке сигнализаций, ответят на все интересующие и оперативно помогут решить любые вопросы связанные с эксплуатацией систем. Добро пожаловать: Starline-alarm Belarus
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="footer__navigation">
+                <div class="container">
+                    <div class="footer__nav">
+                        <a href="{% url 'index' %}" class="nav__logo">
+                            {{ item.name }}
+                        </a>
+                        <nav class="nav__menu">
+                            <ul class="nav__list">
+                                <li>
+                                    <a href="#" class="nav__link">Каталог</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav__link">Наши работы</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'action' %}" class="nav__link">Акции и скидки</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'about_company' %}" class="nav__link">О сервисе</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" class="nav__link">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endfor %}
+                    <div class="footer__author">
+                        <p>
+                            © Все права защищены 2022
+                        </p>
+                        <div class="author__wrap">
+                            <p>
+                                Цены на сайте указаны без НДС
+                            </p>
+                            <p>
+                                Дизайн: <a href="https://shkuratovdesigner.com/">shkuratovdesigner.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
     <script src="{% static 'about_company/js/header.js' %}"></script>
     <script src="{% static 'about_company/js/modal_window.js' %}"></script>
     <script src="{% static 'about_company/js/validation_footer.js' %}"></script>
-{% endblock %}
+</body>
+</html>

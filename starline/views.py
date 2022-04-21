@@ -82,11 +82,16 @@ class AboutCompanyView(ListView):
 class ActionView(ListView):
     """Вывод акций на экран"""
     model = Action
-    template_name = 'action.html'
+    template_name = 'starline/action.html'
     context_object_name = 'action'
 
     def get_queryset(self):
         return Action.objects.filter(published=True)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contacts'] = Contacts.objects.all()
+        return context
 
 
 class CatalogView(ListView):

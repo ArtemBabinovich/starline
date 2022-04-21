@@ -2,14 +2,13 @@
 {% load static %}
 <html lang="en">
 <head>
-    {% block head %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/null_for_templates.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/style.css' %}">
     <title>StarLine</title>
-    {% endblock %}
+
 </head>
 <body>
     <div class="wrapper">
@@ -57,8 +56,6 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-                {% for item in contacts %}
                 <div class="header-wrap">
                     <div class="container">
                         <div class="header">
@@ -77,7 +74,7 @@
                                         <a href="#" class="list__link">Наши работы</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="list__link">Акции и скидки</a>
+                                        <a href="{% url 'action' %}" class="list__link">Акции и скидки</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'about_company' %}" class="list__link">О сервисе</a>
@@ -117,12 +114,11 @@
             </div>
         </header>
         <main>
-            {% block main %}
             <section class="main">
                 <div class="main__circle circle-white"></div>
                 <div class="main__circle circle-back"></div>
                 <div class="main__cars">
-                    <img src="{% static 'img/main-cars.png'%}" alt="cars">
+                    <img src="{% static 'main_page/img/main-cars.png' %}" alt="cars">
                 </div>
                 <div class="container main__container-position">
                     <div class="main-wrap">
@@ -163,48 +159,48 @@
                         <div class="wrap-auto">
                             <div class="main__auto-img">
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/lexus-img.png' %}" alt="lexus">
+                                    <img src="{% static 'main_page/img/auto/lexus-img.png' %}" alt="lexus">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/geely-img.png' %}" alt="geely">
+                                    <img src="{% static 'main_page/img/auto/geely-img.png' %}" alt="geely">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/toyota-img.png' %}" alt="toyota">
+                                    <img src="{% static 'main_page/img/auto/toyota-img.png' %}" alt="toyota">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/audi-img.png' %}" alt="audi">
+                                    <img src="{% static 'main_page/img/auto/audi-img.png' %}" alt="audi">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/mb-img.png' %}" alt="mb">
+                                    <img src="{% static 'main_page/img/auto/mb-img.png' %}" alt="mb">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/kia-img.png' %}" alt="kia">
+                                    <img src="{% static 'main_page/img/auto/kia-img.png' %}" alt="kia">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/mazda-img.png' %}" alt="mazda">
+                                    <img src="{% static 'main_page/img/auto/mazda-img.png' %}" alt="mazda">
                                 </a>
                             </div>
                             <div class="main__auto-img">
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/vw-img.png' %}" alt="vw">
+                                    <img src="{% static 'main_page/img/auto/vw-img.png' %}" alt="vw">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/hyndai-img.png' %}" alt="hyndai">
+                                    <img src="{% static 'main_page/img/auto/hyndai-img.png' %}" alt="hyndai">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/bmw-img.png' %}" alt="bmw">
+                                    <img src="{% static 'main_page/img/auto/bmw-img.png' %}" alt="bmw">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/ford-img.png' %}" alt="ford">
+                                    <img src="{% static 'main_page/img/auto/ford-img.png' %}" alt="ford">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/shkoda-img.png' %}" alt="shkoda">
+                                    <img src="{% static 'main_page/img/auto/shkoda-img.png' %}" alt="shkoda">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/renault-img.png' %}" alt="renault">
+                                    <img src="{% static 'main_page/img/auto/renault-img.png' %}" alt="renault">
                                 </a>
                                 <a href="#" class="auto__link">
-                                    <img src="{% static 'img/auto/nissan-img.png' %}" alt="nissan">
+                                    <img src="{% static 'main_page/img/auto/nissan-img.png' %}" alt="nissan">
                                 </a>
                             </div>
                         </div>
@@ -219,22 +215,22 @@
                     <div class="popular-wrap">
                         <div class="popular__links">
                             <a href="#" class="links__item">
-                                <img src="{% static 'img/security-img.png' %}" alt="security">
+                                <img src="{% static 'main_page/img/security-img.png' %}" alt="security">
                                 <p>Охранные комплексы</p>
                                 <div class="links__line links-red"></div>
                             </a>
                             <a href="#" class="links__item">
-                                <img src="{% static 'img/trackers-img.png' %}" alt="trackers">
+                                <img src="{% static 'main_page/img/trackers-img.png' %}" alt="trackers">
                                 <p>Трекеры и мониторинг</p>
                                 <div class="links__line links-green"></div>
                             </a>
                             <a href="#" class="links__item">
-                                <img src="{% static 'img/equipment-img.png' %}" alt="equipment">
+                                <img src="{% static 'main_page/img/equipment-img.png' %}" alt="equipment">
                                 <p>Дополнительное <span>оборудование</span></p>
                                 <div class="links__line links-orange"></div>
                             </a>
                             <a href="#" class="links__item">
-                                <img src="{% static 'img/control-img.png' %}" alt="control">
+                                <img src="{% static 'main_page/img/control-img.png' %}" alt="control">
                                 <p>Дистанционное <span>управление ЦЗ</span></p>
                                 <div class="links__line links-black"></div>
                             </a>
@@ -276,7 +272,7 @@
                                 </p>
                             </div>
                             <div class="guarantee__row-img">
-                                <img src="{% static 'img/guarantee-img.png' %}" alt="guarantee">
+                                <img src="{% static 'main_page/img/guarantee-img.png' %}" alt="guarantee">
                             </div>
                             <div class="guarantee__row-text">
                                 <p>
@@ -422,7 +418,7 @@
                 <div class="m-confirm">
                     <div class="m-confirm__cross"></div>
                     <div class="m-confirm__img">
-                        <img src="{% static 'img/icons/m-confirm_img.svg' %}" alt="confirm">
+                        <img src="{% static 'main_page/img/icons/m-confirm_img.svg' %}" alt="confirm">
                     </div>
                     <h3 class="m-confirm__title">
                         Отзыв успешно отправлен
@@ -435,11 +431,9 @@
                     </button>
                 </div>
             </div>
-            {% endblock %}
         </main>
 
         <footer>
-         {% block footer %}
             {% for item in contacts %}
             <section class="footer">
                 <div class="container">
@@ -457,7 +451,7 @@
                                         Время работы
                                     </div>
                                     <div class="work-time__block">
-                                        <img src="{% static 'img/icons/footer-time-img.svg' %}" class="work-item__img"
+                                        <img src="{% static 'main_page/img/icons/footer-time-img.svg' %}" class="work-item__img"
                                              alt="work-time">
                                         <div class="work-time__text">
                                             <p class="footer-text">
@@ -533,13 +527,9 @@
                 </div>
             </section>
 
-            {% endfor %}
-
-            {% for item in contacts %}
             <section class="footer__map">
                 {{ item.maps|safe }}
             </section>
-            {% endfor %}
             <section class="footer__about">
                 <div class="container">
                     <h2 class="about__title title">
@@ -568,14 +558,14 @@
                     </div>
                 </div>
             </section>
-        {% endblock %}
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
 
                         <a href="{% url 'index' %}" class="nav__logo">
-                            StarLine-alarm
+                            {{ item.name }}
                         </a>
+                        {% endfor %}
 
                         <nav class="nav__menu">
                             <ul class="nav__list">
@@ -586,7 +576,7 @@
                                     <a href="#" class="nav__link">Наши работы</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav__link">Акции и скидки</a>
+                                    <a href="{% url 'action' %}" class="nav__link">Акции и скидки</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'about_company' %}" class="nav__link">О сервисе</a>
@@ -612,19 +602,15 @@
                     </div>
                 </div>
             </section>
-
         </footer>
-
     </div>
-    {% block script %}
-    <script src="{% static 'js/header.js' %}"></script>
-    <script src="{% static 'js/popular_card.js' %}"></script>
-    <script src="{% static 'js/new_product_card.js' %}"></script>
-    <script src="{% static 'js/reviews.js' %}"></script>
-    <script src="{% static 'js/comment.js' %}"></script>
-    <script src="{% static 'js/modal_window.js' %}"></script>
-    <script src="{% static 'js/validation_main.js' %}" ></script>
-    <script src="{% static 'js/validation_footer.js' %}"></script>
-{% endblock %}
+    <script src="{% static 'main_page/js/header.js' %}"></script>
+    <script src="{% static 'main_page/js/popular_card.js' %}"></script>
+    <script src="{% static 'main_page/js/new_product_card.js' %}"></script>
+    <script src="{% static 'main_page/js/reviews.js' %}"></script>
+    <script src="{% static 'main_page/js/comment.js' %}"></script>
+    <script src="{% static 'main_page/js/modal_window.js' %}"></script>
+    <script src="{% static 'main_page/js/validation_main.js' %}" ></script>
+    <script src="{% static 'main_page/js/validation_footer.js' %}"></script>
 </body>
 </html>

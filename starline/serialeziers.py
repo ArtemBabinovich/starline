@@ -100,10 +100,12 @@ class OurWorkSerializer(serializers.ModelSerializer):
         model = OurWork
         fields = [
             'title',
+            'slug',
             'installation_time',
             'installation_price',
             'category_work',
             'image1',
+
         ]
         depth = 1
 

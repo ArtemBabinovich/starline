@@ -135,6 +135,7 @@ class Comment(models.Model):
 class OurWork(models.Model):
     """Наши работы"""
     title = models.CharField('Заголовок', max_length=250)
+    slug = models.CharField('Короткое название', max_length=20, unique=True)
     category_work = models.ManyToManyField(
         Category,
         related_name='category_work',
@@ -157,6 +158,10 @@ class OurWork(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(str(self.title))
+        return super().save(*args, **kwargs)
 
 
 class Feedback(models.Model):

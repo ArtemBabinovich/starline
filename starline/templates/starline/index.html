@@ -71,7 +71,7 @@
                                         <a href="#" class="list__link">Каталог</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="list__link">Наши работы</a>
+                                        <a href="{% url 'our_work' %}" class="list__link">Наши работы</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'action' %}" class="list__link">Акции и скидки</a>
@@ -343,7 +343,7 @@
 
                     </div>
                     <div class="review__link-wrap">
-                        <a href="#" class="review__link btn-text">Смотреть больше работ</a>
+                        <a href="{% url 'our_work' %}" class="review__link btn-text">Смотреть больше работ</a>
                         <p class="review__link-text">
                             В портфолио <span class="review__lengh">25</span> подробно описанных кейсов
                         </p>
@@ -432,7 +432,6 @@
                 </div>
             </div>
         </main>
-
         <footer>
             {% for item in contacts %}
             <section class="footer">
@@ -573,7 +572,7 @@
                                     <a href="#" class="nav__link">Каталог</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav__link">Наши работы</a>
+                                    <a href="{% url 'our_work' %}" class="nav__link">Наши работы</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'action' %}" class="nav__link">Акции и скидки</a>

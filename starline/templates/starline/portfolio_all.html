@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'product_page/css/null_for_templates.css' %}">
-    <link rel="stylesheet" href="{% static 'product_page/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio_all/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio_all/css/style.css' %}">
     <title>StarLine</title>
 </head>
 <body>
@@ -102,7 +102,6 @@
                                         <a href="{{ item.social_info2 }}" class="social vk"></a>
                                     </div>
                                 </div>
-                                {% endfor %}
                                 <button class="header__advice" data-modal="advice">
                                     Бесплатная консультация
                                 </button>
@@ -110,6 +109,7 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </header>
         <main>
@@ -118,152 +118,39 @@
                     <div class="main-wrap">
                         <div class="product__pagination">
                             <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
-                            <a href="#" class="pagintaion__link">Каталог</a>
-                            <a href="#" class="pagintaion__link pagintaion__page">{{ prod.title }}</a>
+                            <a href="#" class="pagintaion__link pagintaion__page">Наши работы</a>
                         </div>
-                        <div class="product">
-                            <div class="product__block">
-                                <div class="product__features">
-                                    <div class="features__img">
-                                        {% if prod.image %}
-                                        <img src="{{ prod.image.url }}" alt="StarLine">
-                                        {% else %}
-                                        <img src="{% static 'product_page/img/features_product-img.png' %}" alt="StarLine">
-                                        {% endif %}
-                                    </div>
-                                    <div class="features__about">
-                                        <h3 class="features__subtitle">
-                                            {{ prod.category.security }}
-                                        </h3>
-
-                                        <p class="features__text">
-                                           {{ prod.description|safe }}
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <div class="product__tabs">
-                                    <p class="tabs__text tab-choice" data-tabs="feature">
-                                        Характеристики
-                                    </p>
-                                    <p class="tabs__text" data-tabs="instructions">
-                                        Инструкции
-                                    </p>
-                                </div>
-                                <div class="product__perfomance">
-                                    <h3 class="perfomance__title">
-                                        Характеристики {{ prod.title }}
-                                    </h3>
-                                    <ul class="perfomance__list">
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">1</div>
-                                            <p class="perfomance-item__title">
-                                                Умная авторизация
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Только владелец получает разрешение на поездку после авторизации по персональной метке*
-                                            </p>
-                                            <span>
-                                                *Метку можно приобрести отдельно
-                                            </span>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">2</div>
-                                            <p class="perfomance-item__title">
-                                                Умный бесплатный мониторинг
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                С помощью простого и удобного мониторинга starline.online вы сможете с точностью до нескольких метров узнать местонахождение своего автомобиля, посмотреть маршрут передвижения
-                                            </p>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">3</div>
-                                            <p class="perfomance-item__title">
-                                                Универсальность
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Удобство интеграции в бортовую сеть легкового автомобиля (+12V) и грузового транспорта (+24V).
-                                            </p>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">4</div>
-                                            <p class="perfomance-item__title">
-                                                Гиперчувствительность
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Уникальная GPS-ГЛОНАСС антенна обеспечивает сверхчувствительность и почти моментальное определение точных координат даже в самых сложных условиях
-                                            </p>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">5</div>
-                                            <p class="perfomance-item__title">
-                                                Умная автодиагностика
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Экономьте на диагностике транспортного средства — получайте информацию о состоянии автомобиля на мобильный телефон в приложении StarLine или на мониторинговом сайте starline.online
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <aside class="product__info">
-                                <h3 class="info__title">
-                                    {{ prod.title }}
-                                </h3>
-                                <p class="info__text">
-                                    {{ prod.category.security }}
-                                </p>
-                                <div class="info__equipment">
-                                    <p class="info__equipment-text">
-                                        Оборудование:
-                                    </p>
-                                    <p class="info__equipment-price">
-                                        {{ prod.price }} BYN
-                                    </p>
-                                </div>
-                                <div class="info__plant">
-                                    <p class="info__plant-text">
-                                        Установка:
-                                    </p>
-                                    <p class="info__plant-price">
-                                        {{ prod.price_install }} BYN
-                                    </p>
-                                </div>
-                                <button class="info__btn" data-modal="advice">
-                                    Оставить заявку
-                                </button>
-                                {% for item in conatacts %}
-                                <p class="info__tel">Или звоните</p>
-                                <a href="tel:{{ item.phone1 }}" class="info__tel-link a1">
-                                    {{ item.phone1 }}
-                                </a>
-                                <a href="tel:{{ item.phone2 }}" class="info__tel-link mts">
-                                    {{ item.phone2 }}
-                                </a>
-                                {% endfor %}
-                            </aside>
-                        </div>
-                        <section class="popular">
-                            <div class="container">
-                                <h2 class="popular__title title">
-                                    Популярные товары
-                                </h2>
-                                <div class="card-wrap">
-                                    <div class="card">
-
-                                    </div>
-                                    <div class="card__info">
-                                        <a href="#" class="card__link btn-text">
-                                            Смотреть больше товаров
-                                        </a>
-                                        <p class="card__text">
-                                            В каталоге <span>356 позиций</span>, для <span>214</span> марок автомобилей
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
                     </div>
+                </div>
+            </section>
+            <section class="review">
+                <div class="container">
+                    <h2 class="review__title title">
+                        Наши работы
+                    </h2>
+                    <div class="review__search-btn">
+                        <div class="search-btn" data-work="Трекеры и мониторинг">
+                            Трекеры и мониторинг
+                        </div>
+                        <div class="search-btn" data-work="Доп.услуги">
+                            Доп.услуги
+                        </div>
+                        <div class="search-btn" data-work="Парковочные радары">
+                            Парковочные радары
+                        </div>
+                        <div class="search-btn" data-work="GSM и GPS модули">
+                            GSM и GPS модули
+                        </div>
+                        <div class="search-btn" data-work="Видеорегистраторы">
+                            Видеорегистраторы
+                        </div>
+                        <div class="search-btn" data-work="Привод управления ЦЗ">
+                            Привод управления ЦЗ
+                        </div>
+                    </div>
+                    <div class="review-card__column">
+                    </div>
+                    <button class="review__link">Показать ещё работы</button>
                 </div>
             </section>
             <div class="modal">
@@ -296,7 +183,7 @@
                 <div class="m-confirm">
                     <div class="m-confirm__cross"></div>
                     <div class="m-confirm__img">
-                        <img src="{% static 'product_page/img/icons/m-confirm_img.svg' %}" alt="confirm">
+                        <img src="{% static 'portfolio_all/img/icons/m-confirm_img.svg' %}" alt="confirm">
                     </div>
                     <h3 class="m-confirm__title">
                         Отзыв успешно отправлен
@@ -356,9 +243,8 @@
             </section>
         </footer>
     </div>
-    <script src="{% static 'about_company/js/header.js' %}"></script>
-    <script src="{% static 'about_company/js/modal_window.js' %}"></script>
-    <script src="{% static 'product_page/js/popular_card.js' %}"></script>
-    <script src="{% static 'product_page/js/product_card.js' %}"></script>
+    <script src="{% static 'portfolio_all/js/header.js' %}"></script>
+    <script src="{% static 'portfolio_all/js/reviews.js' %}"></script>
+    <script src="{% static 'portfolio_all/js/modal_window.js' %}"></script>
 </body>
 </html>

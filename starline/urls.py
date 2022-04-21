@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.urls import path
 
 from .views import CatalogView, AllProductView, DetailProductView, ActionView, \
-    OurWorkView, index, ContactsView, AboutCompanyView
+    listourwork, index, ContactsView, AboutCompanyView
 
 urlpatterns = [
     path('', index, name='index'),
@@ -11,7 +11,7 @@ urlpatterns = [
     path('about_company/', AboutCompanyView.as_view(), name='about_company'),
     path('catalog/', CatalogView.as_view(), name='catalog_view'),
     path('action/', ActionView.as_view(), name='action'),
-    path('our_work/', OurWorkView.as_view(), name='our_work'),
+    path('our_work/', listourwork, name='our_works'),
     path('catalog/<str:cat_slug>/', AllProductView.as_view(), name='all_product_view'),
     path('catalog/product/<slug:slug>/', DetailProductView.as_view(), name='detail_product_view'),
 ]

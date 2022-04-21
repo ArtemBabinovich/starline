@@ -1,0 +1,24 @@
+.product__pagination {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+}
+.pagintaion__link {
+    color: #333333;
+    margin-right: 11px;
+    display: inline-block;
+
+    &::after{
+        content: url('../img/icons/pagination_icon.svg');
+        display: inline-block;
+        margin-left: 13px;
+    }
+}
+.pagintaion__page {
+    color: #808185;
+    margin-right: 0;
+
+    &::after{
+        content: '';
+    }
+}

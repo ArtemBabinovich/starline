@@ -6,7 +6,7 @@ from rest_framework import routers
 from starline import views
 
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'comments', views.CommentViewSet)
 router.register(r'popular_product', views.PopularProductViewSet)
 router.register(r'our_work', views.OurWorkViewSet)
@@ -14,6 +14,7 @@ router.register(r'category_search', views.CategotyFiltViewSet)
 router.register(r'category_work', views.CategoryWorkViewSet)
 router.register(r'novelties', views.NoveltiesProductViewSet)
 router.register(r'product', views.ProductViewSet)
+router.register(r'all_category', views.CategoryViewSet)
 
 app_name = 'starline'
 

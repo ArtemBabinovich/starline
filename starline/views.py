@@ -1,14 +1,13 @@
 from django.db.models import Prefetch
 from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import ListView, DetailView
 from rest_framework import viewsets
 import requests  # Не удалять нужен для Telegram bot
 
-from .forms import CommentForm, FeedbackForm, FeedbackFormCon
+from .forms import FeedbackForm, FeedbackFormCon
 from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Company
 from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
-    SecuritySerializer, CategoryWorkSerializer, ProductSerializer
+    SecuritySerializer, CategoryWorkSerializer, ProductSerializer, CategorySerializer
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -193,3 +192,8 @@ class CategoryWorkViewSet(viewsets.ReadOnlyModelViewSet):
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Product.objects.filter(published=True)
     serializer_class = ProductSerializer
+
+
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Category.objects.filter(published=True)
+    serializer_class = CategorySerializer

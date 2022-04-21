@@ -65,6 +65,7 @@ class OurWorkAdmin(admin.ModelAdmin):
         'image1',
         'published',
     )
+    exclude = ('slug',)
     list_filter = ('title',)
     list_display_links = ('title',)
 

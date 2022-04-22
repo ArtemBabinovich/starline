@@ -58,7 +58,8 @@ function getReviewText(){
                 const reviewCardLink = document.createElement('a');
                     reviewCardLink.className = 'review-card__link';
                     reviewCardLink.innerHTML = 'Подробнее';
-                    reviewCardLink.href = `https://starline.pythonanywhere.com/ourwork/`${item.slug};
+                    reviewCardLink.href = `https://starline.pythonanywhere.com/ourwork/${item.slug}`;
+                    console.log(item)
                     //! тут надо добавить ссылку на карточку!!!
                     
                 item.append(reviewCardLink);

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'portfolio_all/css/null_for_templates.css' %}">
-    <link rel="stylesheet" href="{% static 'portfolio_all/css/style.css' %}">
+     <link rel="stylesheet" href="{% static 'portfolio_card/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio_card/main_page/css/style.css' %}">
     <title>StarLine</title>
 </head>
 <body>
@@ -118,23 +118,102 @@
                     <div class="main-wrap">
                         <div class="product__pagination">
                             <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
-                            <a href="{% url 'our_works' %}" class="pagintaion__link pagintaion__page">Наши работы</a>
+                            <a href="{% url 'our_works' %}" class="pagintaion__link">Наши работы</a>
+                            <a href="#" class="pagintaion__link pagintaion__page">{{ ourwork.title }}</a>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="review">
+            <section class="review-card__img">
                 <div class="container">
-                    <h2 class="review__title title">
+                    <h2 class="review-card__title title">
                         Наши работы
                     </h2>
-                    <div class="review__search-btn">
-
-
+                    <div class="review-card__search-btn">
+                        <div class="search-btn" data-work="Трекеры и мониторинг">
+                            Трекеры и мониторинг
+                        </div>
+                        <div class="search-btn" data-work="Доп.услуги">
+                            Доп.услуги
+                        </div>
+                        <div class="search-btn" data-work="Парковочные радары">
+                            Парковочные радары
+                        </div>
                     </div>
-                    <div class="review-card__column">
+                    <div class="review-card__price">
+                        <div class="card-price">
+                                Срок установки: <span>3 дня</span>
+                        </div>
+                        <div class="card-price">
+                            Стоимость установки: <span>345 BYN</span>
+                        </div>
                     </div>
-                    <button class="review__link">Показать ещё работы</button>
+                </div>
+                <div class="review-card__image-wrap">
+                    <div class="container">
+                        <div class="image-wrap">
+                            <div class="card-image__wrap">
+                                <img src="{% static 'portfolio_card/img/review-card_1.png' %}" alt="image">
+                            </div>
+                            <div class="card-image__wrap">
+                                <img src="{% static 'portfolio_card/img/review-card_2.png' %}" alt="image">
+                            </div>
+                            <div class="card-image__wrap">
+                                <img src="{% static 'portfolio_card/img/review-card_3.png' %}" alt="image">
+                            </div>
+                            <div class="card-image__wrap">
+                                <img src="{% static 'portfolio_card/img/review-card_4.png' %}" alt="image">
+                            </div>
+                        </div>
+                        <p class="review-card__text">
+                            Задача организации, в особенности же реализация намеченных плановых заданий влечет за собой процесс внедрения и модернизации новых предложений. Товарищи! консультация с широким активом позволяет выполнять важные задания по разработке новых предложений.
+                        </p>
+                        <p class="review-card__text">
+                            Значимость этих проблем настолько очевидна, что консультация с широким активом требуют от нас анализа новых предложений. Повседневная практика показывает, что сложившаяся структура организации способствует подготовки и реализации модели развития. Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности позволяет выполнять важные задания по разработке модели развития. Товарищи! реализация намеченных плановых заданий в значительной степени обуславливает создание соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности способствует подготовки и реализации модели развития.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="review-card__form-wrap">
+                <div class="container">
+                    <h2 class="review-card__form-title">
+                        Понравилась работа? Оставляйте заявку и получите специальное предложение от нас
+                    </h2>
+                    <form action="#" class="review-card__form">
+                        <p class="card-form__text">
+                            Ваше имя
+                        </p>
+                        <input type="text" class="card-form__input" placeholder="Иванов Иван Иванович">
+                        <p class="card-form__text">
+                            Номер телефона
+                        </p>
+                        <input type="tel" class="card-form__input" placeholder="+375">
+                        <button class="card-form__btn btn-text">
+                            Оставить заявку
+                        </button>
+                    </form>
+                </div>
+            </section>
+            <section class="popular">
+                <div class="container">
+                    <div class="popular-wrap">
+                        <h2 class="popular__title title">
+                            Вам могут быть интересны
+                        </h2>
+                        <div class="card-wrap">
+                            <div class="card">
+                                
+                            </div>
+                            <div class="card__info">
+                                <a href="#" class="card__link btn-text">
+                                    Смотреть больше товаров
+                                </a>
+                                <p class="card__text">
+                                    В каталоге <span>{{ products }} позиций</span>, для <span>214</span> марок автомобилей
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             <div class="modal">
@@ -167,7 +246,7 @@
                 <div class="m-confirm">
                     <div class="m-confirm__cross"></div>
                     <div class="m-confirm__img">
-                        <img src="{% static 'portfolio_all/img/icons/m-confirm_img.svg' %}" alt="confirm">
+                        <img src="{% static 'portfolio_card/img/icons/m-confirm_img.svg' %}" alt="confirm">
                     </div>
                     <h3 class="m-confirm__title">
                         Отзыв успешно отправлен
@@ -182,10 +261,10 @@
             </div>
         </main>
         <footer>
-            {% for item in contacts %}
             <section class="footer__navigation">
                 <div class="container">
                     <div class="footer__nav">
+                        {% for item in contacts %}
                         <a href="{% url 'index' %}" class="nav__logo">
                             {{ item.name }}
                         </a>
@@ -227,8 +306,8 @@
             </section>
         </footer>
     </div>
-    <script src="{% static 'portfolio_all/js/header.js' %}"></script>
-    <script src="{% static 'portfolio_all/js/reviews_for_portfolio.js' %}"></script>
-    <script src="{% static 'portfolio_all/js/modal_window.js' %}"></script>
+    <script src="{% static 'portfolio_card/js/header.js' %}"></script>
+    <script src="{% static 'portfolio_card/js/popular_card-portfolio.js' %}"></script>
+    <script src="{% static 'portfolio_card/js/modal_window.js' %}"></script>
 </body>
 </html>

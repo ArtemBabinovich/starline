@@ -3,16 +3,21 @@ function getReviewText(){
     .then(response => response.json())
     .then(reviewItems => {
 
-        const lengthReviewItems = document.querySelector('.review__lengh');
-            lengthReviewItems.innerHTML = reviewItems.length;
-
         const reviewsBlock = document.querySelector('.review-card__column');
 
         reviewItems.forEach((item, index) => {
-            const reviewCard = document.createElement('div');
+            if(index < 6){
+                const reviewCard = document.createElement('div');
                 reviewCard.className = 'review-card';
             
             reviewsBlock.append(reviewCard);
+            } else{
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.classList.add('show');
+            
+            reviewsBlock.append(reviewCard);
+            }
         });
 
         reviewCard = document.querySelectorAll('.review-card');
@@ -73,6 +78,7 @@ function getReviewText(){
             reviewCardMeta.forEach((el, index) => {
                 for(let text of reviewItems[index].category_work){
                     const reviewMetaText = document.createElement('p');
+                        reviewMetaText.setAttribute('data-work', `${text}`)
                         reviewMetaText.innerHTML = text;
                     
                     el.append(reviewMetaText);
@@ -115,4 +121,68 @@ function getReviewText(){
             });
     });
 }
-getReviewText()
+getReviewText();
+
+function getCategory(){
+    fetch('https://starline.pythonanywhere.com/starline/all_category/')
+    .then(response => response.json())
+    .then(allCategory => {
+        
+        const blockCategory = document.querySelector('.review__search-btn');
+
+        allCategory.forEach(item => {
+            const itemCategory = document.createElement('button');
+                itemCategory.className = 'search-btn';
+                itemCategory.setAttribute('data-work', `${item.title}`);
+                itemCategory.innerHTML = item.title;
+
+            blockCategory.append(itemCategory);
+        })
+    })
+};
+getCategory();
+
+let indexCard = 9;
+
+const searchBtnWork = document.querySelector('.review__link');
+searchBtnWork.addEventListener('click', showCard);
+
+function showCard(event){
+    event.preventDefault();
+
+    const reviewCard = document.querySelectorAll('.review-card');
+        reviewCard.forEach((item, index) => {
+            if(index < indexCard){
+                if(item.classList.contains('show')){
+                    item.classList.remove('show');
+                }
+                if(indexCard === reviewCard.length){
+                    searchBtnWork.classList.add('disable-btn');
+                    searchBtnWork.removeEventListener('click', showCard);
+                }
+            }
+        })
+
+    indexCard += 3;
+}
+
+const searchWork = document.querySelector('.review__search-btn');
+    searchWork.addEventListener('click', (event) => {
+        const reviewCard = document.querySelectorAll('.review-card');
+
+        let targetAttribute = event.target.getAttribute('data-work');
+
+        reviewCard.forEach(item => {
+            const dataCard = item.querySelectorAll('.review-card__meta p');
+                
+            for(let i = 0; i < dataCard.length; i++){
+                if(dataCard[i].getAttribute('data-work') === targetAttribute){
+                    item.classList.remove('show');
+                    break
+                } else{
+                    item.classList.add('show');
+                    searchBtnWork.classList.add('show');
+                }
+            }
+        });
+    });

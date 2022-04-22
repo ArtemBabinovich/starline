@@ -1,0 +1,63 @@
+.review-card__form-wrap {
+    padding: 32px 0;
+    background-image: url(../img/review-card__form-back.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+}
+.review-card__form-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 32px;
+}
+.review-card__form {
+    width: 454px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    background: #F7F8F9;
+    border-radius: 8px;
+}
+.card-form__text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+    margin-bottom: 8px;
+    text-align: left;
+}
+.card-form__input {
+    padding: 13px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    background: #FFFFFF;
+    border: 1px solid #AAABAD;
+    border-radius: 8px;
+    color: #808185;
+    display: block;
+    margin-bottom: 18px;
+}
+.card-form__btn {
+    background: #526ED3;
+    border-radius: 4px;
+    padding: 10px 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+@media (max-width: 768px) {
+    .review-card__form-wrap{
+        padding: 24px 0;
+    }
+    .review-card__form-title{
+        font-weight: 700;
+        font-size: 18px;
+    }
+}

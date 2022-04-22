@@ -1,0 +1,21 @@
+
+.new-product {
+    padding: 56px 0;
+  }
+  
+  .new-product__title {
+    margin-bottom: 24px;
+  }
+  
+  .new-product .item__choice {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .new-product {
+      padding: 32px 0;
+    }
+    .new-product__title {
+      margin-bottom: 16px;
+    }
+  }

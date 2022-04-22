@@ -1,0 +1,206 @@
+
+.review {
+    margin-bottom: 72px;
+  }
+  
+  .review-card__column {
+    margin-bottom: 48px;
+  }
+  
+  .review-card {
+    padding: 24px 32px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 6px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .review-card:last-child {
+    margin-bottom: 0;
+  }
+  
+  .review-card__info {
+    max-width: 441px;
+    margin-right: 48px;
+  }
+  
+  .review-card__meta {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  
+  .review-card__meta p {
+    background: #EBEFFF;
+    border-radius: 2px;
+    padding: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    color: #333333;
+    margin-right: 8px;
+    margin-bottom: 6px;
+  }
+  
+  .review-card__meta p:last-child {
+    margin-right: 0;
+  }
+  
+  .review-card__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: #494C62;
+    margin-bottom: 16px;
+  }
+  
+  .card__text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+  }
+  
+  .card__text p:nth-child(1) {
+    margin-right: 5px;
+    margin-bottom: 8px;
+  }
+  
+  .card__text p:nth-child(2) {
+    font-weight: 700;
+  }
+  
+  .text-margin {
+    margin-bottom: 24px;
+  }
+  
+  .review-card__link {
+    border: 1px solid #526ED3;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #526ED3;
+  }
+  
+  .review-card__link:hover {
+    background: #526ED3;
+    color: #FFFFFF;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .review-card__img {
+    border-radius: 4px;
+    max-width: 569px;
+    max-height: 229px;
+    position: relative;
+    height: 229px;
+    padding-left: 51%;
+  }
+  
+  .review-card__img img {
+    position: absolute;
+    -o-object-fit: cover;
+       object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .review__link-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .review__link {
+    padding: 13px 24px;
+    background: #526ED3;
+    margin-bottom: 12px;
+  }
+  
+  .review__link-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #808080;
+  }
+  
+  @media (max-width: 768px) {
+    .review {
+      margin-bottom: 32px;
+    }
+    .review-card {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      padding: 12px 8px;
+    }
+    .review-card__info {
+      max-width: none;
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+    .review-card__title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .card__text {
+      font-size: 14px;
+    }
+    .card__text p:nth-child(1) {
+      margin-right: 5px;
+      margin-bottom: 4px;
+    }
+    .text-margin {
+      margin-bottom: 12px;
+    }
+    .review-card__link {
+      width: 100%;
+      padding: 9px;
+      text-align: center;
+    }
+    .review-card__img {
+      height: 144px;
+      padding-left: 100%;
+    }
+    .review-card__column {
+      margin-bottom: 24px;
+    }
+    .review__link {
+      padding: 10px 20px;
+    }
+    .review__link-text {
+      font-size: 14px;
+    }
+  }

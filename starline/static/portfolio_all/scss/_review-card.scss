@@ -23,13 +23,13 @@ main{
     font-weight: 400;
     font-size: 14px;
     line-height: 110%;
-    color: #FFFFFF;
     gap: 8px;
     margin-bottom: 24px;
 
     & .search-btn{
       cursor: pointer;
       padding: 4px 8px;
+      color: #FFFFFF;
       background: #526ED3;
       border-radius: 3px;
     }

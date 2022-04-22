@@ -111,6 +111,19 @@ def listourwork(request):
     return render(request, 'starline/portfolio_all.html', context)
 
 
+class DetailOurWorkView(DetailView):
+    """Детализация портфолио"""
+    model = OurWork
+    template_name = 'starline/portfolio_card.html'
+    context_object_name = 'ourwork'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = Product.objects.count()
+        context['contacts'] = Contacts.objects.all()
+        return context
+
+
 class AllProductView(ListView):
     """Вывод продуктов на экран"""
     model = Product
@@ -132,6 +145,7 @@ class DetailProductView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['contacts'] = Contacts.objects.all()
+        context['products'] = Product.objects.count()
         return context
 
 

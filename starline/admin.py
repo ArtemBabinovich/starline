@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from starline.models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Characteristic, \
-    Company
+    Company, Sale
 
 
 class SecurityAdmin(admin.ModelAdmin):
@@ -45,9 +45,15 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ActionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'image', 'published')
+    list_display = ('title', 'price', 'published')
     list_display_links = ('title',)
-    list_editable = ('published',)
+    list_editable = ('published', 'price')
+
+
+class SaleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'sale', 'published')
+    list_display_links = ('title',)
+    list_editable = ('published', 'sale')
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -105,3 +111,4 @@ admin.site.register(Action, ActionAdmin)
 admin.site.register(OurWork, OurWorkAdmin)
 admin.site.register(Security, SecurityAdmin)
 admin.site.register(Characteristic, CharecteristicAdmin)
+admin.site.register(Sale, SaleAdmin)

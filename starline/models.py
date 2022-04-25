@@ -95,15 +95,31 @@ class Product(models.Model):
 
 
 class Action(models.Model):
-    """Акции и скидки"""
+    """Акции на товар"""
     title = models.CharField('Название акции', max_length=250)
-    description = RichTextField('Описание акции')
-    image = models.ImageField('Изображение', blank=True, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='prod', verbose_name='Товар на акции')
+    price = models.CharField('Цена со скидкой', max_length=30)
     published = models.BooleanField('Опубликовано', default=False)
 
     class Meta:
-        verbose_name = 'Акция'
-        verbose_name_plural = 'Акции'
+        verbose_name = 'Акция на товар'
+        verbose_name_plural = 'Акции на товары'
+
+    def __str__(self):
+        return self.title
+
+
+class Sale(models.Model):
+    """Скидки на установку"""
+    title = models.CharField('Заголовок скидки на монтаж', max_length=250)
+    description = models.TextField('Описание скидки')
+    image = models.ImageField('Изображение', blank=True, null=True, upload_to='sale/')
+    sale = models.CharField('скидка (пример: -30%)', max_length=10)
+    published = models.BooleanField('Опубликовано', default=False)
+
+    class Meta:
+        verbose_name = 'Скидка на установку'
+        verbose_name_plural = 'Скидки на установки'
 
     def __str__(self):
         return self.title

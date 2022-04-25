@@ -118,22 +118,18 @@
                         Наши работы
                     </h2>
                     <div class="review-card__search-btn">
-                        <div class="search-btn" data-work="Трекеры и мониторинг">
-                            Трекеры и мониторинг
+                        {% for cat in ourwork.category_work.all %}
+                        <div class="search-btn" data-work="">
+                            {{ cat.title }}
                         </div>
-                        <div class="search-btn" data-work="Доп.услуги">
-                            Доп.услуги
-                        </div>
-                        <div class="search-btn" data-work="Парковочные радары">
-                            Парковочные радары
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="review-card__price">
                         <div class="card-price">
-                                Срок установки: <span>3 дня</span>
+                                Срок установки: <span>{{ ourwork.installation_time }}</span>
                         </div>
                         <div class="card-price">
-                            Стоимость установки: <span>345 BYN</span>
+                            Стоимость установки: <span>{{ ourwork.installation_price }} BYN</span>
                         </div>
                     </div>
                 </div>
@@ -141,24 +137,39 @@
                     <div class="container">
                         <div class="image-wrap">
                             <div class="card-image__wrap">
-                                <img src="{% static 'portfolio_card/img/review-card_1.png' %}" alt="image">
+                                <img src="{{ ourwork.image1.url }}" alt="image">
                             </div>
+                            {% if ourwork.image2 %}
                             <div class="card-image__wrap">
-                                <img src="{% static 'portfolio_card/img/review-card_2.png' %}" alt="image">
+                                <img src="{{ ourwork.image2.url }}" alt="image">
                             </div>
+                            {% endif %}
+                        {% if ourwork.image3 %}
                             <div class="card-image__wrap">
-                                <img src="{% static 'portfolio_card/img/review-card_3.png' %}" alt="image">
+                                <img src="{{ ourwork.image3.url }}" alt="image">
                             </div>
+                        {% endif %}
+                        {% if ourwork.image4 %}
                             <div class="card-image__wrap">
-                                <img src="{% static 'portfolio_card/img/review-card_4.png' %}" alt="image">
+                                <img src="{{ ourwork.image4.url }}" alt="image">
                             </div>
+                        {% endif %}
+                        {% if ourwork.url %}
+                            <div class="card-image__wrap">
+                               {{ ourwork.url|safe }}
+                            </div>
+                       {% endif %}
                         </div>
+                        {% if ourwork.description_image %}
                         <p class="review-card__text">
-                            Задача организации, в особенности же реализация намеченных плановых заданий влечет за собой процесс внедрения и модернизации новых предложений. Товарищи! консультация с широким активом позволяет выполнять важные задания по разработке новых предложений.
+                            {{ ourwork.description_image }}
                         </p>
+                        {% endif %}
+                        {% if ourwork.description_video %}
                         <p class="review-card__text">
-                            Значимость этих проблем настолько очевидна, что консультация с широким активом требуют от нас анализа новых предложений. Повседневная практика показывает, что сложившаяся структура организации способствует подготовки и реализации модели развития. Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности позволяет выполнять важные задания по разработке модели развития. Товарищи! реализация намеченных плановых заданий в значительной степени обуславливает создание соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности способствует подготовки и реализации модели развития.
+                            {{ ourwork.description_video }}
                         </p>
+                        {% endif %}
                     </div>
                 </div>
             </section>

@@ -3,18 +3,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from starline import views
+from starline import viewsAPI
 
 
 router = routers.DefaultRouter()
-router.register(r'comments', views.CommentViewSet)
-router.register(r'popular_product', views.PopularProductViewSet)
-router.register(r'our_work', views.OurWorkViewSet)
-router.register(r'category_search', views.CategotyFiltViewSet)
-router.register(r'category_work', views.CategoryWorkViewSet)
-router.register(r'novelties', views.NoveltiesProductViewSet)
-router.register(r'product', views.ProductViewSet)
-router.register(r'all_category', views.CategoryViewSet)
+router.register(r'comments', viewsAPI.CommentViewSet)
+router.register(r'popular_product', viewsAPI.PopularProductViewSet)
+router.register(r'our_work', viewsAPI.OurWorkViewSet)
+router.register(r'category_search', viewsAPI.CategotyFiltViewSet)
+router.register(r'novelties', viewsAPI.NoveltiesProductViewSet)
+router.register(r'product', viewsAPI.ProductViewSet)
+router.register(r'all_category', viewsAPI.CategoryViewSet)
+router.register(r'characteristic', viewsAPI.CharacteristicSerializerViewSet)
 
 app_name = 'starline'
 

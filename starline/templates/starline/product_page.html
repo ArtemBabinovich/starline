@@ -144,54 +144,17 @@
                                         Характеристики {{ prod.title }}
                                     </h3>
                                     <ul class="perfomance__list">
+                                        {% for har in prod.characteristics.all %}
                                         <li class="perfomance__item">
                                             <div class="perfomance__circle">1</div>
                                             <p class="perfomance-item__title">
-                                                Умная авторизация
+                                                {{ har.title }}
                                             </p>
                                             <p class="perfomance-item__text">
-                                                Только владелец получает разрешение на поездку после авторизации по персональной метке*
-                                            </p>
-                                            <span>
-                                                *Метку можно приобрести отдельно
-                                            </span>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">2</div>
-                                            <p class="perfomance-item__title">
-                                                Умный бесплатный мониторинг
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                С помощью простого и удобного мониторинга starline.online вы сможете с точностью до нескольких метров узнать местонахождение своего автомобиля, посмотреть маршрут передвижения
+                                                {{ har.description }}
                                             </p>
                                         </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">3</div>
-                                            <p class="perfomance-item__title">
-                                                Универсальность
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Удобство интеграции в бортовую сеть легкового автомобиля (+12V) и грузового транспорта (+24V).
-                                            </p>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">4</div>
-                                            <p class="perfomance-item__title">
-                                                Гиперчувствительность
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Уникальная GPS-ГЛОНАСС антенна обеспечивает сверхчувствительность и почти моментальное определение точных координат даже в самых сложных условиях
-                                            </p>
-                                        </li>
-                                        <li class="perfomance__item">
-                                            <div class="perfomance__circle">5</div>
-                                            <p class="perfomance-item__title">
-                                                Умная автодиагностика
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                Экономьте на диагностике транспортного средства — получайте информацию о состоянии автомобиля на мобильный телефон в приложении StarLine или на мониторинговом сайте starline.online
-                                            </p>
-                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>

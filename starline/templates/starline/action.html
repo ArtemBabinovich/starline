@@ -108,24 +108,25 @@
                             <a href="{% url 'index' %}" class="pagintaion__link">Главная</a>
                             <a href="{% url 'action' %}" class="pagintaion__link pagintaion__page">Акции и скидки</a>
                         </div>
-                        <section class="discount">
+                         <section class="discount">
                             <h2 class="discount__title title">
                                 Акции и скидки
                             </h2>
+                         {% for act in action %}
                                 <div class="discount__card">
                                     <div class="discount__card-info">
                                         <p class="card-info__subsubtitle">
-                                            Специальная цена!!!
+                                            {{ act.title }}
                                         </p>
                                         <h3 class="card-info__title">
-                                            StarLine S96 V2 BT GSM GPS
+                                            {{ act.product }}
                                         </h3>
                                         <div class="card-info__price">
                                             <p>
-                                                1235 BYN
+                                                {{ act.product.price }} BYN
                                             </p>
                                             <p>
-                                                780 руб.
+                                                {{ act.price }} руб.
                                             </p>
                                         </div>
                                         <div class="card-info__btn">
@@ -142,65 +143,37 @@
                                             <img src="{% static 'action/img/discount-car.png' %}" alt="img">
                                         </div>
                                         <div class="card__image-border">
-                                            <img src="{% static 'action/img/card-img-1.png' %}" alt="StarLine">
+                                            <img src="{{ act.product.image.url }}" alt="StarLine">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="discount__card">
-                                    <div class="discount__card-info">
-                                        <p class="card-info__subsubtitle">
-                                            Специальная цена!!!
-                                        </p>
-                                        <h3 class="card-info__title">
-                                            StarLine S96 V2 BT GSM GPS
-                                        </h3>
-                                        <div class="card-info__price">
-                                            <p>
-                                                1235 BYN
-                                            </p>
-                                            <p>
-                                                780 руб.
-                                            </p>
-                                        </div>
-                                        <div class="card-info__btn">
-                                            <button class="btn__application btn-text" data-modal="advice">
-                                                Оставить заявку
-                                            </button>
-                                            <a href="#" class="card-info__link">
-                                                Смотреть товар
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="discount__card-img">
-                                        <div class="card__image">
-                                            <img src="{% static 'action/img/discount-car.png' %}" alt="img">
-                                        </div>
-                                        <div class="card__image-border">
-                                            <img src="{% static 'action/img/card-img-1.png' %}" alt="StarLine">
-                                        </div>
-                                    </div>
-                                </div>
+                         {% endfor %}
+
+                                {% for sal in sale %}
                                 <div class="discount__card stock-card">
                                     <div class="discount__card-info">
                                         <h3 class="card-info__title">
-                                            Скидка на монтаж на автомобили брендов Hyundai, KIA, Geely, Lada, Nissan, Renault, Toyota, VW, Skoda
+                                            {{ sal.title }}
                                         </h3>
                                         <p class="card-info__subtitle">
-                                            Скидка на монтаж на автомобили брендов Hyundai, KIA, Geely, Lada, Nissan, Renault, Toyota, VW, Skoda
+                                            {{ sal.description }}
                                         </p>
                                         <div class="card-info__btn">
                                             <button class="btn__application btn-text" data-modal="advice">
                                                 Оставить заявку
                                             </button>
+
+
                                             <a href="#" class="card-info__link">
-                                                Смотреть товар
+
                                             </a>
+
                                         </div>
                                         <div class="card__image-stock">
                                             <img src="{% static 'action/img/stock_star-img.png' %}" alt="stock">
                                             <p class="image-stock__text">
                                                 <span>до</span>
-                                                <span>-30%</span>
+                                                <span>{{ sal.sale }}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -209,10 +182,11 @@
                                             <img src="{% static 'action/img/stock-img.png' %}" alt="img">
                                         </div>
                                         <div class="card__image-border">
-                                            <img src="{% static 'action/img/card-img-1.png' %}" alt="StarLine">
+                                            <img src="{{ sal.image.url }}" alt="StarLine">
                                         </div>
                                     </div>
                                 </div>
+                             {% endfor %}
                         </section>
                     </div>
                 </div>

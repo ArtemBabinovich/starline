@@ -13,22 +13,10 @@
     <div class="wrapper">
         <header>
             <div class="header__block">
-                <div class="header__old">
-                    <div class="container">
-                        <div class="header__old-wrap">
-                            <p>
-                                Версию сайта со старым дизайном оставили доступной по ссылке правее
-                            </p>
-                             <a href="http://starline-alarm.by/" class="old-link">
-                                Перейти на старый сайт
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                {% for item in contacts %}
                 <div class="header__context">
                     <div class="container">
                         <div class="header__context-wrap">
+                            {% for item in contacts %}
                             <a href="{% url 'index' %}" class="header__logo">
                                 StarLine-alarm
                             </a>

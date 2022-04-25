@@ -25,11 +25,14 @@ class CharacteristicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Characteristic
-        fields = ['title', 'description']
+        fields = ['title', ]
         depth = 1
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    characteristics = serializers.StringRelatedField(many=True)
+    category = CategorySerializer(read_only=True)
+
     class Meta:
         model = Product
         fields = [
@@ -40,7 +43,10 @@ class ProductSerializer(serializers.ModelSerializer):
             'image',
             'presence',
             'instruction',
+            'characteristics',
+            'category',
         ]
+        depth = 1
 
 
 class PopularProductSerializer(serializers.ModelSerializer):
@@ -108,23 +114,3 @@ class OurWorkSerializer(serializers.ModelSerializer):
 
         ]
         depth = 1
-
-
-class CategoryWorkSerializer(serializers.ModelSerializer):
-    """Наши работы по категориям"""
-    category_work = OurWorkSerializer(
-        many=True,
-        read_only=True,
-    )
-
-    class Meta:
-        model = Category
-        fields = [
-            'title',
-            'category_work',
-        ]
-        depth = 1
-
-
-class CharacteristicSerializer(serializers.ModelSerializer):
-    pass

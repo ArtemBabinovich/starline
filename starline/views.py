@@ -1,10 +1,10 @@
+from django.db.models import Prefetch
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 import requests  # Не удалять нужен для Telegram bot
 
 from .forms import FeedbackForm, FeedbackFormCon
-from .models import Contacts, Category, Product, Feedback, Action, OurWork, Company
-
+from .models import Contacts, Product, Feedback, Action, OurWork, Company, Sale, Characteristic, Category
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -87,18 +87,8 @@ class ActionView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['contacts'] = Contacts.objects.all()
+        context['sale'] = Sale.objects.filter(published=True)
         return context
-
-
-class CatalogView(ListView):
-    """Вывод категорий на экран"""
-    model = Category
-    template_name = 'catalog.html'
-    context_object_name = 'category'
-
-    def get_queryset(self):
-        queryset = Category.objects.filter(published=True).order_by('id')
-        return queryset
 
 
 def listourwork(request):
@@ -144,5 +134,3 @@ class DetailProductView(DetailView):
         context['contacts'] = Contacts.objects.all()
         context['products'] = Product.objects.count()
         return context
-
-

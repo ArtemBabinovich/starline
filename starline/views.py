@@ -1,13 +1,10 @@
-from django.db.models import Prefetch
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from rest_framework import viewsets
 import requests  # Не удалять нужен для Telegram bot
 
 from .forms import FeedbackForm, FeedbackFormCon
-from .models import Comment, Contacts, Category, Product, Feedback, Action, OurWork, Security, Company
-from .serialeziers import CommentSerializer, PopularProductSerializer, NoveltiesProductSerializer, OurWorkSerializer, \
-    SecuritySerializer, CategoryWorkSerializer, ProductSerializer, CategorySerializer
+from .models import Contacts, Category, Product, Feedback, Action, OurWork, Company
+
 
 #  Добавить токен tele_bot_token и chat_id пользователя, которому будут приходить сообщения (chat_id у @userinfobot)
 #  Пользователь, которому будут приходить сообщения должен добавить себе своего бота.
@@ -149,65 +146,3 @@ class DetailProductView(DetailView):
         return context
 
 
-class CommentViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-        API для отзыва
-    """
-    queryset = Comment.objects.filter(published=True)
-    serializer_class = CommentSerializer
-
-
-class PopularProductViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-        API для популярного продукта
-    """
-    queryset = Product.objects.filter(popular=True)
-    serializer_class = PopularProductSerializer
-
-
-class NoveltiesProductViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-        API для новинок продукта
-    """
-    queryset = Product.objects.filter(novelties=True)
-    serializer_class = NoveltiesProductSerializer
-
-
-class OurWorkViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-        API для наши работы
-    """
-    queryset = OurWork.objects.filter(published=True)
-    serializer_class = OurWorkSerializer
-
-
-class CategotyFiltViewSet(viewsets.ReadOnlyModelViewSet):
-    """API для создания каталога"""
-    queryset = Security.objects.prefetch_related(
-        Prefetch(
-            'categores',
-            queryset=Category.objects.filter(published=True)
-        )
-    )
-    serializer_class = SecuritySerializer
-
-
-class CategoryWorkViewSet(viewsets.ReadOnlyModelViewSet):
-    """Наши работы по категориям"""
-    queryset = Category.objects.filter(published=True).prefetch_related(
-        Prefetch(
-            'category_work',
-            queryset=OurWork.objects.filter(published=True)
-        )
-    )
-    serializer_class = CategoryWorkSerializer
-
-
-class ProductViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Product.objects.filter(published=True)
-    serializer_class = ProductSerializer
-
-
-class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Category.objects.filter(published=True)
-    serializer_class = CategorySerializer

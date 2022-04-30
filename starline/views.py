@@ -1,4 +1,4 @@
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Count
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 import requests  # Не удалять нужен для Telegram bot

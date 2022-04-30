@@ -128,7 +128,6 @@
                                         <p class="features__text">
                                            {{ prod.description|safe }}
                                         </p>
-
                                     </div>
                                 </div>
                                 <div class="product__tabs">
@@ -146,13 +145,11 @@
                                     <ul class="perfomance__list">
                                         {% for har in prod.characteristics.all %}
                                         <li class="perfomance__item">
-                                            <div class="perfomance__circle">1</div>
-                                            <p class="perfomance-item__title">
-                                                {{ har.title }}
-                                            </p>
-                                            <p class="perfomance-item__text">
-                                                {{ har.description }}
-                                            </p>
+                                            <div class="perfomance__circle">
+                                                {{ forloop.counter}}
+                                            </div>
+                                            <p class="perfomance-item__title">{{ har.title }}</p>
+                                            <p class="perfomance-item__text">{{ har.description }}</p>
                                         </li>
                                         {% endfor %}
                                     </ul>

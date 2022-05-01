@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from slugify import slugify
 from ckeditor.fields import RichTextField
@@ -107,6 +108,9 @@ class Action(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('action')
 
 
 class Sale(models.Model):

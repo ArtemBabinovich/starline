@@ -1,0 +1,109 @@
+.catalog__card {
+    width: 100%;
+}
+.card__result {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.result__amount {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #808080;
+}
+.amount__text {
+}
+.result__dropdown {
+    display: flex;
+}
+.dropdown__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #808080;
+    margin-right: 8px;
+}
+.dropdown__menu {
+    position: relative;
+}
+.dropdown__item {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #526ED3;
+    padding-right: 20px;
+    background-image: url(../img/dropdown-choice.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    cursor: pointer;
+    transition: .3s;
+
+    // &:hover{
+    //     background-image: url(../img/dropdown-choice-active.svg);
+    //     transition: .3s;
+    // }
+}
+.subdropdown__menu {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    z-index: 1;
+    padding: 8px 0px;
+    position: absolute;
+    width: 216px;
+    max-height: 213px;
+    overflow: auto;
+    background-color: #FFFFFF;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+
+    display: none;
+}
+.dropdown__item.dropdown-active{
+    background-image: url(../img/dropdown-choice-active.svg);
+
+    & .subdropdown__menu{
+        display: block;
+    }
+}
+.dropdown__subitem {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #292929;
+    text-align: left;
+    width: 100%;
+    padding: 10px 12px;
+
+    &:hover{
+        background-color: #F6F6F6;
+        background-image: url(../img/dropdown-img.svg);
+        background-repeat: no-repeat;
+        background-position: 90%;
+    }
+}
+
+@media (max-width: 991px) {
+    .card__result{
+        flex-wrap: wrap;
+    }
+    .result__amount{
+        margin-bottom: 8px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .card__result{
+        display: block;
+    }
+    .result__amount{
+        margin-bottom: 8px;
+    }
+    .subdropdown__menu{
+        left: -96px;
+        right: inherit;
+    }
+}

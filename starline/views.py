@@ -111,16 +111,11 @@ class DetailOurWorkView(DetailView):
         return context
 
 
-class AllProductView(ListView):
+def all_product(request):
     """Вывод продуктов на экран"""
-    model = Product
-    template_name = 'catalog.html'
-    context_object_name = 'products'
-    paginate_by = 2
-
-    def get_queryset(self):
-        queryset = Product.objects.filter(category__slug=self.kwargs['cat_slug'], published=True).order_by('id')
-        return queryset
+    contacts = Contacts.objects.all()
+    context = {'contacts': contacts}
+    return render(request, 'starline/catalog.html', context)
 
 
 class DetailProductView(DetailView):
@@ -134,3 +129,13 @@ class DetailProductView(DetailView):
         context['contacts'] = Contacts.objects.all()
         context['products'] = Product.objects.count()
         return context
+
+
+def not_page(request):
+    contacts = Contacts.objects.all()
+    return render(request, '404/404.html', {'contacts': contacts})
+
+
+def error(request, exception):
+    contacts = Contacts.objects.all()
+    return render(request, '404/404.html', {'contacts': contacts}, status=404)

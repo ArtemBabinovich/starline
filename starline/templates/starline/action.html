@@ -37,8 +37,12 @@
                                 </p>
                             </div>
                             <div class="header__social">
+                            {% if item.social_info2 %}
                                 <a href="{{ item.social_info2 }}" class="social telegram"></a>
+                                {% endif %}
+                                {% if item.social_info1 %}
                                 <a href="{{ item.social_info1 }}" class="social vk"></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -55,7 +59,7 @@
                             <nav class="header__menu">
                                 <ul class="menu__list">
                                     <li>
-                                        <a href="#" class="list__link">Каталог</a>
+                                        <a href="{% url 'catalog' %}" class="list__link">Каталог</a>
                                     </li>
                                     <li>
                                         <a href="{% url 'our_works' %}" class="list__link">Наши работы</a>
@@ -86,8 +90,12 @@
                                         {{ item.address }}
                                     </p>
                                     <div class="header__social">
-                                        <a href="{{ item.social_info1 }}" class="social telegram"></a>
-                                        <a href="{{ item.social_info2 }}" class="social vk"></a>
+                                    {% if item.social_info2 %}
+                                        <a href="{{ item.social_info2 }}" class="social telegram"></a>
+                                        {% endif %}
+                                        {% if item.social_info1 %}
+                                        <a href="{{ item.social_info1 }}" class="social vk"></a>
+                                        {% endif %}
                                     </div>
                                     {% endfor %}
                                 </div>
@@ -285,7 +293,7 @@
                         <nav class="nav__menu">
                             <ul class="nav__list">
                                 <li>
-                                    <a href="#" class="nav__link">Каталог</a>
+                                    <a href="{% url 'catalog' %}" class="nav__link">Каталог</a>
                                 </li>
                                 <li>
                                     <a href="{% url 'our_works' %}" class="nav__link">Наши работы</a>

@@ -16,15 +16,14 @@ router.register(r'product', viewsAPI.ProductViewSet)
 router.register(r'all_category', viewsAPI.CategoryViewSet)
 router.register(r'characteristic', viewsAPI.CharacteristicSerializerViewSet)
 
-app_name = 'starline'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('starline.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('starline/', include(router.urls)),
-
 ]
 
+handler404 = 'starline.views.error'
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
